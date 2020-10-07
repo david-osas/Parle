@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "311847884973",
+    "firebase_url": "https://parle-a757e.firebaseio.com",
+    "project_id": "parle-a757e",
+    "storage_bucket": "parle-a757e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311847884973:android:1f5b890463ab8d5c21ce24",
+        "android_client_info": {
+          "package_name": "com.example.parle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311847884973-abifljisfmi07tfi8cchvl05j6rcbs87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLhHQMDwAMMDnZUqMBeAuFNFMTkWDbtZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311847884973-abifljisfmi07tfi8cchvl05j6rcbs87.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
