@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Parle</string>
-    
+
+<!--    Login activity-->
     <string name="welcomeBack">Hi! Welcome Back.</string>
     <string name="loginMessage">Kindly log in to begin</string>
     <string name="email">E-mail</string>
@@ -11,4 +12,14 @@
     <string name="noAccount">Don’t have an account?</string>
     <string name="login">LOG IN</string>
     <string name="signup">SIGN UP</string>
+    
+<!--    Signup activity-->
+    <string name="appWelcome">Welcome to Parle</string>
+    <string name="signupMessage">It’s time to take your first step to LETTING IT GO!</string>
+    <string name="fullName">Full name</string>
+    <string name="username">Username</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="createAccount">Create Account</string>
+    <string name="haveAccount">Already have an account?</string>
+    
 </resources>
