@@ -46,6 +46,7 @@
         android:background="@drawable/circle_big"
         android:backgroundTint="@android:color/background_dark"
         android:gravity="center"
+        android:onClick="toLogin"
         android:orientation="horizontal"
         android:paddingStart="8dp"
         android:paddingTop="8dp"
