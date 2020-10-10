@@ -12,7 +12,7 @@
     <string name="noAccount">Don’t have an account?</string>
     <string name="login">LOG IN</string>
     <string name="signup">SIGN UP</string>
-    <string name="enterDetails">Enter email and password details</string>
+    <string name="enterDetails">Enter all user details</string>
     <string name="loginError">Login unsuccessful</string>
     
 <!--    Signup activity-->
@@ -23,5 +23,7 @@
     <string name="confirmPassword">Confirm Password</string>
     <string name="createAccount">Create Account</string>
     <string name="haveAccount">Already have an account?</string>
+    <string name="passwordMismatch">Text in confirm password box not the same as text in password box </string>
+    <string name="signupError">Sign up unsuccessful</string>
     
 </resources>

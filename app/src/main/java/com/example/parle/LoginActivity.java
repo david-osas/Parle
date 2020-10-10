@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(root);
 
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        viewModel.setInitialState();
 
         viewModel.getState().observe(this, new Observer<Integer>() {
             @Override

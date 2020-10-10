@@ -15,9 +15,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginViewModel extends ViewModel {
     private FirebaseAuth auth;
-    private MutableLiveData<Integer> state;
+    private MutableLiveData<Integer> state = new MutableLiveData<>();
 
-    LoginViewModel(){
+    public void setInitialState(){
         state.setValue(0);
     }
 
