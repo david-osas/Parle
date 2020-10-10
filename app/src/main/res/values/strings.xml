@@ -26,4 +26,8 @@
     <string name="passwordMismatch">Text in confirm password box not the same as text in password box </string>
     <string name="signupError">Sign up unsuccessful</string>
 
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
