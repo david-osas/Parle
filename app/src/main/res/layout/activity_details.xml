@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/country"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
@@ -59,7 +59,7 @@
         android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName3"
+        app:layout_constraintEnd_toStartOf="@+id/state"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
@@ -77,7 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/state"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -86,7 +86,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toEndOf="@+id/country"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
@@ -97,32 +97,32 @@
         android:layout_marginTop="22dp"
         android:text="@string/phoneNumber"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/country" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/number"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="11dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName5"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/dob"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/dob"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="68dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName4"
+        app:layout_constraintStart_toEndOf="@+id/number"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <TextView
@@ -135,7 +135,7 @@
         android:text="@string/dob"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/state" />
 
     <TextView
         android:id="@+id/textView20"
@@ -147,7 +147,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintTop_toBottomOf="@+id/number" />
 
     <TextView
         android:id="@+id/textView21"
@@ -160,7 +160,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/religion"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
@@ -168,7 +168,7 @@
         android:layout_marginEnd="17dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName7"
+        app:layout_constraintEnd_toStartOf="@+id/denomination"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
@@ -182,10 +182,10 @@
         android:text="@string/denomination"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/dob" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/denomination"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
@@ -194,7 +194,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName6"
+        app:layout_constraintStart_toEndOf="@+id/religion"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <TextView
@@ -205,32 +205,34 @@
         android:layout_marginTop="9dp"
         android:text="@string/similarCounsellor"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintTop_toBottomOf="@+id/religion" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/similarNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginTop="31dp"
         android:background="@drawable/rounded_btn"
         android:backgroundTint="@color/btnLight"
+        android:onClick="similar"
         android:text="@string/no"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintStart_toEndOf="@+id/similarYes"
+        app:layout_constraintTop_toBottomOf="@+id/religion" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/similarYes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="42dp"
         android:background="@drawable/rounded_btn"
         android:backgroundTint="@color/btnLight"
+        android:onClick="similar"
         android:text="@string/yes"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/similarNo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -241,10 +243,10 @@
         android:layout_marginStart="20dp"
         android:text="@string/spiritBased"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/similarNo" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/spiritualYes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -252,24 +254,26 @@
         android:layout_marginEnd="42dp"
         android:background="@drawable/rounded_btn"
         android:backgroundTint="@color/btnLight"
+        android:onClick="spiritual"
         android:text="@string/yes"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/spiritualNo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/spiritualNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginTop="29dp"
         android:background="@drawable/rounded_btn"
         android:backgroundTint="@color/btnLight"
+        android:onClick="spiritual"
         android:text="@string/no"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/spiritualYes"
+        app:layout_constraintTop_toBottomOf="@+id/similarNo" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -279,11 +283,12 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="23dp"
         android:clickable="true"
+        android:onClick="moveToNext"
         app:backgroundTint="@color/btnDark"
         app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button5"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7"
+        app:layout_constraintStart_toEndOf="@+id/spiritualNo"
+        app:layout_constraintTop_toBottomOf="@+id/denomination"
         app:srcCompat="@drawable/ic_right_arrow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

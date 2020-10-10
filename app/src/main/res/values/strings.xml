@@ -26,7 +26,7 @@
     <string name="passwordMismatch">Text in confirm password box not the same as text in password box </string>
     <string name="signupError">Sign up unsuccessful</string>
 
-<!--    Details activity-->
+    <!--    Details activity-->
     <string name="detailsHeading">Personal Details</string>
     <string name="detailsSubHeading">Kindly fill in these details to enable us serve you better</string>
     <string name="residence">Residence</string>
