@@ -12,6 +12,8 @@
     <string name="noAccount">Don’t have an account?</string>
     <string name="login">LOG IN</string>
     <string name="signup">SIGN UP</string>
+    <string name="enterDetails">Enter email and password details</string>
+    <string name="loginError">Login unsuccessful</string>
     
 <!--    Signup activity-->
     <string name="appWelcome">Welcome to Parle</string>
