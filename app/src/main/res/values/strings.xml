@@ -41,8 +41,18 @@
     <string name="religion">Religion</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-
-
+    
+<!--    Concentrate activity-->
+    <string name="concentrateHeading">What would you like to concentrate on?</string>
+    <string name="concentrateSubHeading">You can select as many as possible.</string>
+    <string name="depression">Depression</string><string name="stress">Stress and Anxiety</string><string name="addiction">Coping with addictions</string>
+    <string name="family">Family issues</string><string name="trauma">Trauma and Abuse</string><string name="relationship">Relationship issues</string>
+    <string name="sexuality">Sexuality issues</string><string name="grief">Coping with grief and loss</string><string name="eating">Eating Disorder</string>
+    <string name="sleeping">Sleeping Disorder</string><string name="fatigue">Fatigue</string>
+    <string name="anger">Anger Management</string><string name="career">Career Choices</string><string name="bipolar">Bipolar Disorder</string>
+    <string name="adhd">Concentration, memory and focus (ADHD)</string>
+    <string name="life">Life changes</string><string name="parenting">Parenting issues</string>
+    
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
