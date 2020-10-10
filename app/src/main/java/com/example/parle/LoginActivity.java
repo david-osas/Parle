@@ -29,8 +29,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChanged(Integer integer) {
                 if(integer == 1){
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, DetailsActivity.class);
                     startActivity(intent);
+                    finish();
                 }else if(integer == 2){
                     Toast.makeText(LoginActivity.this, getString(R.string.loginError), Toast.LENGTH_SHORT).show();
                     binding.loginBtn.setVisibility(View.VISIBLE);

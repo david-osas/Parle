@@ -29,8 +29,9 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onChanged(Integer integer) {
                 if(integer == 1){
-                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SignupActivity.this, DetailsActivity.class);
                     startActivity(intent);
+                    finish();
                 }else if(integer == 2){
                     Toast.makeText(SignupActivity.this, getString(R.string.signupError), Toast.LENGTH_SHORT).show();
                     binding.signupBtn.setVisibility(View.VISIBLE);

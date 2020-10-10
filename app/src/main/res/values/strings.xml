@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Parle</string>
 
-<!--    Login activity-->
+    <!--    Login activity-->
     <string name="welcomeBack">Hi! Welcome Back.</string>
     <string name="loginMessage">Kindly log in to begin</string>
     <string name="email">E-mail</string>
@@ -14,8 +14,8 @@
     <string name="signup">SIGN UP</string>
     <string name="enterDetails">Enter all user details</string>
     <string name="loginError">Login unsuccessful</string>
-    
-<!--    Signup activity-->
+
+    <!--    Signup activity-->
     <string name="appWelcome">Welcome to Parle</string>
     <string name="signupMessage">It’s time to take your first step to LETTING IT GO!</string>
     <string name="fullName">Full name</string>
@@ -25,5 +25,5 @@
     <string name="haveAccount">Already have an account?</string>
     <string name="passwordMismatch">Text in confirm password box not the same as text in password box </string>
     <string name="signupError">Sign up unsuccessful</string>
-    
+
 </resources>
