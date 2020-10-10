@@ -26,6 +26,22 @@
     <string name="passwordMismatch">Text in confirm password box not the same as text in password box </string>
     <string name="signupError">Sign up unsuccessful</string>
 
+<!--    Details activity-->
+    <string name="detailsHeading">Personal Details</string>
+    <string name="detailsSubHeading">Kindly fill in these details to enable us serve you better</string>
+    <string name="residence">Residence</string>
+    <string name="countryRes">Country of residence</string>
+    <string name="state">State</string>
+    <string name="dob">Date of Birth</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="spiritBased">Would you like a spiritual based couselling?</string>
+    <string name="similarCounsellor">Would you like a Counsellor with a similar Religion</string>
+    <string name="faith">Faith and Religion</string>
+    <string name="denomination">Denomination</string>
+    <string name="religion">Religion</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

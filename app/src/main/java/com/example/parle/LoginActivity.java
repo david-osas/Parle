@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View root = binding.getRoot();
         setContentView(root);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         viewModel.setInitialState();
