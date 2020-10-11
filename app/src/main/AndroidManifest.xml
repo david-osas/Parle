@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme2">
-        <activity android:name=".ConcentrateActivity"></activity>
+        <activity android:name=".PinActivity"></activity>
+        <activity android:name=".ConcentrateActivity" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity" />
