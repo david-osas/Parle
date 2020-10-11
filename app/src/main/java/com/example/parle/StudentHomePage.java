@@ -23,14 +23,15 @@ public class StudentHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_home_page);
 
-        loadFragment(new Home());
         mBottomNavigationView = findViewById(R.id.nav_bar);
 
-        mBottomNavigationView.set
 
         mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int id = item.getItemId();
+
                 Fragment fragment;
                 boolean ans = false;
                 switch (item.getItemId())
@@ -68,13 +69,27 @@ public class StudentHomePage extends AppCompatActivity {
                return ans;
             }
         });
+
+        mBottomNavigationView.setSelectedItemId(R.id.action_student_home);
+        for(int i = 0; i < mBottomNavigationView.getMenu().size();i++)
+        {
+            MenuItem menuItem = mBottomNavigationView.getMenu().getItem(i);
+            menuItem.setChecked(menuItem.getItemId()==R.id.action_student_home);
+        }
     }
+
+
 
     private void loadFragment(Fragment fragment)
     {
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.to_be_replaced,fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+        if (fragment.getClass() == Chats.class)
+            findViewById(R.id.homeBackground).setBackgroundColor(getColor(R.color.light_grey));
+        else
+            findViewById(R.id.homeBackground).setBackgroundColor(getColor(android.R.color.white));
     }
 }
