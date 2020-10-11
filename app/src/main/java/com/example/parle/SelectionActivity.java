@@ -55,6 +55,11 @@ public class SelectionActivity extends AppCompatActivity {
 
     }
 
+    public void toLogin(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
 
     private  void adjustSelection(boolean student_is_selected)
     {
