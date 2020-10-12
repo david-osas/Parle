@@ -101,6 +101,8 @@
             android:id="@+id/checkBox4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="@color/dark_grey"
+            android:checked="false"
             android:fontFamily="@font/montserrat"
             android:text="Remain Anonymous"
             android:textColor="@color/light_grey" />

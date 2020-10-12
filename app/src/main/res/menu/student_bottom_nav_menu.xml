@@ -3,22 +3,28 @@
 
     <item
         android:id="@+id/action_student_home"
+        android:checkable="false"
+        android:enabled="true"
         android:icon="@drawable/home"
         android:title="home" />
     <item
         android:id="@+id/action_messages"
+        android:enabled="true"
         android:icon="@drawable/messages"
         android:title="messages" />
     <item
         android:id="@+id/action_articles"
+        android:enabled="true"
         android:icon="@drawable/article_outline"
         android:title="articles" />
     <item
         android:id="@+id/action_counselors"
+        android:enabled="true"
         android:icon="@drawable/people_icon"
         android:title="counselors" />
     <item
         android:id="@+id/action_profile"
+        android:enabled="true"
         android:icon="@drawable/profile"
         android:title="profile" />
 </menu>

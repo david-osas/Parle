@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/for_bottom_nav"
+    app:startDestination="@id/action_student_home">
+
+    <fragment
+        android:id="@+id/action_student_home"
+        android:name="com.example.parle.StudentFragments.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/action_messages"
+        android:name="com.example.parle.StudentFragments.Chats"
+        android:label="fragment_chats"
+        tools:layout="@layout/fragment_chats" />
+    <fragment
+        android:id="@+id/action_profile"
+        android:name="com.example.parle.StudentFragments.Profile"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/action_counselors"
+        android:name="com.example.parle.StudentFragments.Counsellors"
+        android:label="Profile"
+        tools:layout="@layout/fragment_counsellors"/>
+
+    <fragment
+        android:id="@+id/action_articles"
+        android:name="com.example.parle.StudentFragments.Articles"
+        android:label="Profile"
+        tools:layout="@layout/fragment_articles"/>
+
+</navigation>

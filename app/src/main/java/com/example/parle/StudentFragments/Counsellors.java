@@ -61,6 +61,7 @@ public class Counsellors extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        getActivity().findViewById(R.id.homeBackground).setBackgroundColor(getActivity().getColor(android.R.color.white));
         return inflater.inflate(R.layout.fragment_counsellors, container, false);
     }
 }
