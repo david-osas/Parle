@@ -4,5 +4,5 @@
     <item android:drawable="@drawable/selected"
         android:state_selected="true"/>
 
-    <item android:drawable="@drawable/default_circle"/>
+    <item android:drawable="@drawable/default_circle" android:state_selected="false"/>
 </selector>

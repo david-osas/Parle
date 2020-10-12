@@ -33,36 +33,41 @@ public class StudentHomePage extends AppCompatActivity {
                 int id = item.getItemId();
 
                 Fragment fragment;
-                boolean ans = false;
+                boolean ans = true;
                 switch (item.getItemId())
                 {
                     case R.id.action_student_home:
                         fragment = new Home();
                         ans = true;
+                        item.setChecked(true);
                         loadFragment(fragment);
                         break;
 
                     case R.id.action_articles:
                         fragment = new Articles();
                         ans = true;
+                        item.setChecked(true);
                         loadFragment(fragment);
                         break;
 
                     case R.id.action_counselors:
                         fragment = new Counsellors();
                         ans = true;
+                        item.setChecked(true);
                         loadFragment(fragment);
                         break;
 
                     case R.id.action_messages:
                         fragment = new Chats();
                         ans = true;
+                        item.setChecked(true);
                         loadFragment(fragment);
                         break;
 
                     case R.id.action_profile:
                         fragment = new Profile();
                         ans = true;
+                        item.setChecked(true);
                         loadFragment(fragment);
                         break;
                 };
@@ -70,12 +75,8 @@ public class StudentHomePage extends AppCompatActivity {
             }
         });
 
-        mBottomNavigationView.setSelectedItemId(R.id.action_student_home);
-        for(int i = 0; i < mBottomNavigationView.getMenu().size();i++)
-        {
-            MenuItem menuItem = mBottomNavigationView.getMenu().getItem(i);
-            menuItem.setChecked(menuItem.getItemId()==R.id.action_student_home);
-        }
+        mBottomNavigationView.setSelectedItemId(R.id.action_profile);
+
     }
 
 
