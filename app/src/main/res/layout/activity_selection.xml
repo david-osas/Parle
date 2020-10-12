@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
+    android:background="@color/light_orange"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,8 +15,8 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/pacifico"
         android:text="@string/app_name"
-        android:textColor="@android:color/tab_indicator_text"
-        android:textSize="24sp"
+        android:textColor="@color/almost_black"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,9 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/circle_big"
-        android:backgroundTint="@android:color/background_dark"
+        android:backgroundTint="@color/darker_orange"
         android:gravity="center"
-        android:onClick="toLogin"
         android:orientation="horizontal"
         android:paddingStart="8dp"
         android:paddingTop="8dp"
@@ -117,7 +116,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/chatbox_no_background"
+        app:srcCompat="@drawable/chatbox_for_fragments"
         app:tint="@android:color/background_dark" />
 
     <ImageView
@@ -135,10 +134,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/point55"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/chatbox_no_background" />
-
-
-
+        app:srcCompat="@drawable/chatbox_for_fragments" />
 
 
     <ImageView
@@ -150,11 +146,12 @@
         android:paddingEnd="4dp"
         android:paddingBottom="4dp"
         android:rotationY="180"
+        android:tint="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="@+id/as_student_background"
         app:layout_constraintEnd_toEndOf="@+id/as_student_background"
         app:layout_constraintStart_toStartOf="@+id/as_student_background"
         app:layout_constraintTop_toTopOf="@+id/as_student_background"
-        app:srcCompat="@drawable/chatbox_no_background" />
+        app:srcCompat="@drawable/chatbox_for_fragments" />
 
     <TextView
         android:id="@+id/textView8"
@@ -171,7 +168,6 @@
         app:layout_constraintVertical_bias="0.65" />
 
 
-
     <ImageView
         android:id="@+id/as_counsellor"
         android:layout_width="0dp"
@@ -180,11 +176,12 @@
         android:paddingTop="4dp"
         android:paddingEnd="4dp"
         android:paddingBottom="4dp"
+        android:tint="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="@+id/as_counselor_background"
         app:layout_constraintEnd_toEndOf="@+id/as_counselor_background"
         app:layout_constraintStart_toStartOf="@+id/as_counselor_background"
         app:layout_constraintTop_toTopOf="@+id/as_counselor_background"
-        app:srcCompat="@drawable/chatbox_no_background" />
+        app:srcCompat="@drawable/chatbox_for_fragments" />
 
     <TextView
         android:id="@+id/textView9"
