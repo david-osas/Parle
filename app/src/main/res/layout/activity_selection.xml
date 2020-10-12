@@ -16,7 +16,7 @@
         android:fontFamily="@font/pacifico"
         android:text="@string/app_name"
         android:textColor="@color/almost_black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -117,7 +117,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/chatbox_for_fragments"
-        app:tint="@android:color/background_dark" />
+        app:tint="@color/dark_blue_back" />
 
     <ImageView
         android:id="@+id/as_counselor_background"
@@ -126,7 +126,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
-        android:tint="@android:color/black"
+        android:tint="@color/dark_blue_back"
         app:layout_constraintBottom_toTopOf="@+id/next"
         app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -196,5 +196,14 @@
         app:layout_constraintStart_toStartOf="@+id/as_counselor_background"
         app:layout_constraintTop_toTopOf="@+id/as_counselor_background"
         app:layout_constraintVertical_bias="0.65" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/next"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/people_down" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

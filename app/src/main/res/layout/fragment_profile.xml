@@ -22,7 +22,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Profile"
         android:textColor="@android:color/black"
-        android:textSize="28sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,10 +30,10 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="32dp"
-        app:cardCornerRadius="500dp"
+        app:cardCornerRadius="40dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -52,7 +52,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/googleg_standard_color_18" />
+                app:srcCompat="@color/dark_grey" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -60,10 +60,10 @@
 
     <View
         android:id="@+id/view3"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="2dp"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/circle_image"
         app:layout_constraintBottom_toBottomOf="@id/cardView"
         app:layout_constraintEnd_toEndOf="@id/cardView" />
@@ -86,7 +86,7 @@
             android:fontFamily="@font/montserrat"
             android:text="Bukunmi Shonde"
             android:textColor="@android:color/black"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView14"
@@ -95,21 +95,24 @@
             android:fontFamily="@font/montserrat"
             android:text="Anon name; Sandalili"
             android:textColor="@color/dark_grey"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
 
         <CheckBox
             android:id="@+id/checkBox4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/dark_grey"
+            android:button="@drawable/checkbox_selector"
+            android:buttonTint="@color/almost_black"
             android:checked="false"
             android:fontFamily="@font/montserrat"
             android:text="Remain Anonymous"
-            android:textColor="@color/light_grey" />
+            android:textColor="@color/light_grey"
+            android:textSize="10sp" />
 
     </LinearLayout>
 
     <ExpandableListView
+        android:id="@+id/profile_details_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"

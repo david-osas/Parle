@@ -61,7 +61,7 @@ public class Chats extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        getActivity().findViewById(R.id.homeBackground).setBackgroundColor(getActivity().getColor(R.color.light_grey));
+        getActivity().findViewById(R.id.homeBackground).setBackgroundColor(getActivity().getColor(R.color.light_orange));
         return inflater.inflate(R.layout.fragment_chats, container, false);
     }
 }

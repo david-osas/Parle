@@ -22,7 +22,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Articles"
         android:textColor="@android:color/black"
-        android:textSize="28sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Whenever you read a good book, somewhere inthe world a door opens to allow in more light"
         android:textColor="@color/dark_grey"
-        android:textSize="14sp"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView6"
@@ -52,9 +52,9 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="4dp"
-        android:paddingTop="4dp"
+        android:paddingTop="8dp"
         android:paddingEnd="4dp"
-        android:paddingBottom="4dp"
+        android:paddingBottom="8dp"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7">
@@ -70,21 +70,27 @@
             android:fontFamily="@font/montserrat"
             android:hint="Search Articles"
             android:inputType="textPersonName"
-            android:paddingStart="16dp" />
+            android:paddingStart="16dp"
+            android:textSize="12sp" />
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="15dp"
             android:layout_marginEnd="8dp"
             android:adjustViewBounds="true"
-            android:src="@android:drawable/ic_menu_search" />
+            android:src="@android:drawable/ic_menu_search"
+            android:tint="@color/dark_wine"
+            app:srcCompat="@android:drawable/ic_menu_search" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/articles_lists"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.467"
