@@ -42,6 +42,7 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        getActivity().findViewById(R.id.homeBackground).setBackgroundColor(getActivity().getColor(android.R.color.white));
         mView = inflater.inflate(R.layout.fragment_home, container, false);
         mRecyclerViewChats = mView.findViewById(R.id.chat_heads);
         mRecyclerViewChats.setAdapter(new ChatHeadAdapter(mView.getContext()));

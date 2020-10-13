@@ -50,12 +50,15 @@ public class SelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SelectionActivity.this, StudentHomePage.class));
+                //toLogin();
             }
         });
 
     }
 
-    public void toLogin(View view){
+
+
+    public void toLogin(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }

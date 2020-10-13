@@ -4,10 +4,17 @@
     <color name="colorPrimaryDark">#0003A9F4</color>
     <color name="colorAccent">#0003DAC5</color>
     <color name="dark_grey">#676565</color>
-    <color name="light_grey">#B4B4B4</color>
 
     <color name="btnDark">#000000</color>
     <color name="btnLight">#717171</color>
     <color name="white">#FFFFFF</color>
     <color name="squareBorder">#F2F2F2</color>
+    <color name="light_grey">#9F9F9F</color>
+    <color name="dark_blue_back">#03476A</color>
+    <color name="light_orange">#FFF5DA</color>
+    <color name="almost_black">#333333</color>
+    <color name="light_blue">#63ADD0</color>
+    <color name="darker_orange">#FFBA02</color>
+    <color name="dark_wine">#A72002</color>
+
 </resources>

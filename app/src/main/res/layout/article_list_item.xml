@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="8dp"
-    android:paddingTop="8dp"
-    android:paddingEnd="8dp"
-    android:paddingBottom="8dp">
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,29 +26,49 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/textView11"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView11"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
-                tools:srcCompat="@color/dark_grey" />
+                app:srcCompat="@color/light_orange" />
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/light_grey"
-                android:fontFamily="@font/montserrat"
-                android:paddingStart="8dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="8dp"
-                android:text="Cyber Bullying and how to handle it"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:background="@color/cardview_light_background"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingStart="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="Cyber Bullying and how to handle it"
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingStart="8dp"
+                    android:textColor="@android:color/black"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="10sp" />
+                />
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

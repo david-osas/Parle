@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/action_student_home"
-        android:icon="@drawable/home"
+        android:icon="@drawable/ic_home"
         android:title="home" />
     <item
         android:id="@+id/action_messages"
@@ -11,11 +11,11 @@
         android:title="messages" />
     <item
         android:id="@+id/action_articles"
-        android:icon="@drawable/article_outline"
+        android:icon="@drawable/ic_articles"
         android:title="articles" />
     <item
         android:id="@+id/action_counselors"
-        android:icon="@drawable/people_icon"
+        android:icon="@drawable/ic_counselors"
         android:title="counselors" />
     <item
         android:id="@+id/action_profile"

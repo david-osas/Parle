@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
         app:layout_constraintGuide_percent="0.1" />
 
     <TextView
@@ -24,7 +23,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Hi Sandalili!"
         android:textColor="@android:color/black"
-        android:textSize="28sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +37,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Welcome to your safe place"
         android:textColor="@color/dark_grey"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -57,8 +56,8 @@
         android:layout_marginStart="32dp"
         android:fontFamily="@font/montserrat"
         android:text="Suggested Counsellors"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textColor="@color/dark_wine"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
@@ -71,14 +70,14 @@
         android:fontFamily="@font/montserrat"
         android:text="Select to view  profile and start session"
         android:textColor="@color/dark_grey"
-        android:textSize="14sp"
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_heads"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView9"
@@ -94,8 +93,8 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/montserrat"
         android:text="Latest Articles"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textColor="@color/dark_wine"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chat_heads" />
 
@@ -105,7 +104,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:text="View all"
-        android:textColor="@color/dark_grey"
+        android:textColor="@color/almost_black"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
