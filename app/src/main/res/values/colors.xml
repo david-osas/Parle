@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#006200EE</color>
     <color name="colorPrimaryDark">#0003A9F4</color>
-    <color name="colorAccent">#0003DAC5</color>
+    <color name="colorAccent">@color/darker_orange</color>
     <color name="dark_grey">#676565</color>
 
     <color name="btnDark">#000000</color>
@@ -16,5 +16,8 @@
     <color name="light_blue">#63ADD0</color>
     <color name="darker_orange">#FFBA02</color>
     <color name="dark_wine">#A72002</color>
+    <color name="solid_stroke">#BFBFBF</color>
+    <color name="light_solid_stroke">#80333333</color>
+
 
 </resources>

@@ -50,7 +50,7 @@
         app:layout_constraintGuide_percent="0.25" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/sign_up_toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -71,8 +71,8 @@
         android:text="Select to view  profile and start session"
         android:textColor="@color/dark_grey"
         android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintStart_toStartOf="@+id/sign_up_toggle"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_toggle" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_heads"

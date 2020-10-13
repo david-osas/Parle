@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View root = binding.getRoot();
         setContentView(root);
@@ -40,9 +41,24 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                login();
+            }
+        });
+
+        binding.signUpToggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggle();
+            }
+        });
+
     }
 
-    public void login(View view){
+    public void login(){
         String email = binding.email.getText().toString();
         String password = binding.password.getText().toString();
         if(email.isEmpty() || password.isEmpty()){
@@ -54,9 +70,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void toggle(View view){
+    public void toggle(){
         Intent intent = new Intent(this, SignupActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in_transtion, R.anim.fade_out_transition);
+        finish();
     }
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.parle.databinding.ActivitySignupBinding;
@@ -22,6 +23,7 @@ public class SignupActivity extends AppCompatActivity {
         View root = binding.getRoot();
         setContentView(root);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         viewModel = new ViewModelProvider(this).get(SignupViewModel.class);
         viewModel.setInitialState();
 
@@ -39,9 +41,23 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.signUpToggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggle();
+            }
+        });
+
+        binding.signupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signup();
+            }
+        });
     }
 
-    public void signup(View view){
+    public void signup(){
         String fullName = binding.fullname.getText().toString();
         String email = binding.email.getText().toString();
         String username = binding.username.getText().toString();
@@ -61,9 +77,11 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
-    public void toggle(View view){
+    public void toggle(){
         Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in_transtion, R.anim.fade_out_transition);
+        finish();
     }
 }
