@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#03A9F4</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="light_grey">#B4B4B4</color>
+
+    <color name="btnDark">#000000</color>
+    <color name="btnLight">#717171</color>
+    <color name="white">#FFFFFF</color>
+    <color name="squareBorder">#F2F2F2</color>
 </resources>
