@@ -6,17 +6,41 @@
     android:layout_height="wrap_content">
 
 
-    <TextView
-        android:id="@+id/group_header"
+    <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/darker_orange"
-        android:paddingLeft="16dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:text="TextView"
+        android:background="@drawable/rounded_btn"
+        android:backgroundTint="@color/light_orange"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/group_header"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
+            android:paddingLeft="16dp"
+            android:text="TextView"
+            android:textColor="@color/btnDark"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/arrow_down"
+            app:tint="@color/btnDark" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

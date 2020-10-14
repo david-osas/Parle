@@ -19,7 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View root = binding.getRoot();
         setContentView(root);
@@ -31,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChanged(Integer integer) {
                 if(integer == 1){
-                    Intent intent = new Intent(LoginActivity.this, DetailsActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, StudentHomePage.class);
                     startActivity(intent);
                     finish();
                 }else if(integer == 2){
@@ -45,7 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                //login();
+                startActivity(new Intent(LoginActivity.this, StudentHomePage.class));
             }
         });
 

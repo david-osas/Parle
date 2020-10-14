@@ -12,11 +12,7 @@ import android.widget.ExpandableListView;
 import com.example.parle.Adapters.ExpandableListAdapter;
 import com.example.parle.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Profile#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Profile extends Fragment {
 
     private View mView;
@@ -33,7 +29,7 @@ public class Profile extends Fragment {
 
         mView = inflater.inflate(R.layout.fragment_profile, container, false);
         ExpandableListView expandableListView = mView.findViewById(R.id.profile_details_list);
-        expandableListView.setAdapter(new ExpandableListAdapter(mView.getContext()));
+        expandableListView.setAdapter(new ExpandableListAdapter(mView.getContext(),expandableListView));
         // Inflate the layout for this fragment
         return mView;
     }

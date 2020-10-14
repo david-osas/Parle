@@ -49,8 +49,8 @@ public class SelectionActivity extends AppCompatActivity {
         findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SelectionActivity.this, StudentHomePage.class));
-                //toLogin();
+                //startActivity(new Intent(SelectionActivity.this, StudentHomePage.class));
+                toLogin();
             }
         });
 
