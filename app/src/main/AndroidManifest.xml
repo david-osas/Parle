@@ -21,7 +21,8 @@
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".SelectionActivity" />
-        <activity android:name=".StudentHomePage" />
+        <activity android:name=".StudentHomePage"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

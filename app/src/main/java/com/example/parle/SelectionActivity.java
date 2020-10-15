@@ -59,7 +59,7 @@ public class SelectionActivity extends AppCompatActivity {
 
 
     public void toLogin(){
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, DetailsActivity.class);
         startActivity(intent);
     }
 

@@ -30,7 +30,7 @@ public class StudentHomePage extends AppCompatActivity {
         setContentView(R.layout.activity_student_home_page);
 
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         mBottomNavigationView = findViewById(R.id.nav_bar);
         setUpNavigation();
 
