@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.example.parle.SharedPreferences.LoginSP;
 
 public class SelectionActivity extends AppCompatActivity {
 
@@ -59,8 +62,15 @@ public class SelectionActivity extends AppCompatActivity {
 
 
     public void toLogin(){
-        Intent intent = new Intent(this, DetailsActivity.class);
-        startActivity(intent);
+        if(student_selected)
+        {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(this, "Yet to come anticipate", Toast.LENGTH_LONG).show();
+        }
     }
 
 

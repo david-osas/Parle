@@ -1,5 +1,6 @@
 package com.example.parle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -14,7 +15,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.parle.Models.Student;
 import com.example.parle.databinding.ActivityDetailsBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,7 +33,17 @@ public class DetailsActivity extends AppCompatActivity {
     private EditText datePicker;
     Calendar mCalendar;
     DatePickerDialog mPicker;
-    private String selection;
+    private String mCountry;
+    private String mState;
+    private String mPhone_number;
+    private String mDate_of_birth;
+    private String mReligionText;
+    private boolean mPreferredCounsellor;
+    private boolean mPreferredSession;
+
+    private FirebaseFirestore db;
+    private FirebaseUser mFirebaseUser;
+    private Student mStudent;
 
 
     @Override
@@ -34,10 +53,54 @@ public class DetailsActivity extends AppCompatActivity {
         binding = ActivityDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        mStudent = new Student();
         binding.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DetailsActivity.this, ConcentrateActivity.class));
+                mCountry = binding.country.getText().toString();
+                mState  = binding.State.getText().toString();
+                mPhone_number = binding.phone.getText().toString();
+                mDate_of_birth = binding.datePickerActions.getText().toString();
+                mReligionText = binding.religion.getText().toString();
+                mPreferredCounsellor = (binding.yesOrNo.getText().toString()=="Yes"?true:false);
+                mPreferredSession = (binding.religiousCounsellorPrefer.getText().toString()=="Yes I would like that"?true:false);
+
+                if(mCountry.isEmpty() || mState.isEmpty() || mPhone_number.isEmpty() || mDate_of_birth.isEmpty()
+                || mReligionText.isEmpty() || binding.religiousCounsellorPrefer.getText().toString().isEmpty()
+                || binding.yesOrNo.getText().toString().isEmpty())
+                {
+                    Toast.makeText(DetailsActivity.this,"Please enter all details before moving forward" ,Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    db = FirebaseFirestore.getInstance();
+                    mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    db.collection("students").document(mFirebaseUser.getUid())
+                            .update("country",mCountry,
+                                    "state",mState,
+                                    "phoneNumber",mPhone_number,
+                                    "dateOfBirth",mDate_of_birth,
+                                    "religion",mReligionText,
+                                    "similarReligionCounselor",mPreferredCounsellor,
+                                    "spiritualCounselling",mPreferredSession)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        Toast.makeText(DetailsActivity.this, "Details Updated Successfully", Toast.LENGTH_LONG).show();
+                                        startActivity(new Intent(DetailsActivity.this, ConcentrateActivity.class));
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(DetailsActivity.this, "Unable to update details, Check your network and try again", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+
+
+                }
+
             }
         });
 
@@ -89,6 +152,7 @@ public class DetailsActivity extends AppCompatActivity {
         counselor_religion.setCursorVisible(false);
         setListener(counselor_religion);
 
+
     }
 
 
@@ -100,7 +164,6 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 acTV1.showDropDown();
-                selection = (String) parent.getItemAtPosition(position);
 
             }
         });

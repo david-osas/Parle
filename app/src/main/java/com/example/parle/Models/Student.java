@@ -1,23 +1,25 @@
 package com.example.parle.Models;
 
 public class Student {
-    private String Username;
-    private String FullName;
+    private String username;
+    private String email;
+    private String fullName;
     private String userId;
-    private String Country;
-    private String State;
-    private String Sex;
+    private String country;
+    private String state;
+    private String gender;
 
 
-    private String DateOfBirth;
-    private String Concentrate;
-    private String PIN;
-    private String PhoneNumber;
-    private String Religion;
+    private String dateOfBirth;
+    private String concentrate;
+    private String pin;
+    private String phoneNumber;
+    private String religion;
 
-    private boolean SimilarReligionCounselor,
-                    SpiritualCounselling,
-                    IsOnline;
+    private boolean similarReligionCounselor,
+                    spiritualCounselling,
+                    isOnline,
+                    isAnonymous;
 
 
 
@@ -25,19 +27,19 @@ public class Student {
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 
     public String getFullName() {
-        return FullName;
+        return fullName;
     }
 
     public void setFullName(String fullName) {
-        FullName = fullName;
+        this.fullName = fullName;
     }
 
     public String getUserId() {
@@ -49,90 +51,106 @@ public class Student {
     }
 
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     public void setCountry(String country) {
-        Country = country;
+        this.country = country;
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
-    public String getSex() {
-        return Sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        Sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getDateOfBirth() {
-        return DateOfBirth;
+        return dateOfBirth;
     }
 
     public void setDateOfBirth(String dateOfBirth) {
-        DateOfBirth = dateOfBirth;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getConcentrate() {
-        return Concentrate;
+        return concentrate;
     }
 
     public void setConcentrate(String concentrate) {
-        Concentrate = concentrate;
+        this.concentrate = concentrate;
     }
 
-    public String getPIN() {
-        return PIN;
+    public String getPin() {
+        return pin;
     }
 
-    public void setPIN(String PIN) {
-        this.PIN = PIN;
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getReligion() {
-        return Religion;
+        return religion;
     }
 
     public void setReligion(String religion) {
-        Religion = religion;
+        this.religion = religion;
     }
 
     public boolean isSimilarReligionCounselor() {
-        return SimilarReligionCounselor;
+        return similarReligionCounselor;
     }
 
     public void setSimilarReligionCounselor(boolean similarReligionCounselor) {
-        SimilarReligionCounselor = similarReligionCounselor;
+        this.similarReligionCounselor = similarReligionCounselor;
     }
 
     public boolean isSpiritualCounselling() {
-        return SpiritualCounselling;
+        return spiritualCounselling;
     }
 
     public void setSpiritualCounselling(boolean spiritualCounselling) {
-        SpiritualCounselling = spiritualCounselling;
+        this.spiritualCounselling = spiritualCounselling;
     }
 
     public boolean isOnline() {
-        return IsOnline;
+        return isOnline;
     }
 
     public void setOnline(boolean online) {
-        IsOnline = online;
+        isOnline = online;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isAnonymous() {
+        return isAnonymous;
+    }
+
+    public void setAnonymous(boolean anonymous) {
+        isAnonymous = anonymous;
     }
 }

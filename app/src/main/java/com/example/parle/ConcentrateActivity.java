@@ -15,6 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +52,7 @@ public class ConcentrateActivity extends AppCompatActivity {
             "Executive and Professional Coaching",
             "Life Changes",
             "Parenting Issues"};
+    private SpecialtyAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +60,8 @@ public class ConcentrateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_concentrate);
 
         mRecyclerView = findViewById(R.id.specialties);
-        mRecyclerView.setAdapter(new SpecialtyAdapter(this,mList));
+        mAdapter = new SpecialtyAdapter(this,mList);
+        mRecyclerView.setAdapter(mAdapter);
 
         mGridLayoutManager = new GridLayoutManager(this,10);
         mGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -83,8 +92,23 @@ public class ConcentrateActivity extends AppCompatActivity {
     }
 
     public void moveToNext(View view){
-        Intent intent = new Intent(this, PinActivity.class);
-        startActivity(intent);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("students").document(user.getUid()).update("concentrate",mAdapter.getChosenOnes())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                        {
+                            Toast.makeText(ConcentrateActivity.this, "Details Updated Successfully", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(ConcentrateActivity.this, PinActivity.class));
+                        }
+                        else
+                        {
+                            Toast.makeText(ConcentrateActivity.this, "Unable to update details, Check your network and try again", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
 
@@ -96,6 +120,7 @@ SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>{
     Context mContext;
     String[] mList;
     ArrayList<String> selected;
+    String[] chosenOnes = {"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"};
 
     int[] colors = {R.color.dark_wine,R.color.darker_orange,R.color.dark_blue_back};
     public SpecialtyAdapter(Context context,String[] list) {
@@ -112,7 +137,7 @@ SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.button.setText(mList[position]);
         final Typeface bold = ResourcesCompat.getFont(mContext,R.font.montserrat_bold);
         final Typeface normal = ResourcesCompat.getFont(mContext,R.font.montserrat);
@@ -127,6 +152,7 @@ SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>{
                     button.setBackgroundTintList(null);
                     button.setTextColor(mContext.getColor(android.R.color.black));
                     button.setTypeface(normal);
+                    chosenOnes[position] = "0";
                 }
                 else
                 {
@@ -134,6 +160,7 @@ SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>{
                     button.setBackgroundTintList(ColorStateList.valueOf(mContext.getColor(colors[n])));
                     button.setTextColor(mContext.getColor(android.R.color.white));
                     button.setTypeface(bold);
+                    chosenOnes[position] = "1";
                 }
 
             }
@@ -143,6 +170,14 @@ SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>{
     @Override
     public int getItemCount() {
         return mList.length;
+    }
+
+    public String getChosenOnes()
+    {
+        String ans = "";
+        for(String i : chosenOnes)
+            ans = ans+i;
+        return ans;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
