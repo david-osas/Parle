@@ -8,12 +8,14 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.example.parle.SharedPreferences.LoginSP;
 import com.example.parle.StartScreenFragments.PageOneFragment;
 import com.example.parle.StartScreenFragments.PageThreeFragment;
 import com.example.parle.StartScreenFragments.PageTwoFragment;
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    LoginSP.hasBeenOpened(MainActivity.this);
                     startActivity(new Intent(MainActivity.this, SelectionActivity.class));
                     finish();
                 }
