@@ -15,8 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.parle.databinding.ActivityConcentrateBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +33,7 @@ import java.util.Random;
 public class ConcentrateActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private GridLayoutManager mGridLayoutManager;
+    public static TextView noSelected;
 
     String[] mList = {"Depression",
             "Stress and Anxiety",
@@ -62,6 +65,7 @@ public class ConcentrateActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.specialties);
         mAdapter = new SpecialtyAdapter(this,mList);
         mRecyclerView.setAdapter(mAdapter);
+        noSelected = findViewById(R.id.no_selected);
 
         mGridLayoutManager = new GridLayoutManager(this,10);
         mGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -153,6 +157,7 @@ SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>{
                     button.setTextColor(mContext.getColor(android.R.color.black));
                     button.setTypeface(normal);
                     chosenOnes[position] = "0";
+
                 }
                 else
                 {
@@ -163,6 +168,7 @@ SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>{
                     chosenOnes[position] = "1";
                 }
 
+                ConcentrateActivity.noSelected.setText(selected.size()+" selected");
             }
         });
     }
