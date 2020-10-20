@@ -8,8 +8,6 @@ public class LoginSP
     private static  SharedPreferences mSharedPreferences;
     public static final String NAME= "LoginPreferences";
     private final static String FIRST_TIME_OPENED = "FIRST_TIME_OPENED";
-    private final static String EMAIL = "EMAIL";
-    private static final String PASSWORD = "PASSWORD";
     private static final String PIN = "PIN";
 
     private LoginSP(){}
@@ -23,8 +21,6 @@ public class LoginSP
             {
                 SharedPreferences.Editor editor = mSharedPreferences.edit();
                 editor.putBoolean(FIRST_TIME_OPENED,true);
-                editor.putString(PASSWORD,null);
-                editor.putString(EMAIL,null);
                 editor.putString(PIN,"0000");
                 editor.apply();
             }
@@ -33,14 +29,7 @@ public class LoginSP
         return  mSharedPreferences;
     }
 
-    public static void setLoginDetails(Context context, String password, String email,String pin)
-    {
-        SharedPreferences.Editor editor = getInstance(context).edit();
-        editor.putString(EMAIL,email);
-        editor.putString(PASSWORD,password);
-        editor.putString(PIN,pin);
-        editor.apply();
-    }
+
 
     public  static void hasBeenOpened(Context context)
     {
@@ -54,13 +43,4 @@ public class LoginSP
         return getInstance(context).getBoolean(FIRST_TIME_OPENED, true);
     }
 
-    public static  String getEmail(Context context)
-    {
-        return getInstance(context).getString(EMAIL,"");
-    }
-
-    public static String getPassword(Context context)
-    {
-        return getInstance(context).getString(PASSWORD,"");
-    }
 }

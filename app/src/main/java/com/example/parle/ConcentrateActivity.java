@@ -105,7 +105,9 @@ public class ConcentrateActivity extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             Toast.makeText(ConcentrateActivity.this, "Details Updated Successfully", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(ConcentrateActivity.this, PinActivity.class));
+                            Intent intent = new Intent(ConcentrateActivity.this, PinActivity.class);
+                            intent.putExtra("action","create");
+                            startActivity(intent);
                         }
                         else
                         {

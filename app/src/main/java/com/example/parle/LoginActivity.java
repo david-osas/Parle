@@ -43,13 +43,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //login();
-                startActivity(new Intent(LoginActivity.this, StudentHomePage.class));
-            }
-        });
 
         binding.signUpToggle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void login(){
+    public void login(View view){
         String email = binding.email.getText().toString();
         String password = binding.password.getText().toString();
         if(email.isEmpty() || password.isEmpty()){

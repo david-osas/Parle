@@ -120,6 +120,7 @@
         android:backgroundTint="@color/darker_orange"
         android:fontFamily="@font/montserrat_bold"
         android:minHeight="0dp"
+        android:onClick="login"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:text="@string/login"
