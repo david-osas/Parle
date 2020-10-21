@@ -10,16 +10,22 @@ import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.example.parle.StudentFragments.Articles;
 import com.example.parle.StudentFragments.Chats;
 import com.example.parle.StudentFragments.Counsellors;
 import com.example.parle.StudentFragments.Home;
 import com.example.parle.StudentFragments.Profile;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class StudentHomePage extends AppCompatActivity {
+public class StudentHomePage extends BaseActivity {
 
     private BottomNavigationView mBottomNavigationView;
     private BottomNavigationView.OnNavigationItemSelectedListener mListener;

@@ -11,18 +11,21 @@
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme2">
-
-        <activity android:name=".PinActivity"></activity>
+        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".PinActivity" />
         <activity android:name=".ConcentrateActivity" />
         <activity android:name=".DetailsActivity" />
-        <activity android:name=".SignupActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".LoginActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".SignupActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SelectionActivity" />
-        <activity android:name=".StudentHomePage"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".StudentHomePage"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,8 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
 
         <meta-data
             android:name="preloaded_fonts"

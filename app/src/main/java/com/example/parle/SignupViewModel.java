@@ -37,7 +37,6 @@ public class SignupViewModel extends ViewModel {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             state.postValue(1);
-                            LoginSP.setLoginDetails(context,password,email,pin);
                             FirebaseUser user = auth.getCurrentUser();
                             student.setUserId(user.getUid());
                             db = FirebaseFirestore.getInstance();

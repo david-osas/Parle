@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.parle.SharedPreferences.LoginSP;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SelectionActivity extends AppCompatActivity {
 
@@ -62,9 +64,15 @@ public class SelectionActivity extends AppCompatActivity {
 
 
     public void toLogin(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(student_selected)
         {
-            Intent intent = new Intent(this, LoginActivity.class);
+            Intent intent;
+            if(user == null){
+                intent = new Intent(this, LoginActivity.class);
+            }else{
+                intent = new Intent(this,StudentHomePage.class);
+            }
             startActivity(intent);
         }
         else
