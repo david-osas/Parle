@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Parle</string>
     <string name="todo">TODO</string>
-    <string name="get_started" >Get started</string>
+    <string name="get_started">Get started</string>
     <string name="blank">""</string>
 
     <!--    Login activity-->
@@ -87,7 +87,7 @@
     <string name="validatePin">PIN successfully validated</string>
     <string name="invalidPin">Invalid PIN</string>
 
-<!--    Profile fragment-->
+    <!--    Profile fragment-->
     <string name="logout">Successfully logged out</string>
     <string name="logoutButton">Log out</string>
     <string name="profile_header">Profile</string>
@@ -137,6 +137,7 @@
     <string name="unable_to_update_details">Unable to update details, Check your network and try again</string>
     <string name="please_enter_all_details">Please enter all details before moving forward</string>
 
+
     <!--Expandable list adapter-->
     <string-array name="list_for_similar_counselor">
         <item>Personal Details</item>
@@ -160,7 +161,7 @@
         <item>No, I would prefer to keep our sessions clinical</item>
     </string-array>
 
-<!--Concentrate Activity-->
+    <!--Concentrate Activity-->
     <string-array name="concentrate_points_list">
         <item>Depression</item>
         <item>Stress and Anxiety</item>
@@ -190,4 +191,14 @@
         <item>Female</item>
         <item>Others</item>
     </string-array>
+
+
+    <!--Counselor Signup activity-->
+    <string name="counselor_signup_message">Thank you for volunteering</string>
+    <string name="can_you_do_spiritual_counsel">Can you counsel based on your faith?</string>
+    <string name="duration">Duration</string>
+    <string name="counseling_experience">Years of experience in counseling</string>
+    <string name="available_hours">Available hours per day</string>
+    <string name="start_time">Start time</string>
+
 </resources>

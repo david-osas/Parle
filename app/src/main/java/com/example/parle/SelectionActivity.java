@@ -7,9 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.parle.SharedPreferences.LoginSP;
+import com.example.parle.CounselorSignupLogin.CounselorLoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -77,7 +76,7 @@ public class SelectionActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this, "Yet to come anticipate", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(SelectionActivity.this, CounselorLoginActivity.class);
         }
     }
 
