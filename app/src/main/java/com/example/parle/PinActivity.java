@@ -55,7 +55,7 @@ public class PinActivity extends AppCompatActivity {
         if(index > 0){
             index--;
             pin.remove(index);
-            textViews[index].setText("");
+            textViews[index].setText(getString(R.string.blank));
         }
 
     }

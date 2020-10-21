@@ -35,26 +35,7 @@ public class ConcentrateActivity extends AppCompatActivity {
     private GridLayoutManager mGridLayoutManager;
     public static TextView noSelected;
 
-    String[] mList = {"Depression",
-            "Stress and Anxiety",
-            "Coping with Addictions",
-            "Anxiety",
-            "Family Issues",
-            "Trauma and abuse",
-            "Relationship issues",
-            "Sexuality issues",
-            "Coping with grief and loss",
-            "Eating disorder",
-            "Sleeping disorder",
-            "Motivation, self esteem and confidence",
-            "Fatigue",
-            "Anger Management",
-            "Career choices",
-            "Bipolar disorder",
-            "Concentration, memory and focus (ADHD)",
-            "Executive and Professional Coaching",
-            "Life Changes",
-            "Parenting Issues"};
+    String[] mList = getResources().getStringArray(R.array.concentrate_points_list);
     private SpecialtyAdapter mAdapter;
 
     @Override
@@ -104,14 +85,14 @@ public class ConcentrateActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful())
                         {
-                            Toast.makeText(ConcentrateActivity.this, "Details Updated Successfully", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(ConcentrateActivity.this, PinActivity.class);
                             intent.putExtra("action","create");
                             startActivity(intent);
                         }
                         else
                         {
-                            Toast.makeText(ConcentrateActivity.this, "Unable to update details, Check your network and try again", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ConcentrateActivity.this, R.string.unable_to_update_details, Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -170,7 +151,7 @@ SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>{
                     chosenOnes[position] = "1";
                 }
 
-                ConcentrateActivity.noSelected.setText(selected.size()+" selected");
+                ConcentrateActivity.noSelected.setText(selected.size()+" "+ mContext.getString(R.string.selected));
             }
         });
     }

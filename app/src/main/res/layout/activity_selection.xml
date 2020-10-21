@@ -57,7 +57,7 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:rotation="180"
@@ -69,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_bold"
-        android:text="You are a..."
+        android:text="@string/selection_page_heading"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/pointTwo"
@@ -88,7 +88,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kindly choose the appropriate category"
+        android:text="@string/selection_page_subheading"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -117,7 +117,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/chatbox_for_fragments"
-        app:tint="@color/dark_blue_back" />
+        app:tint="@color/dark_blue_back"
+        android:contentDescription="@string/todo" />
 
     <ImageView
         android:id="@+id/as_counselor_background"
@@ -126,7 +127,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
-        android:tint="@color/dark_blue_back"
+        android:contentDescription="@string/todo"
         app:layout_constraintBottom_toTopOf="@+id/next"
         app:layout_constraintDimensionRatio="W,1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,31 +135,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/point55"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/chatbox_for_fragments" />
+        app:srcCompat="@drawable/chatbox_for_fragments"
+        app:tint="@color/dark_blue_back" />
 
 
     <ImageView
         android:id="@+id/as_student"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/todo"
         android:paddingStart="4dp"
         android:paddingTop="4dp"
         android:paddingEnd="4dp"
         android:paddingBottom="4dp"
         android:rotationY="180"
-        android:tint="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="@+id/as_student_background"
         app:layout_constraintEnd_toEndOf="@+id/as_student_background"
         app:layout_constraintStart_toStartOf="@+id/as_student_background"
         app:layout_constraintTop_toTopOf="@+id/as_student_background"
-        app:srcCompat="@drawable/chatbox_for_fragments" />
+        app:srcCompat="@drawable/chatbox_for_fragments"
+        app:tint="@color/cardview_light_background" />
 
     <TextView
         android:id="@+id/sign_up_toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
-        android:text="Student"
+        android:text="@string/student"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/as_student_background"
@@ -176,19 +179,19 @@
         android:paddingTop="4dp"
         android:paddingEnd="4dp"
         android:paddingBottom="4dp"
-        android:tint="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="@+id/as_counselor_background"
         app:layout_constraintEnd_toEndOf="@+id/as_counselor_background"
         app:layout_constraintStart_toStartOf="@+id/as_counselor_background"
         app:layout_constraintTop_toTopOf="@+id/as_counselor_background"
-        app:srcCompat="@drawable/chatbox_for_fragments" />
+        app:srcCompat="@drawable/chatbox_for_fragments"
+        app:tint="@color/cardview_light_background" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
-        android:text="Counselor"
+        android:text="@string/counselor"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/as_counselor_background"

@@ -82,7 +82,7 @@
                 android:id="@+id/textView39"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Date Of Birth"
+                android:text="@string/dob"
                 android:textSize="12sp" />
 
             <EditText

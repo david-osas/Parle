@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Parle</string>
+    <string name="todo">TODO</string>
+    <string name="get_started" >Get started</string>
+    <string name="blank">""</string>
 
     <!--    Login activity-->
     <string name="welcomeBack">Hi! Welcome Back.</string>
@@ -26,6 +29,8 @@
     <string name="haveAccount">Already have an account?</string>
     <string name="passwordMismatch">Text in confirm password box not the same as text in password box </string>
     <string name="signupError">Sign up unsuccessful</string>
+    <string name="pin">PIN</string>
+    <string name="gender">Gender</string>
 
     <!--    Details activity-->
     <string name="detailsHeading">Personal Details</string>
@@ -84,10 +89,105 @@
 
 <!--    Profile fragment-->
     <string name="logout">Successfully logged out</string>
+    <string name="logoutButton">Log out</string>
+    <string name="profile_header">Profile</string>
+    <string name="anon_name">Anon name:</string>
+    <string name="save_changes">SAVE CHANGES</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Start Screen Fragments -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="pin">PIN</string>
-    <string name="gender">Gender</string>
+    <string name="selected">selected</string>
+    <string name="advicePage2">Don\'t keep holding it in!</string>
+    <string name="advicePage3">Our Counsellors are here to help you.</string>
+    <string name="advicePage1">"We know you have a lot  running through your mind"</string>
+    <string name="hi">Hi</string>
+    <string name="welcomeHome">Welcome to your safe place</string>
+    <string name="suggestedCounsellors">Suggested Counselors</string>
+    <string name="select_profile">Select to view profile and start session</string>
+    <string name="latest_articles">Latest Articles</string>
+    <string name="view_all">View All</string>
+    <string name="sample_fullname">Bukunmi Shonde</string>
 
+    <!--    Fragment counselors-->
+    <string name="counselors">Counselors</string>
+    <string name="enter_counselor_name">Enter counselor\'s name</string>
+    <string name="edit_challenge">EDIT CHALLENGE</string>
+    <string name="chats">CHATS</string>
+
+    <!--    Fragment Chats-->
+    <string name="suggestedCounselorsCaps">SUGGESTED COUNSELORS</string>
+
+
+    <!--    Fragment Articles-->
+    <string name="articles_heading">Articles</string>
+    <string name="article_quote">Whenever you read a good book, somewhere inthe world a door opens to allow in more light</string>
+    <string name="search_articles">Search Articles</string>
+    <string name="sample_first_name">Osarumense</string>
+    <string name="sample_article_heading">Cyber Bullying and how to handle it</string>
+    <string name="sample_writer">Osarumense Azamegbe</string>
+
+
+    <!-- Selection Activity-->
+    <string name="selection_page_subheading">Kindly choose the appropriate category</string>
+    <string name="selection_page_heading">You are a...</string>
+    <string name="student">Student</string>
+    <string name="counselor">Counselor</string>
+    <string name="home">Home</string>
+    <string name="details_update_succesful">Details Updated Successfully</string>
+    <string name="unable_to_update_details">Unable to update details, Check your network and try again</string>
+    <string name="please_enter_all_details">Please enter all details before moving forward</string>
+
+    <!--Expandable list adapter-->
+    <string-array name="list_for_similar_counselor">
+        <item>Personal Details</item>
+        <item>Contact and Location</item>
+        <item>Faith and Religion</item>
+    </string-array>
+
+    <string-array name="religions_list">
+        <item>Christianity</item>
+        <item>Islam</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="yes_or_no_list">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="counselor_preference_list">
+        <item>Yes I would like that</item>
+        <item>No, I would prefer to keep our sessions clinical</item>
+    </string-array>
+
+<!--Concentrate Activity-->
+    <string-array name="concentrate_points_list">
+        <item>Depression</item>
+        <item>Stress and Anxiety</item>
+        <item>Coping with Addictions</item>
+        <item>Anxiety</item>
+        <item>Family Issues</item>
+        <item>Trauma and abuse</item>
+        <item>Relationship issues</item>
+        <item>Sexuality issues</item>
+        <item>Coping with grief and loss</item>
+        <item>Eating disorder</item>
+        <item>Sleeping disorder</item>
+        <item>Motivation, self esteem and confidence</item>
+        <item>Fatigue</item>
+        <item>Anger Management</item>
+        <item>Career choices</item>
+        <item>Bipolar disorder</item>
+        <item>Concentration, memory and focus (ADHD)</item>
+        <item>Executive and Professional Coaching</item>
+        <item>Life Changes</item>
+        <item>Parenting Issues</item>
+    </string-array>
+
+    <!--Details Activity-->
+    <string-array name="genders_list">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+    </string-array>
 </resources>

@@ -100,7 +100,7 @@
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat"
-            android:text="Get Started"
+            android:text="@string/get_started"
             android:textColor="@android:color/background_light"
             android:textSize="18sp" />
 

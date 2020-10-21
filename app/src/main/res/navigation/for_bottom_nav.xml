@@ -8,28 +8,28 @@
     <fragment
         android:id="@+id/action_student_home"
         android:name="com.example.parle.StudentFragments.Home"
-        android:label="fragment_home"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/action_messages"
         android:name="com.example.parle.StudentFragments.Chats"
-        android:label="fragment_chats"
+        android:label="@string/chats"
         tools:layout="@layout/fragment_chats" />
     <fragment
         android:id="@+id/action_profile"
         android:name="com.example.parle.StudentFragments.Profile"
-        android:label="Profile"
-        tools:layout="@layout/fragment_profile"/>
+        android:label="@string/profile_header"
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/action_counselors"
         android:name="com.example.parle.StudentFragments.Counsellors"
-        android:label="Profile"
-        tools:layout="@layout/fragment_counsellors"/>
+        android:label="@string/counselors"
+        tools:layout="@layout/fragment_counsellors" />
 
     <fragment
         android:id="@+id/action_articles"
         android:name="com.example.parle.StudentFragments.Articles"
-        android:label="Profile"
-        tools:layout="@layout/fragment_articles"/>
+        android:label="@string/articles_heading"
+        tools:layout="@layout/fragment_articles" />
 
 </navigation>

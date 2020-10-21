@@ -31,7 +31,7 @@
             android:id="@+id/textView40"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Would you like a counselor with a similar religion" />
+            android:text="@string/similarCounsellor" />
 
         <AutoCompleteTextView
             android:id="@+id/yes_or_no"
@@ -44,7 +44,7 @@
             android:id="@+id/textView41"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Would you like spiritual based counseling" />
+            android:text="@string/spiritBased" />
 
         <AutoCompleteTextView
             android:id="@+id/religious_counsellor_prefer"

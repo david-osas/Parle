@@ -37,7 +37,7 @@ public class SignupActivity extends AppCompatActivity {
         View root = binding.getRoot();
         setContentView(root);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         viewModel = new ViewModelProvider(this).get(SignupViewModel.class);
         viewModel.setInitialState();
 
@@ -67,19 +67,12 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                signup();
-//                FirebaseFirestore db = FirebaseFirestore.getInstance();
-//                db.collection("test").add(new Article("Money","Osarumense OBO")).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<DocumentReference> task) {
-//                        Toast.makeText(SignupActivity.this, "Uploaded",Toast.LENGTH_LONG).show();
-//                    }
-//                });
             }
         });
 
 
         AutoCompleteTextView maleOrFemaleorOther = binding.gender;
-        List<String> genders =  Arrays.asList(new String[]{"Male","Female","Other"});
+        List<String> genders =  Arrays.asList(getResources().getStringArray(R.array.genders_list));
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,genders);
         maleOrFemaleorOther.setAdapter(adapter);
         maleOrFemaleorOther.setCursorVisible(false);

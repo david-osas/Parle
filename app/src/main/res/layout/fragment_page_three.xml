@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
-        android:text="Our Counsellors are here to help you."
+        android:text="@string/advicePage3"
         android:textColor="@android:color/black"
         android:textSize="24sp" />
 </LinearLayout>

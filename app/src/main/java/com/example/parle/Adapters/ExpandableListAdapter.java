@@ -24,7 +24,9 @@ import androidx.core.content.res.ResourcesCompat;
 import com.example.parle.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -32,7 +34,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     View mView;
     Context mContext;
     ExpandableListView mExpandableListView;
-    String[] headers = {"Personal Details", "Contact and Location","Faith and Religion"};
+    String[] headers;
     int[] layouts = {R.layout.personal_details,R.layout.contact_and_location,R.layout.faith_and_religion};
 
 
@@ -47,6 +49,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mExpandableListView = expandableListView;
         mView = layoutInflater.inflate(R.layout.personal_details, null);
+        headers = mContext.getResources().getStringArray(R.array.list_for_similar_counselor);
     }
 
     @Override
@@ -170,23 +173,23 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             AutoCompleteTextView religion = view.findViewById(R.id.religion),
                     counselor_religion = view.findViewById(R.id.religious_counsellor_prefer),
                     yes_or_no = view.findViewById(R.id.yes_or_no);
-            ArrayList<String> religions = new ArrayList<>(),
-                    yesNo = new ArrayList<>(),
-                    counselor_preference = new ArrayList<>();
+            List<String> religions,
+                    yesNo,
+                    counselor_preference;
 
-            religions.add("Christianity");religions.add("Islam");religions.add("Others");
+            religions = Arrays.asList(mContext.getResources().getStringArray(R.array.religions_list));
             ArrayAdapter<String> ReligionAdapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1,religions);
             religion.setAdapter(ReligionAdapter);
             religion.setCursorVisible(false);
             setListener(religion);
 
-            yesNo.add("Yes");yesNo.add("No");
+            yesNo= Arrays.asList(mContext.getResources().getStringArray(R.array.yes_or_no_list));
             ArrayAdapter<String> YesNoAdapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1,yesNo);
             yes_or_no.setAdapter(YesNoAdapter);
             yes_or_no.setCursorVisible(false);
             setListener(yes_or_no);
 
-            counselor_preference.add("Yes I would like that"); counselor_preference.add("No, I would prefer to keep our sessions clinical");
+            counselor_preference= Arrays.asList(mContext.getResources().getStringArray(R.array.counselor_preference_list));;
             ArrayAdapter<String> CounselorAdapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1,counselor_preference);
             counselor_religion.setAdapter(CounselorAdapter);
             counselor_religion.setCursorVisible(false);
