@@ -50,7 +50,7 @@ public class ConcentrateActivity extends AppCompatActivity {
             "Fatigue",
             "Anger Management",
             "Career choices",
-            "Bipolar diosrder",
+            "Bipolar disorder",
             "Concentration, memory and focus (ADHD)",
             "Executive and Professional Coaching",
             "Life Changes",
