@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CounselorSignupLogin.CounselorDetailsActivity">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/pacifico"
+        android:text="@string/app_name"
+        android:textColor="@color/almost_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/pointOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.98" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/for_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.95" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_right_arrow"
+        app:layout_constraintBottom_toTopOf="@+id/pointOne"
+        app:layout_constraintEnd_toStartOf="@+id/for_fab" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:text="@string/residence"
+                android:textColor="@color/dark_wine"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="32dp"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView35"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/countryRes"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="@string/blank"
+                        android:inputType="textPersonName"
+                        android:textSize="14sp"
+                        android:importantForAutofill="no" />
+
+                    <TextView
+                        android:id="@+id/textView37"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/phoneNumber"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="@string/blank"
+                        android:inputType="phone"
+                        android:textSize="14sp"
+                        android:importantForAutofill="no" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16sp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView38"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/state"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/State"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="@string/blank"
+                        android:inputType="textPersonName"
+                        android:textSize="14sp"
+                        android:importantForAutofill="no" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:paddingBottom="16dp"
+                android:text="@string/faith"
+                android:textColor="@color/dark_wine"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/religion"
+                android:textSize="12sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/religion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/arrow_down"
+                android:focusable="false"
+                android:hint="@string/blank"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/can_you_do_spiritual_counsel"
+                android:textSize="12sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/yes_or_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/arrow_down"
+                android:focusable="false"
+                android:hint="@string/blank"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:paddingBottom="16dp"
+                android:text="@string/duration"
+                android:textColor="@color/dark_wine"
+                android:textSize="16sp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/counseling_experience"
+                android:textSize="12sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/years_of-experience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/arrow_down"
+                android:focusable="false"
+                android:hint="@string/blank"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/can_you_do_spiritual_counsel"
+                android:textSize="12sp" />
+
+            <AutoCompleteTextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/arrow_down"
+                android:focusable="false"
+                android:hint="@string/blank"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/available_hours"
+                        android:textSize="12sp" />
+
+                    <AutoCompleteTextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/blank"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/start_time"
+                        android:textSize="12sp" />
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/blank"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/detailsHeading"
+        android:textColor="@color/btnDark"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/detailsSubHeading"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

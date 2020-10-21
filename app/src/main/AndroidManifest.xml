@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme2">
-        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".CounselorSignupLogin.CounselorConcentrateActivity"></activity>
+        <activity android:name=".CounselorSignupLogin.CounselorDetailsActivity" />
+        <activity android:name=".CounselorSignupLogin.CounselorSignUp" />
+        <activity android:name=".CounselorSignupLogin.CounselorLoginActivity" />
+        <activity android:name=".BaseActivity" />
         <activity android:name=".PinActivity" />
         <activity android:name=".ConcentrateActivity" />
         <activity android:name=".DetailsActivity" />

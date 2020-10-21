@@ -35,14 +35,14 @@ public class ConcentrateActivity extends AppCompatActivity {
     private GridLayoutManager mGridLayoutManager;
     public static TextView noSelected;
 
-    String[] mList = getResources().getStringArray(R.array.concentrate_points_list);
+    String[] mList;
     private SpecialtyAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_concentrate);
-
+        mList =getResources().getStringArray(R.array.concentrate_points_list);
         mRecyclerView = findViewById(R.id.specialties);
         mAdapter = new SpecialtyAdapter(this,mList);
         mRecyclerView.setAdapter(mAdapter);
