@@ -42,6 +42,7 @@ public class ConcentrateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_concentrate);
+
         mList =getResources().getStringArray(R.array.concentrate_points_list);
         mRecyclerView = findViewById(R.id.specialties);
         mAdapter = new SpecialtyAdapter(this,mList);
