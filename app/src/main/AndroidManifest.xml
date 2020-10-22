@@ -30,7 +30,7 @@
         <activity
             android:name=".StudentHomePage"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreenSide.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

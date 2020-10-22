@@ -20,6 +20,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View root = binding.getRoot();
         setContentView(root);
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, getString(R.string.loginError), Toast.LENGTH_SHORT).show();
                     binding.loginBtn.setVisibility(View.VISIBLE);
                     binding.progressBar.setVisibility(View.INVISIBLE);
+                    viewModel.setInitialState();
                 }
             }
         });
