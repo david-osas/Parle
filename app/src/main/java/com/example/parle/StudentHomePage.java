@@ -1,29 +1,15 @@
 package com.example.parle;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import com.example.parle.StudentFragments.Articles;
-import com.example.parle.StudentFragments.Chats;
-import com.example.parle.StudentFragments.Counsellors;
-import com.example.parle.StudentFragments.Home;
-import com.example.parle.StudentFragments.Profile;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.parle.studentFragments.Chats;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class StudentHomePage extends BaseActivity {
 

@@ -3,14 +3,13 @@ package com.example.parle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.example.parle.LoginActivity.LoginActivity;
-import com.example.parle.SharedPreferences.LoginSP;
+import com.example.parle.loginActivity.LoginActivity;
+import com.example.parle.sharedPreferences.LoginSP;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

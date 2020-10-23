@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.parle.SharedPreferences.LoginSP;
+import com.example.parle.sharedPreferences.LoginSP;
 import com.example.parle.databinding.ActivityPinBinding;
 
 import java.util.ArrayList;
@@ -21,7 +21,6 @@ public class PinActivity extends AppCompatActivity {
     private ActivityPinBinding binding;
     private TextView[] textViews;
     private  String action;
-    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,6 @@ public class PinActivity extends AppCompatActivity {
         Intent intent = getIntent();
         action = intent.getStringExtra("action");
 
-        preferences = LoginSP.getInstance(this);
         textViews = new TextView[]{binding.first, binding.second, binding.third, binding.fourth};
     }
 
@@ -73,9 +71,7 @@ public class PinActivity extends AppCompatActivity {
                     Toast.makeText(this, getString(R.string.invalidPin), Toast.LENGTH_SHORT).show();
                 }
             }else{
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("PIN",pin.toString());
-                editor.apply();
+                LoginSP.setPin(this, pin.toString());
                 Toast.makeText(this, getString(R.string.createPin), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, StudentHomePage.class);
                 startActivity(intent);
@@ -83,12 +79,8 @@ public class PinActivity extends AppCompatActivity {
         }
     }
     public boolean validatePin(){
-        String validPin = preferences.getString("PIN","0000");
-        if(pin.equals(validPin)){
-            return true;
-        }else{
-            return false;
-        }
+        String validPin = LoginSP.getPin(this);
+        return pin.toString().equals(validPin);
 
     }
 }
