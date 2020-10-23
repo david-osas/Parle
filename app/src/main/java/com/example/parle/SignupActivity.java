@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
+import com.example.parle.DetailsActivity.DetailsActivity;
 import com.example.parle.Models.Student;
 import com.example.parle.databinding.ActivitySignupBinding;
 
@@ -52,6 +53,7 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this, getString(R.string.signupError), Toast.LENGTH_SHORT).show();
                     binding.signupBtn.setVisibility(View.VISIBLE);
                     binding.progressBar.setVisibility(View.INVISIBLE);
+                    viewModel.setInitialState();
                 }
             }
         });
