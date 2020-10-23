@@ -1,7 +1,8 @@
-package com.example.parle;
+package com.example.parle.DetailsActivity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -15,17 +16,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.parle.ConcentrateActivity.ConcentrateActivity;
 import com.example.parle.Models.Student;
+import com.example.parle.R;
 import com.example.parle.databinding.ActivityDetailsBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -35,16 +30,9 @@ public class DetailsActivity extends AppCompatActivity {
     private EditText datePicker;
     Calendar mCalendar;
     DatePickerDialog mPicker;
-    private String mCountry;
-    private String mState;
-    private String mPhone_number;
-    private String mDate_of_birth;
-    private String mReligionText;
-    private boolean mPreferredCounsellor;
-    private boolean mPreferredSession;
+   private DetailsActivityViewModel mViewModel;
 
-    private FirebaseFirestore db;
-    private FirebaseUser mFirebaseUser;
+
     private Student mStudent;
 
 
@@ -55,52 +43,34 @@ public class DetailsActivity extends AppCompatActivity {
         binding = ActivityDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        mViewModel = new ViewModelProvider(this).get(DetailsActivityViewModel.class);
+
+        mViewModel.initializeValues(this);
+
         mStudent = new Student();
         binding.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCountry = binding.country.getText().toString();
-                mState  = binding.State.getText().toString();
-                mPhone_number = binding.phone.getText().toString();
-                mDate_of_birth = binding.datePickerActions.getText().toString();
-                mReligionText = binding.religion.getText().toString();
-                mPreferredCounsellor = (binding.yesOrNo.getText().toString() == getResources().getStringArray(R.array.yes_or_no_list)[0]);
-                mPreferredSession = (binding.religiousCounsellorPrefer.getText().toString() == getResources().getStringArray(R.array.counselor_preference_list)[0]);
+                mViewModel.mCountry = binding.country.getText().toString();
+                mViewModel.mState  = binding.State.getText().toString();
+                mViewModel.mPhone_number = binding.phone.getText().toString();
+                mViewModel.mDate_of_birth = binding.datePickerActions.getText().toString();
+                mViewModel.mReligionText = binding.religion.getText().toString();
+                mViewModel.mPreferredCounsellor = (binding.yesOrNo.getText().toString() == getResources().getStringArray(R.array.yes_or_no_list)[0]);
+                mViewModel.mPreferredSession = (binding.religiousCounsellorPrefer.getText().toString() == getResources().getStringArray(R.array.counselor_preference_list)[0]);
 
-                if(mCountry.isEmpty() || mState.isEmpty() || mPhone_number.isEmpty() || mDate_of_birth.isEmpty()
-                || mReligionText.isEmpty() || binding.religiousCounsellorPrefer.getText().toString().isEmpty()
+                //ENSURE THAT NO EDITTEXT IS EMPTY
+                if(mViewModel.mCountry.isEmpty() || mViewModel.mState.isEmpty() || mViewModel.mPhone_number.isEmpty() || mViewModel.mDate_of_birth.isEmpty()
+                || mViewModel.mReligionText.isEmpty() || binding.religiousCounsellorPrefer.getText().toString().isEmpty()
                 || binding.yesOrNo.getText().toString().isEmpty())
                 {
                     Toast.makeText(DetailsActivity.this, R.string.please_enter_all_details ,Toast.LENGTH_LONG).show();
                 }
-                else
+
+                else//IF ALL EDITTEXR ARE FILLED
                 {
-                    db = FirebaseFirestore.getInstance();
-                    mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                    db.collection("students").document(mFirebaseUser.getUid())
-                            .update("country",mCountry,
-                                    "state",mState,
-                                    "phoneNumber",mPhone_number,
-                                    "dateOfBirth",mDate_of_birth,
-                                    "religion",mReligionText,
-                                    "similarReligionCounselor",mPreferredCounsellor,
-                                    "spiritualCounselling",mPreferredSession)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful())
-                                    {
-                                        Toast.makeText(DetailsActivity.this, getString(R.string.details_update_succesful), Toast.LENGTH_LONG).show();
-                                        startActivity(new Intent(DetailsActivity.this, ConcentrateActivity.class));
-                                    }
-                                    else
-                                    {
-                                        Toast.makeText(DetailsActivity.this, getString(R.string.unable_to_update_details), Toast.LENGTH_LONG).show();
-                                    }
-                                }
-                            });
-
-
+                    mViewModel.updateDetails();//UPDATE THE DETAILS
+                    checkUpdateSuccess();
                 }
 
             }
@@ -174,6 +144,26 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(final View arg0) {
                 acTV1.showDropDown();
+            }
+        });
+    }
+
+    public void checkUpdateSuccess()
+    {
+        mViewModel.updated.observe(DetailsActivity.this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                if(integer==1)//UPDATE WAS SUCCESSFUL
+                {
+                    Toast.makeText(DetailsActivity.this, getString(R.string.details_update_succesful), Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(DetailsActivity.this, ConcentrateActivity.class));
+                }
+                else if(integer==2)//UPDATE WAS UNSUCCESSFUL
+                {
+                    Toast.makeText(DetailsActivity.this, getString(R.string.unable_to_update_details), Toast.LENGTH_LONG).show();
+                    mViewModel.updated.setValue(0);
+                }
+
             }
         });
     }

@@ -215,7 +215,7 @@
                 android:textSize="12sp" />
 
             <AutoCompleteTextView
-                android:id="@+id/years_of-experience"
+                android:id="@+id/years_of_experience"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/arrow_down"
