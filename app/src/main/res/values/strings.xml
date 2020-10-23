@@ -205,5 +205,6 @@
     <string name="counseling_experience">Years of experience in counseling</string>
     <string name="available_hours">Available hours per day</string>
     <string name="start_time">Start time</string>
+    <string name="profession">Profession</string>
 
 </resources>

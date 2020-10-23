@@ -11,9 +11,11 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.parle.R;
+import com.example.parle.sharedPreferences.LoginSP;
 import com.example.parle.signupActivity.SignupActivity;
 import com.example.parle.StudentHomePage;
 import com.example.parle.databinding.ActivityLoginBinding;
+import com.example.parle.splashScreenSide.SplashScreen;
 
 public class LoginActivity extends AppCompatActivity {
     private LoginViewModel viewModel;

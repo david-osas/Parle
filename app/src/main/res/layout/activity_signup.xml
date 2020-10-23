@@ -66,7 +66,26 @@
                 android:inputType="textEmailAddress"
                 android:textSize="14sp" />
 
+
+            <TextView
+                android:id="@+id/professionQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/profession"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/profession"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:inputType="text"
+                android:textSize="14sp" />
+
             <LinearLayout
+                android:id="@+id/usernameQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:foregroundGravity="bottom"
@@ -138,6 +157,7 @@
                 android:textSize="14sp" />
 
             <LinearLayout
+                android:id="@+id/pinAndGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

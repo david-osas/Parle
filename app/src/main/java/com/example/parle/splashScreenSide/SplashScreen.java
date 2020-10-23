@@ -69,13 +69,13 @@ public class SplashScreen extends AppCompatActivity {
 
         else//if there is a logged in user
         {
-            mViewModel.updateStudent();
 
             mViewModel.getIsStudent().observe(SplashScreen.this, new Observer<Integer>() {
                 @Override
                 public void onChanged(Integer integer) {
                     if(integer==1)//if a student is logged in
                     {
+                        LoginSP.setUser(SplashScreen.this,"student");
                         startActivity(new Intent(SplashScreen.this, StudentHomePage.class));
                         Toast.makeText(SplashScreen.this,"Student is logged in",Toast.LENGTH_LONG).show();
                         finish();//close the splashscreen activity.
@@ -84,6 +84,7 @@ public class SplashScreen extends AppCompatActivity {
                     else if(integer ==2)
                     //a counselor is logged in
                     {
+                        LoginSP.setUser(SplashScreen.this,"counsellor");
                         startActivity(new Intent(SplashScreen.this, SelectionActivity.class));
                         Toast.makeText(SplashScreen.this,"Counselor is logged in",Toast.LENGTH_LONG).show();
                         mViewModel.setIsStudent(0);

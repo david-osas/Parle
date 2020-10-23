@@ -36,17 +36,5 @@ public class StudentHomePage extends BaseActivity {
     }
 
 
-    private void loadFragment(Fragment fragment)
-    {
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.to_be_replaced,fragment);
-        transaction.addToBackStack(null);
-        if (fragment.getClass() == Chats.class)
-            findViewById(R.id.homeBackground).setBackgroundColor(getColor(R.color.light_grey));
-        else
-            findViewById(R.id.homeBackground).setBackgroundColor(getColor(android.R.color.white));
-        transaction.commit();
-
-    }
 }
