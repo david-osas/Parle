@@ -16,7 +16,7 @@ import com.example.parle.databinding.ActivityPinBinding;
 import java.util.ArrayList;
 
 public class PinActivity extends AppCompatActivity {
-    private ArrayList<Integer> pin = new ArrayList<>();
+    private ArrayList<String> pin = new ArrayList<>();
     private int index = 0;
     private ActivityPinBinding binding;
     private TextView[] textViews;
@@ -41,7 +41,7 @@ public class PinActivity extends AppCompatActivity {
             index++;
             Button button = (Button) view;
             String value = button.getText().toString();
-            pin.add(Integer.parseInt(value));
+            pin.add(value);
 
             textViews[index-1].setText(value);
             if(index != 1){
