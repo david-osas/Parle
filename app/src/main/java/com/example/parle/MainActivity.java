@@ -8,18 +8,17 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-import com.example.parle.SharedPreferences.LoginSP;
-import com.example.parle.StartScreenFragments.PageOneFragment;
-import com.example.parle.StartScreenFragments.PageThreeFragment;
-import com.example.parle.StartScreenFragments.PageTwoFragment;
-import com.example.parle.StartScreenFragments.StartScreenAdapter;
+import com.example.parle.sharedPreferences.LoginSP;
+import com.example.parle.startScreenFragments.PageOneFragment;
+import com.example.parle.startScreenFragments.PageThreeFragment;
+import com.example.parle.startScreenFragments.PageTwoFragment;
+import com.example.parle.startScreenFragments.StartScreenAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 

@@ -4,6 +4,9 @@
     <string name="get_started">Get started</string>
     <string name="blank">""</string>
 
+<!--    Splash activity-->
+    <string name="splashToast">First time, welcome</string>
+
     <!--    Login activity-->
     <string name="welcomeBack">Hi! Welcome Back.</string>
     <string name="loginMessage">Kindly log in to begin</string>
@@ -42,6 +45,7 @@
     <string name="phoneNumber">Phone Number</string>
     <string name="spiritBased">Would you like a spiritual based couselling?</string>
     <string name="similarCounsellor">Would you like a Counsellor with a similar Religion</string>
+    <string name="counsellorFaith">Can you counsel based on your faith?</string>
     <string name="faith">Faith and Religion</string>
     <string name="denomination">Denomination</string>
     <string name="religion">Religion</string>
@@ -49,7 +53,8 @@
     <string name="no">No</string>
 
     <!--    Concentrate activity-->
-    <string name="concentrateHeading">What would you like to concentrate on?</string>
+    <string name="concentrateHeading1">What would you like to concentrate on?</string>
+    <string name="concentrateHeading2">Select your Area of Expertise</string>
     <string name="concentrateSubHeading">You can select as many as possible.</string>
     <string name="depression">Depression</string>
     <string name="stress">Stress and Anxiety</string>

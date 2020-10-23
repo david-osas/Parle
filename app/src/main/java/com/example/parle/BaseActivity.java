@@ -3,10 +3,7 @@ package com.example.parle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import com.example.parle.SharedPreferences.LoginSP;
 
 public class BaseActivity extends AppCompatActivity {
 

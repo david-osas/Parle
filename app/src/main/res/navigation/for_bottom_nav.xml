@@ -7,28 +7,28 @@
 
     <fragment
         android:id="@+id/action_student_home"
-        android:name="com.example.parle.StudentFragments.Home"
+        android:name="com.example.parle.studentFragments.Home"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/action_messages"
-        android:name="com.example.parle.StudentFragments.Chats"
+        android:name="com.example.parle.studentFragments.Chats"
         android:label="@string/chats"
         tools:layout="@layout/fragment_chats" />
     <fragment
         android:id="@+id/action_profile"
-        android:name="com.example.parle.StudentFragments.Profile"
+        android:name="com.example.parle.studentFragments.Profile"
         android:label="@string/profile_header"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/action_counselors"
-        android:name="com.example.parle.StudentFragments.Counsellors"
+        android:name="com.example.parle.studentFragments.Counsellors"
         android:label="@string/counselors"
         tools:layout="@layout/fragment_counsellors" />
 
     <fragment
         android:id="@+id/action_articles"
-        android:name="com.example.parle.StudentFragments.Articles"
+        android:name="com.example.parle.studentFragments.Articles"
         android:label="@string/articles_heading"
         tools:layout="@layout/fragment_articles" />
 
