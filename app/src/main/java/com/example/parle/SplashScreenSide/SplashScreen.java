@@ -39,6 +39,7 @@ public class SplashScreen extends AppCompatActivity {
                 if(firstTimeOpened)
                 {
                     startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                    Toast.makeText(SplashScreen.this,"Firstntime, welcome",Toast.LENGTH_LONG).show();
                     finish();//close the splashscreen activity.
                 }
 
@@ -61,12 +62,15 @@ public class SplashScreen extends AppCompatActivity {
         if(mViewModel.userIsNull())//if there is no logged in user go to the log in selection screeen
         {
             startActivity(new Intent(SplashScreen.this, SelectionActivity.class));
+            Toast.makeText(this, "no user is logged in", Toast.LENGTH_LONG).show();
             finish();//close the splashscreen activity.
         }
 
 
         else//if there is a logged in user
         {
+            mViewModel.updateStudent();
+
             mViewModel.getIsStudent().observe(SplashScreen.this, new Observer<Integer>() {
                 @Override
                 public void onChanged(Integer integer) {
@@ -77,9 +81,14 @@ public class SplashScreen extends AppCompatActivity {
                         finish();//close the splashscreen activity.
                     }
 
-                    else;
+                    else if(integer ==2)
                     //a counselor is logged in
-                    //counselor log in
+                    {
+                        startActivity(new Intent(SplashScreen.this, SelectionActivity.class));
+                        Toast.makeText(SplashScreen.this,"Counselor is logged in",Toast.LENGTH_LONG).show();
+                        mViewModel.setIsStudent(0);
+                        finish();//close the splashscreen activity.
+                    }
                 }
             });
         }

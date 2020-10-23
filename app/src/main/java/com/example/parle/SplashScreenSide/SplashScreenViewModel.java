@@ -31,12 +31,17 @@ public class SplashScreenViewModel extends ViewModel {
         isStudent.setValue(0);
     }
 
+    public void setIsStudent(Integer integer)
+    {
+        isStudent.setValue(integer);
+    }
+
     public boolean userIsNull()
     {
         return (mFirebaseUser == null);
     }
 
-    public MutableLiveData<Integer> getIsStudent()
+    public void updateStudent()
     {
         final DocumentReference documentReference = mFirestore.collection("students").document(mFirebaseUser.getUid());
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -54,12 +59,14 @@ public class SplashScreenViewModel extends ViewModel {
 
                     else {
                         isStudent.setValue(2);
-                        Toast.makeText(mContext,"Counselor is logged in",Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
+    }
 
+    public MutableLiveData<Integer> getIsStudent()
+    {
         return isStudent;
     }
 

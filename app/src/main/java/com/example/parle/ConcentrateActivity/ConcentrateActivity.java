@@ -1,8 +1,10 @@
-package com.example.parle;
+package com.example.parle.ConcentrateActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +20,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.parle.databinding.ActivityConcentrateBinding;
+import com.example.parle.DetailsActivity.DetailsActivity;
+import com.example.parle.PinActivity;
+import com.example.parle.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,13 +31,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class ConcentrateActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private GridLayoutManager mGridLayoutManager;
     public static TextView noSelected;
+    private ConcentrateViewModel mViewModel;
 
     String[] mList;
     private SpecialtyAdapter mAdapter;
@@ -42,6 +46,9 @@ public class ConcentrateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_concentrate);
+
+        mViewModel = new ViewModelProvider(this).get(ConcentrateViewModel.class);
+        mViewModel.initializeValues(this);
 
         mList =getResources().getStringArray(R.array.concentrate_points_list);
         mRecyclerView = findViewById(R.id.specialties);
@@ -78,25 +85,27 @@ public class ConcentrateActivity extends AppCompatActivity {
     }
 
     public void moveToNext(View view){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("students").document(user.getUid()).update("concentrate",mAdapter.getChosenOnes())
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(ConcentrateActivity.this, PinActivity.class);
-                            intent.putExtra("action","create");
-                            startActivity(intent);
-                        }
-                        else
-                        {
-                            Toast.makeText(ConcentrateActivity.this, R.string.unable_to_update_details, Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+
+
+        mViewModel.updateDetails(mAdapter.getChosenOnes());
+        mViewModel.updated.observe(ConcentrateActivity.this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                if(integer==1)//UPDATE WAS SUCCESSFUL
+                {
+                    Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(ConcentrateActivity.this, PinActivity.class);
+                    intent.putExtra("action","create");
+                    startActivity(intent);
+                }
+                else if(integer==2)//UPDATE WAS UNSUCCESSFUL
+                {
+                    Toast.makeText(ConcentrateActivity.this, R.string.unable_to_update_details, Toast.LENGTH_LONG).show();
+                    mViewModel.updated.setValue(0);
+                }
+
+            }
+        });
     }
 
 

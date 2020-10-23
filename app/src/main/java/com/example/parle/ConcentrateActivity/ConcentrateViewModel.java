@@ -1,32 +1,27 @@
-package com.example.parle.DetailsActivity;
+package com.example.parle.ConcentrateActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.parle.PinActivity;
+import com.example.parle.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class DetailsActivityViewModel extends ViewModel {
+public class ConcentrateViewModel extends ViewModel {
 
     public MutableLiveData<Integer> updated;
     public Context mContext;
-
-    public String mCountry;
-    public String mState;
-    public String mPhone_number;
-    public String mDate_of_birth;
-    public String mReligionText;
-    public boolean mPreferredCounsellor;
-    public boolean mPreferredSession;
-
-    public FirebaseFirestore db;
-    public FirebaseUser mFirebaseUser;
+    private FirebaseUser mUser;
+    private FirebaseFirestore mDb;
 
     public void initializeValues(Context context)
     {
@@ -35,18 +30,11 @@ public class DetailsActivityViewModel extends ViewModel {
         updated.setValue(0);
     }
 
-    public void updateDetails()
+    public void updateDetails(String concentrate)
     {
-        db = FirebaseFirestore.getInstance();
-        mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        db.collection("students").document(mFirebaseUser.getUid())
-                .update("country",mCountry,
-                        "state",mState,
-                        "phoneNumber",mPhone_number,
-                        "dateOfBirth",mDate_of_birth,
-                        "religion",mReligionText,
-                        "similarReligionCounselor",mPreferredCounsellor,
-                        "spiritualCounselling",mPreferredSession)
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        mDb = FirebaseFirestore.getInstance();
+        mDb.collection("students").document(mUser.getUid()).update("concentrate",concentrate)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -58,10 +46,8 @@ public class DetailsActivityViewModel extends ViewModel {
                         else
                         {
                             updated.setValue(2);
-
                         }
                     }
                 });
-
     }
 }
