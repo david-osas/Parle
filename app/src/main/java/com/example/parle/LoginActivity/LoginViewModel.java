@@ -1,4 +1,4 @@
-package com.example.parle;
+package com.example.parle.LoginActivity;
 
 import android.app.Activity;
 import android.content.Context;

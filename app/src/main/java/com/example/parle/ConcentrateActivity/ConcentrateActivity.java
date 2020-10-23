@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.example.parle.DetailsActivity.DetailsActivity;
 import com.example.parle.PinActivity;
 import com.example.parle.R;
+import com.example.parle.SharedPreferences.LoginSP;
+import com.example.parle.databinding.ActivityConcentrateBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +40,7 @@ public class ConcentrateActivity extends AppCompatActivity {
     private GridLayoutManager mGridLayoutManager;
     public static TextView noSelected;
     private ConcentrateViewModel mViewModel;
+    private ActivityConcentrateBinding binding;
 
     String[] mList;
     private SpecialtyAdapter mAdapter;
@@ -45,16 +48,22 @@ public class ConcentrateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_concentrate);
+        binding = ActivityConcentrateBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        String user = LoginSP.getUser(this);
+        if(user.equals("counsellor")){
+            binding.heading.setText(getString(R.string.concentrateHeading2));
+        }
 
         mViewModel = new ViewModelProvider(this).get(ConcentrateViewModel.class);
         mViewModel.initializeValues(this);
 
         mList =getResources().getStringArray(R.array.concentrate_points_list);
-        mRecyclerView = findViewById(R.id.specialties);
+        mRecyclerView = binding.specialties;
         mAdapter = new SpecialtyAdapter(this,mList);
         mRecyclerView.setAdapter(mAdapter);
-        noSelected = findViewById(R.id.no_selected);
+        noSelected = binding.noSelected;
+
 
         mGridLayoutManager = new GridLayoutManager(this,10);
         mGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {

@@ -1,4 +1,4 @@
-package com.example.parle;
+package com.example.parle.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.parle.R;
+import com.example.parle.SignupActivity.SignupActivity;
+import com.example.parle.StudentHomePage;
 import com.example.parle.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {

@@ -9,6 +9,7 @@ public class LoginSP
     public static final String NAME= "LoginPreferences";
     private final static String FIRST_TIME_OPENED = "FIRST_TIME_OPENED";
     private static final String PIN = "PIN";
+    private static final String USER = "user";
 
     private LoginSP(){}
 
@@ -22,6 +23,7 @@ public class LoginSP
                 SharedPreferences.Editor editor = mSharedPreferences.edit();
                 editor.putBoolean(FIRST_TIME_OPENED,true);
                 editor.putString(PIN,"0000");
+                editor.putString(USER,"none");
                 editor.apply();
             }
 
@@ -29,6 +31,15 @@ public class LoginSP
         return  mSharedPreferences;
     }
 
+    public static void setUser(Context context, String user){
+        SharedPreferences.Editor editor = getInstance(context).edit();
+        editor.putString(USER, user);
+        editor.apply();
+    }
+
+    public static String getUser(Context context){
+        return getInstance(context).getString(USER,"none");
+    }
 
 
     public  static void hasBeenOpened(Context context)

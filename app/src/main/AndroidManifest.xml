@@ -20,10 +20,10 @@
         <activity android:name=".ConcentrateActivity.ConcentrateActivity" />
         <activity android:name=".DetailsActivity.DetailsActivity" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".SignupActivity.SignupActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".LoginActivity.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SelectionActivity" />

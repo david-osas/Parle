@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.parle.ConcentrateActivity.ConcentrateActivity;
 import com.example.parle.Models.Student;
 import com.example.parle.R;
+import com.example.parle.SharedPreferences.LoginSP;
 import com.example.parle.databinding.ActivityDetailsBinding;
 
 import java.util.Arrays;
@@ -42,6 +43,19 @@ public class DetailsActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         binding = ActivityDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        String user = LoginSP.getUser(this);
+        if(user.equals("counsellor")){
+            binding.dob.setVisibility(View.GONE);
+            binding.datePickerActions.setVisibility(View.GONE);
+            binding.religionTitle2.setText(getString(R.string.counsellorFaith));
+            binding.religionTitle3.setVisibility(View.GONE);
+            binding.religiousCounsellorPrefer.setVisibility(View.GONE);
+        }else{
+            binding.durationHeading.setVisibility(View.GONE);
+            binding.experienceHeading.setVisibility(View.GONE);
+            binding.experience.setVisibility(View.GONE);
+            binding.counsellorHours.setVisibility(View.GONE);
+        }
 
         mViewModel = new ViewModelProvider(this).get(DetailsActivityViewModel.class);
 

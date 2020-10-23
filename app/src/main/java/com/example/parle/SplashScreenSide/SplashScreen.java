@@ -39,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
                 if(firstTimeOpened)
                 {
                     startActivity(new Intent(SplashScreen.this, MainActivity.class));
-                    Toast.makeText(SplashScreen.this,"Firstntime, welcome",Toast.LENGTH_LONG).show();
+                    Toast.makeText(SplashScreen.this,getString(R.string.splashToast),Toast.LENGTH_LONG).show();
                     finish();//close the splashscreen activity.
                 }
 

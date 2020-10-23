@@ -3,12 +3,14 @@ package com.example.parle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.example.parle.CounselorSignupLogin.CounselorLoginActivity;
+import com.example.parle.LoginActivity.LoginActivity;
+import com.example.parle.SharedPreferences.LoginSP;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -64,20 +66,20 @@ public class SelectionActivity extends AppCompatActivity {
 
     public void toLogin(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(student_selected)
-        {
-            Intent intent;
-            if(user == null){
-                intent = new Intent(this, LoginActivity.class);
-            }else{
-                intent = new Intent(this,StudentHomePage.class);
-            }
-            startActivity(intent);
+        Intent intent;
+        if(user == null){
+            intent = new Intent(this, LoginActivity.class);
         }
-        else
-        {
-            Intent intent = new Intent(SelectionActivity.this, CounselorLoginActivity.class);
+        else{
+            intent = new Intent(this,StudentHomePage.class);
         }
+        if(student_selected) {
+            LoginSP.setUser(this, "student");
+        }
+        else{
+            LoginSP.setUser(this, "counsellor");
+        }
+        startActivity(intent);
     }
 
 

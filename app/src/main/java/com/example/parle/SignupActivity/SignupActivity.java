@@ -1,4 +1,4 @@
-package com.example.parle;
+package com.example.parle.SignupActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -13,7 +13,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import com.example.parle.DetailsActivity.DetailsActivity;
+import com.example.parle.LoginActivity.LoginActivity;
 import com.example.parle.Models.Student;
+import com.example.parle.R;
 import com.example.parle.databinding.ActivitySignupBinding;
 
 import java.util.Arrays;
