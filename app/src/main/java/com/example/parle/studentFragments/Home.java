@@ -64,7 +64,6 @@ public class Home extends Fragment {
         mRecyclerViewArticles = mBinding.articlesListGrid;//mView.findViewById(R.id.articles_list_grid);
         mRecyclerViewArticles.setAdapter(new ArticleAdapter(mView.getContext()));
         mRecyclerViewArticles.setLayoutManager(new GridLayoutManager(mView.getContext(),2));
-        setUpForCounsellor();
 
         return mView;
     }
@@ -87,7 +86,7 @@ public class Home extends Fragment {
 
     public void setUpForCounsellor()
     {
-        suggestedStuff.setText("getActivity().getString(R.string.requested_sessions)");
+        suggestedStuff.setText(getActivity().getString(R.string.requested_sessions));
         //((TextView) mView.findViewById(R.id.sign_up_toggle)).setText("alkjdnflakjdnlfkdjnf");
     }
 }
