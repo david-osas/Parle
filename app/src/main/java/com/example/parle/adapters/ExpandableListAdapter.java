@@ -33,21 +33,30 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     Context mContext;
     ExpandableListView mExpandableListView;
     String[] headers;
-    int[] layouts = {R.layout.personal_details,R.layout.contact_and_location,R.layout.faith_and_religion};
+    int[] layouts = {R.layout.personal_details,R.layout.contact_and_location,R.layout.faith_and_religion,R.layout.personal_details,R.layout.personal_details};
 
 
     private EditText datePicker;
     Calendar mCalendar;
     DatePickerDialog mPicker;
     String selection;
+    String mUser;
 
-    public ExpandableListAdapter(Context context, ExpandableListView expandableListView){
+    public ExpandableListAdapter(Context context, ExpandableListView expandableListView ,String user){
         mContext = context;
         LayoutInflater layoutInflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mExpandableListView = expandableListView;
         mView = layoutInflater.inflate(R.layout.personal_details, null);
-        headers = mContext.getResources().getStringArray(R.array.list_for_similar_counselor);
+        mUser = user;
+        if(user.equals("student"))
+        {
+            headers = mContext.getResources().getStringArray(R.array.expandableListStudents);
+        }
+        else
+        {
+            headers = mContext.getResources().getStringArray(R.array.expandableListCounsellors);
+        }
     }
 
     @Override
@@ -125,9 +134,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
 
-        if(i==2)
+        if(i==headers.length-1)
             view.setPadding(0, 0, 0, 0);
         //mExpandableListView.setDividerHeight(100);
+        view.setBackgroundColor(mContext.getColor(R.color.white));
         return view;
     }
 
@@ -143,7 +153,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         {
             datePicker = view.findViewById(R.id.date_picker_actions);
             mCalendar = Calendar.getInstance();
-
 
             datePicker.setOnClickListener(new View.OnClickListener() {
                 @Override

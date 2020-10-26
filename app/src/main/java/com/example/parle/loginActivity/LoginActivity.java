@@ -102,19 +102,11 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     if(integer==1)//the user is actually a student
                     {
-                        final Intent intent = new Intent(LoginActivity.this, StudentHomePage.class);
+
                         LoginSP.setUser(LoginActivity.this,"student");
 
-
-                        viewModel.pin.observe(LoginActivity.this, new Observer<String>() {
-                            @Override
-                            public void onChanged(String s) {
-                                Toast.makeText(LoginActivity.this,"Welcome student",Toast.LENGTH_LONG).show();
-                                LoginSP.setPin(LoginActivity.this,s);
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
+                        viewModel.getPin();
+                        updatePin();
 
 
                     }
@@ -165,6 +157,19 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 viewModel.setInitialState(LoginActivity.this);
+            }
+        });
+    }
+
+    public void updatePin()
+    {
+        viewModel.pin.observe(LoginActivity.this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Intent intent = new Intent(LoginActivity.this, StudentHomePage.class);
+                LoginSP.setPin(LoginActivity.this,s);
+                startActivity(intent);
+                finish();
             }
         });
     }

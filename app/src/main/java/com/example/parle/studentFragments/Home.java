@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,12 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.parle.StudentHomePageViewModel;
 import com.example.parle.adapters.ArticleAdapter;
 import com.example.parle.adapters.ChatHeadAdapter;
 import com.example.parle.R;
 import com.example.parle.databinding.FragmentHomeBinding;
+import com.example.parle.models.Counsellor;
+import com.example.parle.models.Student;
 
 public class Home extends Fragment {
 
@@ -77,17 +81,38 @@ public class Home extends Fragment {
         else
             setUpForStudent();
 
+        ;
+
     }
 
     public void setUpForStudent()
     {
+        mViewModel.getStudent();
         suggestedStuff.setText(getActivity().getString(R.string.suggestedCounsellors));
+        mViewModel.mStudent.observe(requireActivity(), new Observer<Student>() {
+            @Override
+            public void onChanged(Student student) {
+                if(student!=null)
+                    mBinding.hiTextView.setText(getActivity().getString(R.string.hi)+" "+student.getUsername());
+                else
+                    Toast.makeText(requireContext(),requireActivity().getString(R.string.unable_to_update_details),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void setUpForCounsellor()
     {
+        mViewModel.getCounsellor();
         suggestedStuff.setText(getActivity().getString(R.string.requested_sessions));
-        //((TextView) mView.findViewById(R.id.sign_up_toggle)).setText("alkjdnflakjdnlfkdjnf");
+        mViewModel.mCounsellor.observe(requireActivity(), new Observer<Counsellor>() {
+            @Override
+            public void onChanged(Counsellor counsellor) {
+                if(counsellor!=null)
+                    mBinding.hiTextView.setText(getActivity().getString(R.string.hi)+" "+counsellor.getFullName());
+                else
+                    Toast.makeText(requireContext(),requireActivity().getString(R.string.unable_to_update_details),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
 

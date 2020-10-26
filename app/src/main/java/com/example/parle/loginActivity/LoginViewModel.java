@@ -33,7 +33,7 @@ public class LoginViewModel extends ViewModel {
     public void setInitialState(Context context){
         mContext = context;
         isStudent = new MutableLiveData<>();
-        pin = new MutableLiveData<>();
+
     }
 
     public LiveData<Integer> getState(){
@@ -67,6 +67,7 @@ public class LoginViewModel extends ViewModel {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful())
                 {
+                    pin = new MutableLiveData<>();
                     DocumentSnapshot documentSnapshot = task.getResult();
                     if(documentSnapshot.exists())
                     {
@@ -103,7 +104,8 @@ public class LoginViewModel extends ViewModel {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if(task.isSuccessful())
                         {
-                            String p = task.getResult().toString();
+                            String p = task.getResult().toObject(Student.class).getPin();
+                            //Toast.makeText(mContext,"pin = "+p,Toast.LENGTH_LONG).show();
                             pin.postValue(p);
                         }
                     }

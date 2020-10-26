@@ -144,10 +144,18 @@
 
 
     <!--Expandable list adapter-->
-    <string-array name="list_for_similar_counselor">
+    <string-array name="expandableListStudents">
         <item>Personal Details</item>
         <item>Contact and Location</item>
         <item>Faith and Religion</item>
+    </string-array>
+
+    <string-array name="expandableListCounsellors">
+        <item>Personal Details</item>
+        <item>Contact and Location</item>
+        <item>Faith and Religion</item>
+        <item>Duration</item>
+        <item>Credentials and CV</item>
     </string-array>
 
     <string-array name="religions_list">
