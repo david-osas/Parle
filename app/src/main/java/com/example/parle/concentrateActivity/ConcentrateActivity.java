@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.parle.PinActivity;
 import com.example.parle.R;
+import com.example.parle.StudentHomePage;
 import com.example.parle.sharedPreferences.LoginSP;
 import com.example.parle.databinding.ActivityConcentrateBinding;
 
@@ -35,18 +36,26 @@ public class ConcentrateActivity extends AppCompatActivity {
     public static TextView noSelected;
     private ConcentrateViewModel mViewModel;
     private ActivityConcentrateBinding binding;
+    private String user;
 
     String[] mList;
     private SpecialtyAdapter mAdapter;
+    private Intent mIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityConcentrateBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        String user = LoginSP.getUser(this);
-        if(user.equals("counsellor")){
+
+        user = getIntent().getStringExtra("user");
+        if(user.equals("counsellor"))
+        {
             binding.heading.setText(getString(R.string.concentrateHeading2));
+        }
+        else
+        {
+            binding.heading.setText(getString(R.string.concentrateHeading1));
         }
 
         mViewModel = new ViewModelProvider(this).get(ConcentrateViewModel.class);
@@ -89,26 +98,55 @@ public class ConcentrateActivity extends AppCompatActivity {
 
     public void moveToNext(View view){
 
+        if(user.equals("student"))
+        {
+            mViewModel.updateDetailsForStudent(mAdapter.getChosenOnes());
+            mViewModel.updated.observe(ConcentrateActivity.this, new Observer<Integer>() {
+                @Override
+                public void onChanged(Integer integer) {
+                    if(integer==1)//UPDATE WAS SUCCESSFUL
+                    {
+                        Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
+                        if(user.equals("student"))
+                            mIntent = new Intent(ConcentrateActivity.this, PinActivity.class);
+                        else
+                            mIntent = new Intent(ConcentrateActivity.this, StudentHomePage.class);
 
-        mViewModel.updateDetails(mAdapter.getChosenOnes());
-        mViewModel.updated.observe(ConcentrateActivity.this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                if(integer==1)//UPDATE WAS SUCCESSFUL
-                {
-                    Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(ConcentrateActivity.this, PinActivity.class);
-                    intent.putExtra("action","create");
-                    startActivity(intent);
-                }
-                else if(integer==2)//UPDATE WAS UNSUCCESSFUL
-                {
-                    Toast.makeText(ConcentrateActivity.this, R.string.unable_to_update_details, Toast.LENGTH_LONG).show();
-                    mViewModel.updated.setValue(0);
-                }
+                        startActivity(mIntent);
+                    }
+                    else if(integer==2)//UPDATE WAS UNSUCCESSFUL
+                    {
+                        Toast.makeText(ConcentrateActivity.this, R.string.unable_to_update_details, Toast.LENGTH_LONG).show();
+                        mViewModel.updated.setValue(0);
+                    }
 
-            }
-        });
+                }
+            });
+        }
+        else
+        {
+            mViewModel.updateDetailsForCounsellor(mAdapter.getChosenOnes());
+            mViewModel.updated.observe(ConcentrateActivity.this, new Observer<Integer>() {
+                @Override
+                public void onChanged(Integer integer) {
+                    if(integer==1)//UPDATE WAS SUCCESSFUL
+                    {
+                        Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(ConcentrateActivity.this, PinActivity.class);
+                        intent.putExtra("action","create");
+                        intent.putExtra("user",user);
+                        startActivity(intent);
+                    }
+                    else if(integer==2)//UPDATE WAS UNSUCCESSFUL
+                    {
+                        Toast.makeText(ConcentrateActivity.this, R.string.unable_to_update_details, Toast.LENGTH_LONG).show();
+                        mViewModel.updated.setValue(0);
+                    }
+
+                }
+            });
+        }
+
     }
 
 

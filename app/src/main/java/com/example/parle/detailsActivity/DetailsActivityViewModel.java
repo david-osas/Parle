@@ -25,6 +25,11 @@ public class DetailsActivityViewModel extends ViewModel {
     public boolean mPreferredCounsellor;
     public boolean mPreferredSession;
 
+    public boolean canCounselBasedOnFaith;
+    public String yearsOfExperience;
+    public String availableHours;
+    public String startTime;
+
     public FirebaseFirestore db;
     public FirebaseUser mFirebaseUser;
 
@@ -32,13 +37,13 @@ public class DetailsActivityViewModel extends ViewModel {
     {
         mContext = context;
         updated = new MutableLiveData<>();
-        updated.setValue(0);
-    }
-
-    public void updateDetails()
-    {
         db = FirebaseFirestore.getInstance();
         mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+    }
+
+    public void updateDetailsForStudent()
+    {
+
         db.collection("students").document(mFirebaseUser.getUid())
                 .update("country",mCountry,
                         "state",mState,
@@ -52,12 +57,43 @@ public class DetailsActivityViewModel extends ViewModel {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful())
                         {
-                            updated.setValue(1);
+                            updated.postValue(1);
 
                         }
                         else
                         {
-                            updated.setValue(2);
+                            updated.postValue(2);
+
+                        }
+                    }
+                });
+
+    }
+
+    public void updateDetailsForCounsellor()
+    {
+
+        db.collection("counsellors").document(mFirebaseUser.getUid())
+                .update("country",mCountry,
+                        "state",mState,
+                        "phoneNumber",mPhone_number,
+                        "religion",mReligionText,
+                        "canCounselBasedOnFaith",canCounselBasedOnFaith,
+                        "yearOfExperience",yearsOfExperience,
+                        "availableHours",availableHours,
+                        "startTime",startTime
+                        )
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                        {
+                            updated.postValue(1);
+
+                        }
+                        else
+                        {
+                            updated.postValue(2);
 
                         }
                     }

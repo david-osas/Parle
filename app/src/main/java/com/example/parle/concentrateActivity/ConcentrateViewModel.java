@@ -23,27 +23,49 @@ public class ConcentrateViewModel extends ViewModel {
     {
         mContext = context;
         updated = new MutableLiveData<>();
-        updated.setValue(0);
-    }
-
-    public void updateDetails(String concentrate)
-    {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
         mDb = FirebaseFirestore.getInstance();
+    }
+
+    public void updateDetailsForStudent(String concentrate)
+    {
+
         mDb.collection("students").document(mUser.getUid()).update("concentrate",concentrate)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful())
                         {
-                            updated.setValue(1);
+                            updated.postValue(1);
 
                         }
                         else
                         {
-                            updated.setValue(2);
+                            updated.postValue(2);
                         }
                     }
                 });
     }
+
+    public void updateDetailsForCounsellor(String concentrate)
+    {
+
+        mDb.collection("counsellors").document(mUser.getUid()).update("concentrate",concentrate)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                        {
+                            updated.postValue(1);
+
+                        }
+                        else
+                        {
+                            updated.postValue(2);
+                        }
+                    }
+                });
+    }
+
+
 }

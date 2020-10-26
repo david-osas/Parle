@@ -1,6 +1,7 @@
 package com.example.parle.studentFragments;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.example.parle.adapters.ExpandableListAdapter;
 import com.example.parle.R;
 import com.example.parle.SelectionActivity;
+import com.example.parle.sharedPreferences.LoginSP;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
@@ -28,6 +30,8 @@ public class Profile extends Fragment {
     private EditText datePicker;
     Calendar mCalendar;
     DatePickerDialog mPicker;
+    private Context mContext;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +61,10 @@ public class Profile extends Fragment {
     public void logout(){
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(getActivity(), getString(R.string.logout), Toast.LENGTH_SHORT).show();
+        LoginSP.setUser(getContext(),"none");
+        LoginSP.setPin(getContext(),"0000");
         Intent intent = new Intent(getActivity(), SelectionActivity.class);
         startActivity(intent);
+        getActivity().finish();
     }
 }

@@ -38,8 +38,8 @@
         android:text="@string/welcomeHome"
         android:textColor="@color/dark_grey"
         android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintStart_toStartOf="@+id/hiTextView"
+        app:layout_constraintTop_toBottomOf="@+id/hiTextView" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
