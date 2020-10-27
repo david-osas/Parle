@@ -18,6 +18,7 @@ import com.example.parle.models.Counsellor;
 import com.example.parle.models.Student;
 import com.example.parle.R;
 import com.example.parle.databinding.ActivitySignupBinding;
+import com.example.parle.sharedPreferences.LoginSP;
 
 import java.util.Arrays;
 import java.util.List;
@@ -58,7 +59,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onChanged(Integer integer) {
                 if(integer == 1){
                     Intent intent = new Intent(SignupActivity.this, DetailsActivity.class);
-                    intent.putExtra("user",user);
+                    LoginSP.setUser(SignupActivity.this,user);
                     startActivity(intent);
                     finish();
                 }else if(integer == 2){

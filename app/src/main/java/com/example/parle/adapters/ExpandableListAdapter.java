@@ -33,7 +33,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     Context mContext;
     ExpandableListView mExpandableListView;
     String[] headers;
-    int[] layouts = {R.layout.personal_details,R.layout.contact_and_location,R.layout.faith_and_religion,R.layout.personal_details,R.layout.personal_details};
+    int[] layouts = {R.layout.child_item,R.layout.contact_and_location,R.layout.faith_and_religion,R.layout.child_item,R.layout.child_item};
 
 
     private EditText datePicker;
@@ -47,7 +47,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         LayoutInflater layoutInflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mExpandableListView = expandableListView;
-        mView = layoutInflater.inflate(R.layout.personal_details, null);
+        mView = layoutInflater.inflate(R.layout.child_item, null);
         mUser = user;
         if(user.equals("student"))
         {

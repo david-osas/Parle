@@ -22,6 +22,7 @@ import com.example.parle.concentrateActivity.ConcentrateActivity;
 import com.example.parle.models.Student;
 import com.example.parle.R;
 import com.example.parle.databinding.ActivityDetailsBinding;
+import com.example.parle.sharedPreferences.LoginSP;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -46,7 +47,7 @@ public class DetailsActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         binding = ActivityDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        user = getIntent().getStringExtra("user");
+        user = LoginSP.getUser(this);// getIntent().getStringExtra("user");
 
         if(user.equals("counsellor"))
         {
@@ -270,13 +271,12 @@ public class DetailsActivity extends AppCompatActivity {
                 {
                     Toast.makeText(DetailsActivity.this, getString(R.string.details_update_succesful), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(DetailsActivity.this, ConcentrateActivity.class);
-                    intent.putExtra("user",user);
+                    //intent.putExtra("user",user);
                     startActivity(intent);
                 }
                 else if(integer==2)//UPDATE WAS UNSUCCESSFUL
                 {
                     Toast.makeText(DetailsActivity.this, getString(R.string.unable_to_update_details), Toast.LENGTH_LONG).show();
-                    mViewModel.updated.setValue(0);
                 }
 
             }

@@ -48,7 +48,7 @@ public class ConcentrateActivity extends AppCompatActivity {
         binding = ActivityConcentrateBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        user = getIntent().getStringExtra("user");
+        user = LoginSP.getUser(this);//getIntent().getStringExtra("user");
         if(user.equals("counsellor"))
         {
             binding.heading.setText(getString(R.string.concentrateHeading2));
@@ -108,7 +108,7 @@ public class ConcentrateActivity extends AppCompatActivity {
                     {
                         Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
                         if(user.equals("student"))
-                            mIntent = new Intent(ConcentrateActivity.this, PinActivity.class);
+                            mIntent = new Intent(ConcentrateActivity.this, StudentHomePage.class);
                         else
                             mIntent = new Intent(ConcentrateActivity.this, StudentHomePage.class);
 
@@ -132,15 +132,14 @@ public class ConcentrateActivity extends AppCompatActivity {
                     if(integer==1)//UPDATE WAS SUCCESSFUL
                     {
                         Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(ConcentrateActivity.this, PinActivity.class);
-                        intent.putExtra("action","create");
-                        intent.putExtra("user",user);
+                        Intent intent = new Intent(ConcentrateActivity.this, StudentHomePage.class);
+//                        intent.putExtra("action","create");
+//                        intent.putExtra("user",user);
                         startActivity(intent);
                     }
                     else if(integer==2)//UPDATE WAS UNSUCCESSFUL
                     {
                         Toast.makeText(ConcentrateActivity.this, R.string.unable_to_update_details, Toast.LENGTH_LONG).show();
-                        mViewModel.updated.setValue(0);
                     }
 
                 }
