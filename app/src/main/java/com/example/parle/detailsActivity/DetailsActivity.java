@@ -215,7 +215,7 @@ public class DetailsActivity extends AppCompatActivity {
 
 
 
-    private String get12HourTime(int hour) {
+    public  static String get12HourTime(int hour) {
         String ans="";
         if(hour==0)
             return "12:00 A.M";

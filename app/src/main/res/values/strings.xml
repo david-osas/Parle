@@ -4,7 +4,7 @@
     <string name="get_started">Get started</string>
     <string name="blank">""</string>
 
-<!--    Splash activity-->
+    <!--    Splash activity-->
     <string name="splashToast">First time, welcome</string>
 
     <!--    Login activity-->
@@ -116,7 +116,7 @@
     <!--    Fragment counselors-->
     <string name="counselors">Counselors</string>
     <string name="enter_counselor_name">Enter counselor\'s name</string>
-    <string name="edit_challenge">EDIT CHALLENGE</string>
+    <string name="edit_challenge">EDIT\nCHALLENGE</string>
     <string name="chats">CHATS</string>
 
     <!--    Fragment Chats-->
@@ -239,5 +239,6 @@
 
     <string name="none_selected">none selected</string>
     <string name="hours">hours</string>
+    <string name="unableToGetCounsellors">Unable to get the List of counsellors. Please check your network and try again</string>
 
 </resources>
