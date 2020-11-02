@@ -2,6 +2,7 @@ package com.example.parle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
@@ -30,6 +31,7 @@ public class StudentHomePage extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         mBottomNavigationView = findViewById(R.id.nav_bar);
         setUpNavigation();
+
     }
 
     public void setUpNavigation(){

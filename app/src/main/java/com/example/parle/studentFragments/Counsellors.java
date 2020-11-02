@@ -65,7 +65,7 @@ public class Counsellors extends Fragment {
             @Override
             public void onChanged(List<Counsellor> counsellors) {
                 mAllCounsellors = (ArrayList<Counsellor>) counsellors;
-                mCounselorsAdapter = new CounselorsAdapter(mView.getContext(),mAllCounsellors);
+                mCounselorsAdapter = new CounselorsAdapter(mView.getContext(),mAllCounsellors,1);
                 mGridLayoutManager = new GridLayoutManager(mView.getContext(),3);
                 mRecyclerView.setAdapter(mCounselorsAdapter);
                 mRecyclerView.setLayoutManager(mGridLayoutManager);

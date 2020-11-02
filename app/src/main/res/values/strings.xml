@@ -240,5 +240,6 @@
     <string name="none_selected">none selected</string>
     <string name="hours">hours</string>
     <string name="unableToGetCounsellors">Unable to get the List of counsellors. Please check your network and try again</string>
+    <string name="counselor_profile">Counsellors\'s profile</string>
 
 </resources>

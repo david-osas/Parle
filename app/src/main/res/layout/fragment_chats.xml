@@ -19,7 +19,8 @@
         app:tabIndicatorColor="@android:color/black"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="8dp"
-        app:tabTextColor="@color/cardview_dark_background">
+        app:tabSelectedTextColor="@color/almost_black"
+        app:tabTextColor="@color/dark_grey">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

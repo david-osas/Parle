@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.parle.R;
@@ -19,9 +20,12 @@ public class CounselorsAdapter extends RecyclerView.Adapter<CounselorsAdapter.Vi
 
     private Context mContext;
     private ArrayList<Counsellor> mList;
+    private int page;//the adapter is used in both the cousellors fragment and the chats fragment.
+    // It helps us to identify whoch one it is in
 
-    public CounselorsAdapter (Context context, ArrayList<Counsellor> counsellors)
+    public CounselorsAdapter (Context context, ArrayList<Counsellor> counsellors,int page)
     {
+        this.page = page;
         mContext = context;
         mList = counsellors;
     }
@@ -35,6 +39,18 @@ public class CounselorsAdapter extends RecyclerView.Adapter<CounselorsAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(position);
+
+        holder.counsellorImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(page==1)//from counsellors page
+                    Navigation.findNavController(view).navigate(R.id.action_action_counselors_to_profileViewFragment);
+                else if(page==2)//from suggested counsellors under chats
+                    Navigation.findNavController(view).navigate(R.id.action_action_messages_to_profileViewFragment);
+                //Navigation.createNavigateOnClickListener(R.id.action_action_counselors_to_profileViewFragment);
+            }
+        });
+
     }
 
     @Override

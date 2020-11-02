@@ -61,6 +61,7 @@ public class Chats extends Fragment {
             }
         });
         mTabLayoutMediator.attach();
+        mViewPager2.setCurrentItem(1,false);
     }
 
     @Override

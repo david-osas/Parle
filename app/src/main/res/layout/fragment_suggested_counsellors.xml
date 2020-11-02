@@ -5,10 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".ChatTabFragments.SuggestedCounsellors">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/counselors_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="We are suggested to you bro" />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        tools:listitem="@layout/chat_list_itemx80" />
 
 </FrameLayout>
