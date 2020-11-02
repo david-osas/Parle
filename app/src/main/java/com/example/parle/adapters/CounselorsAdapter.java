@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.parle.R;
 import com.example.parle.models.Counsellor;
+import com.example.parle.profileViewFragment.ProfileViewViewModel;
 
 import java.util.ArrayList;
 
@@ -22,12 +23,14 @@ public class CounselorsAdapter extends RecyclerView.Adapter<CounselorsAdapter.Vi
     private ArrayList<Counsellor> mList;
     private int page;//the adapter is used in both the cousellors fragment and the chats fragment.
     // It helps us to identify whoch one it is in
+    private ProfileViewViewModel mViewModel;//helps send data between the recyclerview and the profile view fragment
 
-    public CounselorsAdapter (Context context, ArrayList<Counsellor> counsellors,int page)
+    public CounselorsAdapter (Context context, ArrayList<Counsellor> counsellors, int page, ProfileViewViewModel viewModel)
     {
         this.page = page;
         mContext = context;
         mList = counsellors;
+        mViewModel=viewModel;
     }
     @NonNull
     @Override
@@ -37,16 +40,23 @@ public class CounselorsAdapter extends RecyclerView.Adapter<CounselorsAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.bind(position);
 
         holder.counsellorImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(page==1)//from counsellors page
+                {
+                    mViewModel.postCounsellorValue(mList.get(position));
                     Navigation.findNavController(view).navigate(R.id.action_action_counselors_to_profileViewFragment);
+                }
                 else if(page==2)//from suggested counsellors under chats
+                {
+                    mViewModel.postCounsellorValue(mList.get(position));
                     Navigation.findNavController(view).navigate(R.id.action_action_messages_to_profileViewFragment);
+                }
+
                 //Navigation.createNavigateOnClickListener(R.id.action_action_counselors_to_profileViewFragment);
             }
         });

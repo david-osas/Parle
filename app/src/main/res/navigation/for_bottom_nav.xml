@@ -43,7 +43,7 @@
         tools:layout="@layout/fragment_articles" />
     <fragment
         android:id="@+id/profileViewFragment"
-        android:name="com.example.parle.ProfileViewFragment"
+        android:name="com.example.parle.profileViewFragment.ProfileViewFragment"
         android:label="fragment_profile_view"
         tools:layout="@layout/fragment_profile_view" />
 

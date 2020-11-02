@@ -18,6 +18,7 @@ import com.example.parle.StudentHomePageViewModel;
 import com.example.parle.adapters.CounselorsAdapter;
 import com.example.parle.R;
 import com.example.parle.models.Counsellor;
+import com.example.parle.profileViewFragment.ProfileViewViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,8 @@ public class Counsellors extends Fragment {
             @Override
             public void onChanged(List<Counsellor> counsellors) {
                 mAllCounsellors = (ArrayList<Counsellor>) counsellors;
-                mCounselorsAdapter = new CounselorsAdapter(mView.getContext(),mAllCounsellors,1);
+                mCounselorsAdapter = new CounselorsAdapter(mView.getContext(),mAllCounsellors,1,
+                        new ViewModelProvider(requireActivity()).get(ProfileViewViewModel.class));
                 mGridLayoutManager = new GridLayoutManager(mView.getContext(),3);
                 mRecyclerView.setAdapter(mCounselorsAdapter);
                 mRecyclerView.setLayoutManager(mGridLayoutManager);
