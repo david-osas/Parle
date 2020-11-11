@@ -17,6 +17,7 @@ import com.example.parle.R;
 import com.example.parle.databinding.FragmentProfileViewBinding;
 import com.example.parle.models.Counsellor;
 import com.example.parle.models.Student;
+import com.example.parle.sharedPreferences.LoginSP;
 
 public class ProfileViewFragment extends Fragment {
 
@@ -45,7 +46,7 @@ public class ProfileViewFragment extends Fragment {
         mBinding = FragmentProfileViewBinding.inflate(inflater, container, false);
         mViewModel = new ViewModelProvider(requireActivity()).get(ProfileViewViewModel.class);
         mViewModel.initializeValues(requireContext());
-        isStudent = true;
+         isStudent = LoginSP.getUser(requireActivity()).equals("student");
         return mBinding.getRoot();
     }
 
@@ -53,14 +54,31 @@ public class ProfileViewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mViewModel.mCounsellor.observe(requireActivity(), new Observer<Counsellor>() {
-            @Override
-            public void onChanged(Counsellor counsellor) {
-                mCounsellor = counsellor;
-                mBinding.counsellorName.setText(counsellor.getFullName());
-                isStudent = true;
-            }
-        });
+        if(isStudent)
+        {
+            mViewModel.mCounsellor.observe(requireActivity(), new Observer<Counsellor>() {
+                @Override
+                public void onChanged(Counsellor counsellor) {
+                    mCounsellor = counsellor;
+                    mBinding.counsellorName.setText(counsellor.getFullName());
+                    mBinding.buttonRequest.setText("Book as Counsellor");
+                }
+            });
+        }
+
+
+        else
+        {
+            mViewModel.mStudent.observe(requireActivity(), new Observer<Student>() {
+                @Override
+                public void onChanged(Student student) {
+                    mStudent = student;
+                    mBinding.counsellorName.setText(mStudent.getUsername());
+                    mBinding.buttonRequest.setText("ACCEPT REQUEST");
+                }
+            });
+        }
+
 
 
         mBinding.buttonRequest.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +90,11 @@ public class ProfileViewFragment extends Fragment {
                     //Toast.makeText(requireContext(),"I actually got to the button",Toast.LENGTH_SHORT).show();
                     mViewModel.sendRequest(mViewModel.mFirebaseUser.getUid(),mCounsellor.getUserId());
                     //add the request id to the counsellor and student
+                }
+
+                else
+                {
+                    mViewModel.acceptRequest(mStudent.getUserId(),mViewModel.mFirebaseUser.getUid());
                 }
 
             }

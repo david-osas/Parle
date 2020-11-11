@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.parle.R;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
+    /*
+    * Recycler view adapter for articles on the first home and articles page. it doesnt do much right now as we havent started working with articles*/
 
-    private Context mContext;
+    private Context mContext;//context of the calling activity
+
     public ArticleAdapter(Context context)
     {
         mContext = context;

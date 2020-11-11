@@ -10,6 +10,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import java.util.ArrayList;
 
 public class ChatFragmentAdapter extends FragmentStateAdapter {
+    /*
+    * FragmentAdapter for the viewpager that links with the tab view in the chats page*/
     private ArrayList<Fragment> mFragments;
 
     public ChatFragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, ArrayList<Fragment> fragmentArrayList) {

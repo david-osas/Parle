@@ -31,9 +31,10 @@ import java.util.Calendar;
 import java.util.List;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
+    /*
+    * For the profile page in the app*/
 
-    ArrayList<String> mList;
-    View mView;
+    View mView; //
     Context mContext;
     ExpandableListView mExpandableListView;
     String[] headers;
@@ -54,13 +55,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private TimePickerDialog mTimePickerDialog;
 
     public ExpandableListAdapter(Context context, ExpandableListView expandableListView ,String user){
-        mContext = context;
+        mContext = context;//context of calling activity
         LayoutInflater layoutInflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mExpandableListView = expandableListView;
-        mView = layoutInflater.inflate(R.layout.child_item, null);
-        mUser = user;
-        if(user.equals("student"))
+        mView = layoutInflater.inflate(R.layout.child_item, null);//the view that contains all necessary views for the list
+        mUser = user;//student or counsellor
+
+        if(user.equals("student"))//set the group titles based on whether the user is a student or counsellor
         {
             headers = mContext.getResources().getStringArray(R.array.expandableListStudents);
         }
@@ -108,10 +110,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
+    public View getGroupView(int i, boolean expanded, View view, ViewGroup viewGroup) {
+
         if (view == null) {
             LayoutInflater infalInflater = (LayoutInflater) mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            //inflate the required header
             view = infalInflater.inflate(R.layout.list_group_header, null);
         }
 
@@ -119,7 +123,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView txtListChild = (TextView) view
                 .findViewById(R.id.group_header);
 
-        txtListChild.setText(headers[i]);
+        txtListChild.setText(headers[i]);//set the text in the header to the right value
 
         Typeface bold = ResourcesCompat.getFont(mContext,R.font.montserrat_bold);
         Typeface normal = ResourcesCompat.getFont(mContext,R.font.montserrat);
@@ -128,8 +132,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         ImageView imageView = view.findViewById(R.id.arrow);
         LinearLayout linearLayout = view.findViewById(R.id.container);
-        if (b)
+        if (expanded)
         {
+            //if the view is expanded then addd some padding between the bottom of the group and the content
             view.setPadding(0, 0, 0, 24);
             linearLayout.setBackgroundTintList(mContext.getColorStateList( R.color.darker_orange));
             txtListChild.setTextColor(mContext.getColor(android.R.color.white));
@@ -139,6 +144,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         else
         {
+            //The padding is bigger when it is closed
             view.setPadding(0, 0, 0, 32);
             linearLayout.setBackgroundTintList(mContext.getColorStateList( R.color.light_orange));
             txtListChild.setTextColor(mContext.getColor(android.R.color.black));
@@ -150,7 +156,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 
 
-        //mExpandableListView.setDividerHeight(100);
         view.setBackgroundColor(mContext.getColor(R.color.white));
         return view;
     }
@@ -168,6 +173,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         datePicker = view.findViewById(R.id.date_picker_actions);
         mCalendar = Calendar.getInstance();
 
+        //for datepicker in the list
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,7 +194,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         });
 
 
-
+        //for timepicker in the counsellors list
         final EditText timePickerEdit = view.findViewById(R.id.time_picker);
 
         timePickerEdit.setOnClickListener(new View.OnClickListener() {
@@ -213,7 +219,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 
 
-
+        //for all the autocomplete textviews I used
         AutoCompleteTextView religion = view.findViewById(R.id.religion),
                 counselor_religion = view.findViewById(R.id.religious_counsellor_prefer),
                 yes_or_no = view.findViewById(R.id.yes_or_no),
@@ -265,6 +271,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     public void setListener(AutoCompleteTextView acTV)
     {
+        //sets onclicklistener for autocompletetextview
         final AutoCompleteTextView acTV1 = acTV;
         acTV1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

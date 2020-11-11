@@ -23,15 +23,14 @@ public
 class SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>{
     Context mContext;
     String[] mList;
-    ArrayList<String> selected;
-    public String[] chosenOnes = {"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"};
+    public String[] chosenOnes = {"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"};//initlia value of concentrate
     TextView number;
 
     int[] colors = {R.color.dark_wine,R.color.darker_orange,R.color.dark_blue_back};
     public SpecialtyAdapter(Context context,String[] list,TextView textView) {
         mContext = context;
         mList = list;
-        this.number = textView;
+        this.number = textView;//textview that shows the number selected
 
     }
 
@@ -51,7 +50,7 @@ class SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>
 
         number.setText(getNoOnes()+" "+ mContext.getString(R.string.selected));
 
-        if(chosenOnes[position].equals("1"))
+        if(chosenOnes[position].equals("1"))//if the position is 1 then change how it loks accordingly
         {
             setButtonSelected(button,true);
         }
@@ -120,19 +119,25 @@ class SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>
 
     public void setButtonSelected(Button button, boolean selected)
     {
+        //changes the color of the button to show whether its selected or not
         final Typeface bold = ResourcesCompat.getFont(mContext,R.font.montserrat_bold);
         final Typeface normal = ResourcesCompat.getFont(mContext,R.font.montserrat);
         int n = new Random().nextInt(3);
 
         if(selected)
         {
-
+            //add a random background tint
+            //change font color
+            //make the fint bold
             button.setBackgroundTintList(ColorStateList.valueOf(mContext.getColor(colors[n])));
             button.setTextColor(mContext.getColor(android.R.color.white));
             button.setTypeface(bold);
         }
         else
         {
+            //remove the background
+            //change fint color to black
+            //make the font not bold
             button.setBackgroundTintList(null);
             button.setTextColor(mContext.getColor(android.R.color.black));
             button.setTypeface(normal);

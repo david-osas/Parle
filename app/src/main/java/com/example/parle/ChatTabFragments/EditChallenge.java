@@ -171,7 +171,7 @@ public class EditChallenge extends Fragment {
                         mRecyclerView.setLayoutManager(mGridLayoutManager);
                     }
                     else
-                        Toast.makeText(requireContext(),getActivity().getString(R.string.unable_to_update_details),Toast.LENGTH_LONG).show();
+                        Toast.makeText(requireContext(),getActivity().getString(R.string.unable_to_update_details)+" stident",Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -191,7 +191,7 @@ public class EditChallenge extends Fragment {
                     }
 
                     else
-                        Toast.makeText(requireContext(),getActivity().getString(R.string.unable_to_update_details),Toast.LENGTH_LONG).show();
+                        Toast.makeText(requireContext(),getActivity().getString(R.string.unable_to_update_details)+" counsellor",Toast.LENGTH_LONG).show();
 
 
                 }

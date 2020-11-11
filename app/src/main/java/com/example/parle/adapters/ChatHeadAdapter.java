@@ -12,6 +12,11 @@ import com.example.parle.R;
 
 public class ChatHeadAdapter extends RecyclerView.Adapter<ChatHeadAdapter.ChatHeadViewHolder>
 {
+    /*
+    * Adapter used for horizontal scrolling chatheads used in the home page.
+    * Right now there are no click events working with it.
+    * click events only happen front eh couunsellor and chat tabs*/
+
     private Context mContext;
     public ChatHeadAdapter(Context context) {
         mContext = context;

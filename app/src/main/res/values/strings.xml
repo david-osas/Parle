@@ -244,5 +244,6 @@
     <string name="online">Online</string>
     <string name="specialties">Specialties</string>
     <string name="book_as_counsellor">Book as Counsellor</string>
+    <string name="counsellors_limit">Note that you cannot have more than 3 counsellors at once</string>
 
 </resources>

@@ -13,11 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.parle.StudentHomePageViewModel;
 import com.example.parle.adapters.CounselorsAdapter;
 import com.example.parle.R;
+import com.example.parle.adapters.StudentRequestsAdapter;
 import com.example.parle.models.Counsellor;
+import com.example.parle.models.Student;
 import com.example.parle.profileViewFragment.ProfileViewViewModel;
 
 import java.util.ArrayList;
@@ -30,8 +33,10 @@ public class Counsellors extends Fragment {
     RecyclerView mRecyclerView;
     GridLayoutManager mGridLayoutManager;
     CounselorsAdapter mCounselorsAdapter;
+    StudentRequestsAdapter mStudentRequestsAdapter;
     StudentHomePageViewModel mViewModel;
     ArrayList<Counsellor> mAllCounsellors;
+    ArrayList<Student> mAllStudentRequestedSessions;
 
     public Counsellors() {
         // Required empty public constructor
@@ -51,28 +56,60 @@ public class Counsellors extends Fragment {
         // Inflate the layout for this fragment
         getActivity().findViewById(R.id.homeBackground).setBackgroundColor(getActivity().getColor(android.R.color.white));
 
+
+        mViewModel = new ViewModelProvider(requireActivity()).get(StudentHomePageViewModel.class);
+        mAllCounsellors = new ArrayList<>();
+
+
+        mRecyclerView = mView.findViewById(R.id.counselors_list);
+        if(mViewModel.user.equals("student"))
+        {
+            mAllCounsellors = new ArrayList<>();
+            mCounselorsAdapter = new CounselorsAdapter(mView.getContext(),mAllCounsellors,1,
+                    new ViewModelProvider(requireActivity()).get(ProfileViewViewModel.class));
+            mGridLayoutManager = new GridLayoutManager(mView.getContext(),3);
+            mRecyclerView.setAdapter(mCounselorsAdapter);
+            mRecyclerView.setLayoutManager(mGridLayoutManager);
+
+            mViewModel.getAllCounsellor().observe(requireActivity(), new Observer<List<Counsellor>>() {
+                @Override
+                public void onChanged(List<Counsellor> counsellors) {
+                    //mAllCounsellors = (ArrayList<Counsellor>) counsellors;
+                    Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();
+                    mCounselorsAdapter.updateList((ArrayList) counsellors);
+                }
+            });
+        }
+        else
+        {
+            mAllStudentRequestedSessions = new ArrayList<>();
+            mStudentRequestsAdapter = new StudentRequestsAdapter(mView.getContext(),mAllStudentRequestedSessions,1,
+                    new ViewModelProvider(requireActivity()).get(ProfileViewViewModel.class));
+            mGridLayoutManager = new GridLayoutManager(mView.getContext(),3);
+            mRecyclerView.setAdapter(mStudentRequestsAdapter);
+            mRecyclerView.setLayoutManager(mGridLayoutManager);
+            mViewModel.loadAllRequestedSessions();
+
+            mViewModel.getRequestedSessions().observe(requireActivity(), new Observer<List<Student>>() {
+                @Override
+                public void onChanged(List<Student> students) {
+                    Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();
+                    mStudentRequestsAdapter.updateList((ArrayList) students);
+                }
+            });
+        }
+
+
+
         return mView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mViewModel = new ViewModelProvider(requireActivity()).get(StudentHomePageViewModel.class);
-        mAllCounsellors = new ArrayList<>();
 
 
-        mRecyclerView = mView.findViewById(R.id.counselors_list);
-        mViewModel.getAllCounsellor().observe(requireActivity(), new Observer<List<Counsellor>>() {
-            @Override
-            public void onChanged(List<Counsellor> counsellors) {
-                mAllCounsellors = (ArrayList<Counsellor>) counsellors;
-                mCounselorsAdapter = new CounselorsAdapter(mView.getContext(),mAllCounsellors,1,
-                        new ViewModelProvider(requireActivity()).get(ProfileViewViewModel.class));
-                mGridLayoutManager = new GridLayoutManager(mView.getContext(),3);
-                mRecyclerView.setAdapter(mCounselorsAdapter);
-                mRecyclerView.setLayoutManager(mGridLayoutManager);
-            }
-        });
+
 
     }
 }
