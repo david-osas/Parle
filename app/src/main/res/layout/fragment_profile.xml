@@ -114,6 +114,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/button29"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,8 +128,8 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:background="@android:color/white"
-            android:elevation="0dp"
-            android:groupIndicator="@null">
+            android:childIndicator="@null"
+            android:elevation="0dp">
 
         </ExpandableListView>
     </ScrollView>

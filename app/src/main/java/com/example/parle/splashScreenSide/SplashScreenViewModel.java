@@ -65,6 +65,10 @@ public class SplashScreenViewModel extends ViewModel {
 
     public MutableLiveData<Integer> getIsStudent()
     {
+        if(isStudent.getValue().equals(0))
+        {
+            updateStudent();
+        }
         return isStudent;
     }
 

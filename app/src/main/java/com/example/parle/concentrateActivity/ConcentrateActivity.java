@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.example.parle.PinActivity;
 import com.example.parle.R;
+import com.example.parle.StudentHomePage;
+import com.example.parle.adapters.SpecialtyAdapter;
 import com.example.parle.sharedPreferences.LoginSP;
 import com.example.parle.databinding.ActivityConcentrateBinding;
 
@@ -35,18 +37,26 @@ public class ConcentrateActivity extends AppCompatActivity {
     public static TextView noSelected;
     private ConcentrateViewModel mViewModel;
     private ActivityConcentrateBinding binding;
+    private String user;
 
     String[] mList;
     private SpecialtyAdapter mAdapter;
+    private Intent mIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityConcentrateBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        String user = LoginSP.getUser(this);
-        if(user.equals("counsellor")){
+
+        user = LoginSP.getUser(this);//getIntent().getStringExtra("user");
+        if(user.equals("counsellor"))
+        {
             binding.heading.setText(getString(R.string.concentrateHeading2));
+        }
+        else
+        {
+            binding.heading.setText(getString(R.string.concentrateHeading1));
         }
 
         mViewModel = new ViewModelProvider(this).get(ConcentrateViewModel.class);
@@ -54,9 +64,10 @@ public class ConcentrateActivity extends AppCompatActivity {
 
         mList =getResources().getStringArray(R.array.concentrate_points_list);
         mRecyclerView = binding.specialties;
-        mAdapter = new SpecialtyAdapter(this,mList);
-        mRecyclerView.setAdapter(mAdapter);
+
+
         noSelected = binding.noSelected;
+        mAdapter = new SpecialtyAdapter(this,mList,noSelected);
 
 
         mGridLayoutManager = new GridLayoutManager(this,10);
@@ -84,116 +95,60 @@ public class ConcentrateActivity extends AppCompatActivity {
 
         });
         mRecyclerView.setLayoutManager(mGridLayoutManager);
-
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     public void moveToNext(View view){
 
+        if(user.equals("student"))
+        {
+            mViewModel.updateDetailsForStudent(mAdapter.getChosenOnes());
+            mViewModel.updated.observe(ConcentrateActivity.this, new Observer<Integer>() {
+                @Override
+                public void onChanged(Integer integer) {
+                    if(integer==1)//UPDATE WAS SUCCESSFUL
+                    {
+                        Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
+                        if(user.equals("student"))
+                            mIntent = new Intent(ConcentrateActivity.this, StudentHomePage.class);
+                        else
+                            mIntent = new Intent(ConcentrateActivity.this, StudentHomePage.class);
 
-        mViewModel.updateDetails(mAdapter.getChosenOnes());
-        mViewModel.updated.observe(ConcentrateActivity.this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                if(integer==1)//UPDATE WAS SUCCESSFUL
-                {
-                    Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(ConcentrateActivity.this, PinActivity.class);
-                    intent.putExtra("action","create");
-                    startActivity(intent);
-                }
-                else if(integer==2)//UPDATE WAS UNSUCCESSFUL
-                {
-                    Toast.makeText(ConcentrateActivity.this, R.string.unable_to_update_details, Toast.LENGTH_LONG).show();
-                    mViewModel.updated.setValue(0);
-                }
-
-            }
-        });
-    }
-
-
-
-}
-
-class
-SpecialtyAdapter extends RecyclerView.Adapter<SpecialtyAdapter.ViewHolder>{
-    Context mContext;
-    String[] mList;
-    ArrayList<String> selected;
-    String[] chosenOnes = {"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"};
-
-    int[] colors = {R.color.dark_wine,R.color.darker_orange,R.color.dark_blue_back};
-    public SpecialtyAdapter(Context context,String[] list) {
-        mContext = context;
-        mList = list;
-        selected = new ArrayList<>();
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.concentrate_list_item,parent,false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.button.setText(mList[position]);
-        final Typeface bold = ResourcesCompat.getFont(mContext,R.font.montserrat_bold);
-        final Typeface normal = ResourcesCompat.getFont(mContext,R.font.montserrat);
-        final Button button = holder.button;
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int n = new Random().nextInt(3);
-                if(selected.contains(button.getText().toString()))
-                {
-                    selected.remove(button.getText().toString());
-                    button.setBackgroundTintList(null);
-                    button.setTextColor(mContext.getColor(android.R.color.black));
-                    button.setTypeface(normal);
-                    chosenOnes[position] = "0";
+                        startActivity(mIntent);
+                    }
+                    else if(integer==2)//UPDATE WAS UNSUCCESSFUL
+                    {
+                        Toast.makeText(ConcentrateActivity.this, R.string.unable_to_update_details, Toast.LENGTH_LONG).show();
+                    }
 
                 }
-                else
-                {
-                    selected.add(button.getText().toString());
-                    button.setBackgroundTintList(ColorStateList.valueOf(mContext.getColor(colors[n])));
-                    button.setTextColor(mContext.getColor(android.R.color.white));
-                    button.setTypeface(bold);
-                    chosenOnes[position] = "1";
+            });
+        }
+        else
+        {
+            mViewModel.updateDetailsForCounsellor(mAdapter.getChosenOnes());
+            mViewModel.updated.observe(ConcentrateActivity.this, new Observer<Integer>() {
+                @Override
+                public void onChanged(Integer integer) {
+                    if(integer==1)//UPDATE WAS SUCCESSFUL
+                    {
+                        Toast.makeText(ConcentrateActivity.this, R.string.details_update_succesful, Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(ConcentrateActivity.this, StudentHomePage.class);
+//                        intent.putExtra("action","create");
+//                        intent.putExtra("user",user);
+                        startActivity(intent);
+                    }
+                    else if(integer==2)//UPDATE WAS UNSUCCESSFUL
+                    {
+                        Toast.makeText(ConcentrateActivity.this, R.string.unable_to_update_details, Toast.LENGTH_LONG).show();
+                    }
+
                 }
-
-                ConcentrateActivity.noSelected.setText(selected.size()+" "+ mContext.getString(R.string.selected));
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return mList.length;
-    }
-
-    public String getChosenOnes()
-    {
-        String ans = "";
-        for(String i : chosenOnes)
-            ans = ans+i;
-        return ans;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
-        Button button;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            button = itemView.findViewById(R.id.specialty);
-
-
+            });
         }
 
-
-
     }
+
+
 
 }

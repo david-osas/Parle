@@ -4,7 +4,7 @@
     <string name="get_started">Get started</string>
     <string name="blank">""</string>
 
-<!--    Splash activity-->
+    <!--    Splash activity-->
     <string name="splashToast">First time, welcome</string>
 
     <!--    Login activity-->
@@ -116,7 +116,7 @@
     <!--    Fragment counselors-->
     <string name="counselors">Counselors</string>
     <string name="enter_counselor_name">Enter counselor\'s name</string>
-    <string name="edit_challenge">EDIT CHALLENGE</string>
+    <string name="edit_challenge">EDIT\nCHALLENGE</string>
     <string name="chats">CHATS</string>
 
     <!--    Fragment Chats-->
@@ -125,7 +125,7 @@
 
     <!--    Fragment Articles-->
     <string name="articles_heading">Articles</string>
-    <string name="article_quote">Whenever you read a good book, somewhere inthe world a door opens to allow in more light</string>
+    <string name="article_quote">Whenever you read a good book, somewhere in the world a door opens to allow in more light</string>
     <string name="search_articles">Search Articles</string>
     <string name="sample_first_name">Osarumense</string>
     <string name="sample_article_heading">Cyber Bullying and how to handle it</string>
@@ -144,10 +144,18 @@
 
 
     <!--Expandable list adapter-->
-    <string-array name="list_for_similar_counselor">
+    <string-array name="expandableListStudents">
         <item>Personal Details</item>
         <item>Contact and Location</item>
         <item>Faith and Religion</item>
+    </string-array>
+
+    <string-array name="expandableListCounsellors">
+        <item>Personal Details</item>
+        <item>Contact and Location</item>
+        <item>Faith and Religion</item>
+        <item>Duration</item>
+        <item>Credentials and CV</item>
     </string-array>
 
     <string-array name="religions_list">
@@ -205,5 +213,37 @@
     <string name="counseling_experience">Years of experience in counseling</string>
     <string name="available_hours">Available hours per day</string>
     <string name="start_time">Start time</string>
+    <string name="profession">Profession</string>
+    <string name="requested_sessions">Requested Sessions</string>
+    <string name="upload_article">Upload Article</string>
+
+
+    <string-array name="yearsOfExperience">
+        <item> Less than a year</item>
+        <item> 1 year</item>
+        <item>2 years</item>
+        <item>3 years</item>
+        <item>Over 3 years</item>
+    </string-array>
+
+    <string-array name="availableHours">
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>3 hours</item>
+        <item>4 hours</item>
+        <item>5 hours</item>
+        <item>6 hours</item>
+        <item>7 hours</item>
+        <item>8 hours</item>
+    </string-array>
+
+    <string name="none_selected">none selected</string>
+    <string name="hours">hours</string>
+    <string name="unableToGetCounsellors">Unable to get the List of counsellors. Please check your network and try again</string>
+    <string name="counselor_profile">Counsellors\'s profile</string>
+    <string name="online">Online</string>
+    <string name="specialties">Specialties</string>
+    <string name="book_as_counsellor">Book as Counsellor</string>
+    <string name="counsellors_limit">Note that you cannot have more than 3 counsellors at once</string>
 
 </resources>

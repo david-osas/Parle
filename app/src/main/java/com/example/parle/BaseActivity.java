@@ -10,6 +10,9 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = new Intent(this, PinActivity.class);
+        intent.putExtra("action","validate");
+        startActivity(intent);
     }
 
     @Override

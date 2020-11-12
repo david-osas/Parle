@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.parle.models.Counsellor;
 import com.example.parle.models.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,18 +19,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignupViewModel extends ViewModel {
     private FirebaseAuth auth;
-    private MutableLiveData<Integer> state = new MutableLiveData<>();
+    private MutableLiveData<Integer> state ;
     private FirebaseFirestore db;
 
     public void setInitialState(){
-        state.setValue(0);
+        state = new MutableLiveData<>();
+        auth = FirebaseAuth.getInstance();
     }
     public LiveData<Integer> getState(){
         return state;
     }
 
-    public void signup(String fullName, final String email, String username, final String password, final Context context, final Student student,final String pin){
-        auth = FirebaseAuth.getInstance();
+    public void signupForStudent( final String email, final String password, final Context context, final Student student){
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -47,4 +48,26 @@ public class SignupViewModel extends ViewModel {
                     }
                 });
     }
+
+    public void signUpForCounsellor(final String email, final String password, final Context context, final Counsellor counsellor)
+    {
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            state.postValue(1);
+                            FirebaseUser user = auth.getCurrentUser();
+                            counsellor.setUserId(user.getUid());
+                            db = FirebaseFirestore.getInstance();
+                            db.collection("counsellors").document(user.getUid()).set(counsellor);
+
+                        }else{
+                            state.postValue(2);
+                        }
+                    }
+                });
+    }
+
+
 }

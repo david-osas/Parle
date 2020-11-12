@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.parle.adapters.ArticleAdapter;
 import com.example.parle.R;
+import com.example.parle.databinding.FragmentArticlesBinding;
 
 
 public class Articles extends Fragment {
@@ -20,6 +21,7 @@ public class Articles extends Fragment {
     RecyclerView mRecyclerView;
     LinearLayoutManager mLinearLayoutManager;
     ArticleAdapter mArticleAdapter;
+    FragmentArticlesBinding mBinding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,14 +31,18 @@ public class Articles extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_articles, container, false);
-        // Inflate the layout for this fragment
+
+        mBinding = FragmentArticlesBinding.inflate(inflater,container,false);
+        mView = mBinding.getRoot();
+
         getActivity().findViewById(R.id.homeBackground).setBackgroundColor(getActivity().getColor(android.R.color.white));
-        mRecyclerView = mView.findViewById(R.id.articles_lists);
+
+        mRecyclerView = mBinding.articlesLists;//mView.findViewById(R.id.articles_lists);
         mArticleAdapter = new ArticleAdapter(mView.getContext());
         mLinearLayoutManager = new LinearLayoutManager(mView.getContext());
         mRecyclerView.setAdapter(mArticleAdapter);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
         return mView;
     }
 }

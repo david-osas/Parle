@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.example.parle.concentrateActivity.ConcentrateActivity;
+import com.example.parle.detailsActivity.DetailsActivity;
 import com.example.parle.loginActivity.LoginActivity;
 import com.example.parle.sharedPreferences.LoginSP;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,11 +25,18 @@ public class SelectionActivity extends AppCompatActivity {
     private ImageView Counsellor;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("user","Selectoin activity "+LoginSP.getUser(this));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
 
 
         studentBackground = findViewById(R.id.as_student_background);
@@ -73,10 +83,13 @@ public class SelectionActivity extends AppCompatActivity {
             intent = new Intent(this,StudentHomePage.class);
         }
         if(student_selected) {
-            LoginSP.setUser(this, "student");
+            //LoginSP.setUser(this, "student");
+            intent.putExtra("user","student");
+
         }
         else{
-            LoginSP.setUser(this, "counsellor");
+            //LoginSP.setUser(this, "counsellor");
+            intent.putExtra("user","counsellor");
         }
         startActivity(intent);
     }

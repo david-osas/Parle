@@ -8,7 +8,7 @@
     tools:context=".studentFragments.Chats">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/chat_tabs"
+        android:id="@+id/chatTabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -19,7 +19,8 @@
         app:tabIndicatorColor="@android:color/black"
         app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="8dp"
-        app:tabTextColor="@color/cardview_dark_background">
+        app:tabSelectedTextColor="@color/almost_black"
+        app:tabTextColor="@color/dark_grey">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -38,12 +39,13 @@
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/chatSlider"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/cardview_light_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chat_tabs" />
+        app:layout_constraintTop_toBottomOf="@+id/chatTabs" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

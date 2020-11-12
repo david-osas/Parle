@@ -10,11 +10,17 @@
         android:name="com.example.parle.studentFragments.Home"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
+
     <fragment
         android:id="@+id/action_messages"
         android:name="com.example.parle.studentFragments.Chats"
         android:label="@string/chats"
-        tools:layout="@layout/fragment_chats" />
+        tools:layout="@layout/fragment_chats" >
+        <action
+            android:id="@+id/action_action_messages_to_profileViewFragment"
+            app:destination="@id/profileViewFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/action_profile"
         android:name="com.example.parle.studentFragments.Profile"
@@ -24,12 +30,21 @@
         android:id="@+id/action_counselors"
         android:name="com.example.parle.studentFragments.Counsellors"
         android:label="@string/counselors"
-        tools:layout="@layout/fragment_counsellors" />
+        tools:layout="@layout/fragment_counsellors" >
+        <action
+            android:id="@+id/action_action_counselors_to_profileViewFragment"
+            app:destination="@id/profileViewFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/action_articles"
         android:name="com.example.parle.studentFragments.Articles"
         android:label="@string/articles_heading"
         tools:layout="@layout/fragment_articles" />
+    <fragment
+        android:id="@+id/profileViewFragment"
+        android:name="com.example.parle.profileViewFragment.ProfileViewFragment"
+        android:label="fragment_profile_view"
+        tools:layout="@layout/fragment_profile_view" />
 
 </navigation>

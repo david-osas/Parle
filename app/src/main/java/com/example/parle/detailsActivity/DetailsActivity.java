@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,13 +15,14 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.parle.concentrateActivity.ConcentrateActivity;
 import com.example.parle.models.Student;
 import com.example.parle.R;
-import com.example.parle.sharedPreferences.LoginSP;
 import com.example.parle.databinding.ActivityDetailsBinding;
+import com.example.parle.sharedPreferences.LoginSP;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -35,6 +37,8 @@ public class DetailsActivity extends AppCompatActivity {
 
 
     private Student mStudent;
+    private String user;
+    private TimePickerDialog mTimePickerDialog;
 
 
     @Override
@@ -43,18 +47,15 @@ public class DetailsActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         binding = ActivityDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        String user = LoginSP.getUser(this);
-        if(user.equals("counsellor")){
-            binding.dob.setVisibility(View.GONE);
-            binding.datePickerActions.setVisibility(View.GONE);
-            binding.religionTitle2.setText(getString(R.string.counsellorFaith));
-            binding.religionTitle3.setVisibility(View.GONE);
-            binding.religiousCounsellorPrefer.setVisibility(View.GONE);
-        }else{
-            binding.durationHeading.setVisibility(View.GONE);
-            binding.experienceHeading.setVisibility(View.GONE);
-            binding.experience.setVisibility(View.GONE);
-            binding.counsellorHours.setVisibility(View.GONE);
+        user = LoginSP.getUser(this);// getIntent().getStringExtra("user");
+
+        if(user.equals("counsellor"))
+        {
+            setUpForCounsellor();
+        }
+        else
+        {
+           setUpforStudent();
         }
 
         mViewModel = new ViewModelProvider(this).get(DetailsActivityViewModel.class);
@@ -62,36 +63,68 @@ public class DetailsActivity extends AppCompatActivity {
         mViewModel.initializeValues(this);
 
         mStudent = new Student();
+
+
+
+
+
+
         binding.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mViewModel.mCountry = binding.country.getText().toString();
                 mViewModel.mState  = binding.State.getText().toString();
                 mViewModel.mPhone_number = binding.phone.getText().toString();
-                mViewModel.mDate_of_birth = binding.datePickerActions.getText().toString();
                 mViewModel.mReligionText = binding.religion.getText().toString();
-                mViewModel.mPreferredCounsellor = (binding.yesOrNo.getText().toString() == getResources().getStringArray(R.array.yes_or_no_list)[0]);
-                mViewModel.mPreferredSession = (binding.religiousCounsellorPrefer.getText().toString() == getResources().getStringArray(R.array.counselor_preference_list)[0]);
 
-                //ENSURE THAT NO EDITTEXT IS EMPTY
-                if(mViewModel.mCountry.isEmpty() || mViewModel.mState.isEmpty() || mViewModel.mPhone_number.isEmpty() || mViewModel.mDate_of_birth.isEmpty()
-                || mViewModel.mReligionText.isEmpty() || binding.religiousCounsellorPrefer.getText().toString().isEmpty()
-                || binding.yesOrNo.getText().toString().isEmpty())
+                if(user.equals("student"))
                 {
-                    Toast.makeText(DetailsActivity.this, R.string.please_enter_all_details ,Toast.LENGTH_LONG).show();
+                    mViewModel.mDate_of_birth = binding.datePickerActions.getText().toString();
+
+                    mViewModel.mPreferredCounsellor = (binding.yesOrNo.getText().toString() == getResources().getStringArray(R.array.yes_or_no_list)[0]);
+                    mViewModel.mPreferredSession = (binding.religiousCounsellorPrefer.getText().toString() == getResources().getStringArray(R.array.counselor_preference_list)[0]);
+
+                    //ENSURE THAT NO EDITTEXT IS EMPTY
+                    if(mViewModel.mCountry.isEmpty() || mViewModel.mState.isEmpty() || mViewModel.mPhone_number.isEmpty() || mViewModel.mDate_of_birth.isEmpty()
+                            || mViewModel.mReligionText.isEmpty() || binding.religiousCounsellorPrefer.getText().toString().isEmpty()
+                            || binding.yesOrNo.getText().toString().isEmpty())
+                    {
+                        Toast.makeText(DetailsActivity.this, R.string.please_enter_all_details ,Toast.LENGTH_LONG).show();
+                    }
+
+                    else//IF ALL EDITTEXR ARE FILLED
+                    {
+                        mViewModel.updateDetailsForStudent();//UPDATE THE DETAILS
+                        checkUpdateSuccess();
+                    }
                 }
 
-                else//IF ALL EDITTEXR ARE FILLED
+                else
                 {
-                    mViewModel.updateDetails();//UPDATE THE DETAILS
-                    checkUpdateSuccess();
+                    mViewModel.canCounselBasedOnFaith = (binding.yesOrNo.getText().toString() == getResources().getStringArray(R.array.yes_or_no_list)[0]);
+                    mViewModel.yearsOfExperience = binding.experience.getText().toString();
+                    mViewModel.availableHours = binding.availableHours.getText().toString();
+                    mViewModel.startTime = binding.timePicker.getText().toString();
+
+                    if(mViewModel.mCountry.isEmpty() || mViewModel.mState.isEmpty() || mViewModel.mPhone_number.isEmpty()
+                            || mViewModel.mReligionText.isEmpty()
+                            || binding.yesOrNo.getText().toString().isEmpty())
+                    {
+                        Toast.makeText(DetailsActivity.this, R.string.please_enter_all_details ,Toast.LENGTH_LONG).show();
+                    }
+
+                    else//IF ALL EDITTEXR ARE FILLED
+                    {
+                        mViewModel.updateDetailsForCounsellor();//UPDATE THE DETAILS
+                        checkUpdateSuccess();
+                    }
                 }
+
 
             }
         });
 
         datePicker = binding.datePickerActions;
-        mCalendar = Calendar.getInstance();
 
 
         datePicker.setOnClickListener(new View.OnClickListener() {
@@ -108,14 +141,44 @@ public class DetailsActivity extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 datePicker.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
-                        }, year, month, day);
+                        },year,month,day);
                 mPicker.show();
             }
         });
 
+
+
+        final EditText timePickerEdit = binding.timePicker;
+
+        timePickerEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar calendar = Calendar.getInstance();
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int minute = calendar.get(Calendar.MINUTE);
+
+                mTimePickerDialog = new TimePickerDialog(DetailsActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                                int i=0;
+                                timePickerEdit.setText(get12HourTime(hour));
+                            }
+                        },hour,minute,false);
+                mTimePickerDialog.show();
+
+            }
+        });
+
+
+
+
+
         AutoCompleteTextView religion = binding.religion,
                 counselor_religion = binding.religiousCounsellorPrefer,
-                yes_or_no = binding.yesOrNo;
+                yes_or_no = binding.yesOrNo,
+                experience = binding.experience,
+                availableHours = binding.availableHours;
         List<String> religions,
                 yesNo,
                 counselor_preference;
@@ -138,8 +201,37 @@ public class DetailsActivity extends AppCompatActivity {
         counselor_religion.setCursorVisible(false);
         setListener(counselor_religion);
 
+        experience.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.yearsOfExperience)));
+        setListener(experience);
+
+
+        availableHours.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.availableHours)));
+        setListener(availableHours);
+
 
     }
+
+
+
+
+
+    public  static String get12HourTime(int hour) {
+        String ans="";
+        if(hour==0)
+            return "12:00 A.M";
+        if(hour>0 && hour <12)
+        {
+            return hour+":00 A.M";
+        }
+        if(hour==12)
+            return "12:00 P.M";
+
+        return hour%12+":00 P.M";
+    }
+
+
+
+
 
 
     public void setListener(AutoCompleteTextView acTV)
@@ -162,6 +254,14 @@ public class DetailsActivity extends AppCompatActivity {
         });
     }
 
+
+
+
+
+
+
+
+
     public void checkUpdateSuccess()
     {
         mViewModel.updated.observe(DetailsActivity.this, new Observer<Integer>() {
@@ -170,16 +270,74 @@ public class DetailsActivity extends AppCompatActivity {
                 if(integer==1)//UPDATE WAS SUCCESSFUL
                 {
                     Toast.makeText(DetailsActivity.this, getString(R.string.details_update_succesful), Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(DetailsActivity.this, ConcentrateActivity.class));
+                    Intent intent = new Intent(DetailsActivity.this, ConcentrateActivity.class);
+                    //intent.putExtra("user",user);
+                    startActivity(intent);
                 }
                 else if(integer==2)//UPDATE WAS UNSUCCESSFUL
                 {
                     Toast.makeText(DetailsActivity.this, getString(R.string.unable_to_update_details), Toast.LENGTH_LONG).show();
-                    mViewModel.updated.setValue(0);
                 }
 
             }
         });
+    }
+
+
+
+
+
+
+
+
+
+
+    public void setUpforStudent()
+    {
+        //showing dateofBirth
+        binding.dob.setVisibility(View.VISIBLE);
+        binding.datePickerActions.setVisibility(View.VISIBLE);
+
+        //Change religion question and ADD the extra religion question
+
+        binding.religionTitle2.setText(getString(R.string.similarCounsellor));
+        binding.religionTitle3.setVisibility(View.VISIBLE);
+        binding.religiousCounsellorPrefer.setVisibility(View.VISIBLE);
+
+        //HIDE everything under duration
+
+        binding.durationHeading.setVisibility(View.GONE);
+        binding.experienceHeading.setVisibility(View.GONE);
+        binding.experience.setVisibility(View.GONE);
+        binding.counsellorHours.setVisibility(View.GONE);
+
+
+    }
+
+
+
+
+
+
+
+    public void setUpForCounsellor()
+    {
+        //hiding dateofBirth
+        binding.dob.setVisibility(View.GONE);
+        binding.datePickerActions.setVisibility(View.GONE);
+
+        //Change religion question and remove the extra religion question
+
+        binding.religionTitle2.setText(getString(R.string.counsellorFaith));
+        binding.religionTitle3.setVisibility(View.GONE);
+        binding.religiousCounsellorPrefer.setVisibility(View.GONE);
+
+        //show everything under duration
+
+        binding.durationHeading.setVisibility(View.VISIBLE);
+        binding.experienceHeading.setVisibility(View.VISIBLE);
+        binding.experience.setVisibility(View.VISIBLE);
+        binding.counsellorHours.setVisibility(View.VISIBLE);
     }
 
 }
