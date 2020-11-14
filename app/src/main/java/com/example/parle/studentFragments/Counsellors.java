@@ -62,7 +62,10 @@ public class Counsellors extends Fragment {
 
 
         mRecyclerView = mView.findViewById(R.id.counselors_list);
+
+
         if(mViewModel.user.equals("student"))
+        //if user is a student get the list of all counsellors.
         {
             mAllCounsellors = new ArrayList<>();
             mCounselorsAdapter = new CounselorsAdapter(mView.getContext(),mAllCounsellors,1,
@@ -81,10 +84,12 @@ public class Counsellors extends Fragment {
             });
         }
         else
+            //else then get all students that requested for sessions
         {
             mAllStudentRequestedSessions = new ArrayList<>();
             mStudentRequestsAdapter = new StudentRequestsAdapter(mView.getContext(),mAllStudentRequestedSessions,1,
                     new ViewModelProvider(requireActivity()).get(ProfileViewViewModel.class));
+
             mGridLayoutManager = new GridLayoutManager(mView.getContext(),3);
             mRecyclerView.setAdapter(mStudentRequestsAdapter);
             mRecyclerView.setLayoutManager(mGridLayoutManager);

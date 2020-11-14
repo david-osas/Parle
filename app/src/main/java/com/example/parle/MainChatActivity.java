@@ -57,22 +57,25 @@ public class MainChatActivity extends AppCompatActivity {
         currentChat = SessionHelper.getInstance().currentChat;
 
         Toolbar toolbar = mBinding.toolbar;
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);//changing the toolbar of the activity
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//adding the back button
+        getSupportActionBar().setDisplayShowHomeEnabled(true);//to the toolbar
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.arrow_back);//and changing the drawbale used
 
-        mMessages = new ArrayList<>();
-        mRecyclerView = mBinding.chatMessages;
-        mLinearLayoutManager = new LinearLayoutManager(this);
-        mLinearLayoutManager.setStackFromEnd(true);
-//        mLinearLayoutManager.setReverseLayout(true);
-        mMessagesAdapter = new MessagesAdapter(this,mMessages,mRecyclerView);
+
+        mMessages = new ArrayList<>();//all messages for this chat
+        mRecyclerView = mBinding.chatMessages;//recyclerview involved
+        mLinearLayoutManager = new LinearLayoutManager(this);//Layout manager for this recycler view
+        mLinearLayoutManager.setStackFromEnd(true);//make the views to start at the bottom like whatsapp chats
+        mMessagesAdapter = new MessagesAdapter(this,mMessages,mRecyclerView);//Adapter for all the messages in  the chat
         mRecyclerView.setAdapter(mMessagesAdapter);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        setUpToolbar();
+        setUpToolbar();//set the name of the correct CHATEE in the toolbar.
+        //CHATEE is the person you're chatting with
+
+
 
         mMyText = mBinding.myTextMessage;
 
@@ -85,11 +88,12 @@ public class MainChatActivity extends AppCompatActivity {
                     mViewModel.sendTextMessage(text, currentChat.getChatId());
                     mMyText.setText("");
                 }
-                else
+                else//if box is empty prompt them to enter message
                     Toast.makeText(MainChatActivity.this,"Please enter your message",Toast.LENGTH_LONG).show();
             }
         });
 
+        //when the messages have been gotten from the firestore, update the recyclerView adapter
         mViewModel.getAllMessages(currentChat.getChatId()).observe(this, new Observer<ArrayList<Message>>() {
             @Override
             public void onChanged(ArrayList<Message> messages) {
@@ -100,6 +104,7 @@ public class MainChatActivity extends AppCompatActivity {
 
     public void setUpToolbar()
     {
+        //sets the name of the correct student/counsellor in the toolbar
         if(mViewModel.user.equals("student"))
         {
             mBinding.nameOfChatter.setText(mCounsellor.getFullName());

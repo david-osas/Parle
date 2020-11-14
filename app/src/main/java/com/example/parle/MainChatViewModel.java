@@ -27,6 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 public class MainChatViewModel extends ViewModel {
+    //ViewModel for the main chat activity
     private FirebaseUser mFirebaseUser;//current user could be a student or counsellor
     private FirebaseFirestore mDb;//reference to firebaes firestore
     public Context mContext;//context of the calling activity
@@ -47,8 +48,10 @@ public class MainChatViewModel extends ViewModel {
 
     public void loadAllMessages(String chatId)
     {
+        //get all messages for a particular chatId
         allMessages = new MutableLiveData<>();
         mMessages = new ArrayList<>();
+        //put a realtime listener to know when data is listen for when new messages are added
         mDb.collection("chats").document(chatId).collection("messages").orderBy("timestamp", Query.Direction.ASCENDING)
                .addSnapshotListener(new EventListener<QuerySnapshot>() {
                    @Override
@@ -77,6 +80,7 @@ public class MainChatViewModel extends ViewModel {
 
     public MutableLiveData<ArrayList<Message>> getAllMessages(String chatId)
     {
+        //works hand in hand with the function above
         if(allMessages==null)
             loadAllMessages(chatId);
         return allMessages;
@@ -84,6 +88,7 @@ public class MainChatViewModel extends ViewModel {
 
     public void sendTextMessage(String text, String chatId)
     {
+        //function to send a text message to the database. For now thats the only kind of message we can send
         Message message = new Message();
         message.setChatId(chatId);
         message.setSenderId(mFirebaseUser.getUid());

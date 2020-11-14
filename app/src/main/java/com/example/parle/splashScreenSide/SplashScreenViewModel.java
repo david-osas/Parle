@@ -29,10 +29,6 @@ public class SplashScreenViewModel extends ViewModel {
         isStudent.setValue(0);
     }
 
-    public void setIsStudent(Integer integer)
-    {
-        isStudent.setValue(integer);
-    }
 
     public boolean userIsNull()
     {
@@ -41,6 +37,7 @@ public class SplashScreenViewModel extends ViewModel {
 
     public void updateStudent()
     {
+
         final DocumentReference documentReference = mFirestore.collection("students").document(mFirebaseUser.getUid());
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

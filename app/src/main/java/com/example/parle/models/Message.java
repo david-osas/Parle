@@ -1,6 +1,8 @@
 package com.example.parle.models;
 
 public class Message {
+    // model for a message.
+
     private int type;//0 for text message. Thats all we'll be working with for now
     private String text;
     private String messageId;

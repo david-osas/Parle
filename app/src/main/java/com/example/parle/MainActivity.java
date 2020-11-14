@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Activity after the SplashScreen which shows only the first time you open the app.
     private ArrayList<Fragment> mFragments;
     private TextView mTextView;
     private ViewPager2 mViewPager2;

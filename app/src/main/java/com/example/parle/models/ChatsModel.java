@@ -1,6 +1,8 @@
 package com.example.parle.models;
 
 public class ChatsModel {
+    //model for a chat
+
     private String chatId;
     private String studentId;
     private String counsellorId;
