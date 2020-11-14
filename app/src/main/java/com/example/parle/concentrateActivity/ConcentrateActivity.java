@@ -45,6 +45,8 @@ public class ConcentrateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //The oncnetrate is saved as a binary string of 1 and 0
+        //to represent what the user selected or not.
         super.onCreate(savedInstanceState);
         binding = ActivityConcentrateBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

@@ -80,6 +80,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
         mRecyclerView.scrollToPosition(getItemCount()-1);
     }
 
+    //diffenrt viewholder for the different kind of views
     class SentMessageViewHolder extends RecyclerView.ViewHolder
     {
         public TextView textMessage;
