@@ -70,6 +70,7 @@ public class CounselorsAdapter extends RecyclerView.Adapter<CounselorsAdapter.Vi
     {
         //adapter is usally attached before data actually arrives.
         //this function takes the required data and adds it to the list wihout detaching the adapter
+        mList.clear();
         mList.addAll(list);
         this.notifyDataSetChanged();
     }

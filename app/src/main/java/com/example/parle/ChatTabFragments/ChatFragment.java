@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import com.example.parle.R;
 import com.example.parle.adapters.SessionChatListAdapter;
 import com.example.parle.databinding.FragmentChatBinding;
+import com.example.parle.models.ChatsModel;
 import com.example.parle.models.Counsellor;
 import com.example.parle.models.Student;
 
@@ -72,7 +73,7 @@ public class ChatFragment extends Fragment {
         if(mViewModel.user.equals("student"))
         {
             mRecyclerView = mBinding.myChats;
-            mChatListAdapter = new SessionChatListAdapter(requireContext(),mStudents,mCounsellors,0);
+            mChatListAdapter = new SessionChatListAdapter(requireContext(),mStudents,mCounsellors,null,0);
             mLinearLayoutManager = new LinearLayoutManager(requireContext());
             mRecyclerView.setAdapter(mChatListAdapter);
             mRecyclerView.setLayoutManager(mLinearLayoutManager);
@@ -89,7 +90,7 @@ public class ChatFragment extends Fragment {
         else
         {
             mRecyclerView = mBinding.myChats;
-            mChatListAdapter = new SessionChatListAdapter(requireContext(),mStudents,mCounsellors,1);
+            mChatListAdapter = new SessionChatListAdapter(requireContext(),mStudents,mCounsellors,null,1);
             mLinearLayoutManager = new LinearLayoutManager(requireContext());
             mRecyclerView.setAdapter(mChatListAdapter);
             mRecyclerView.setLayoutManager(mLinearLayoutManager);
@@ -101,7 +102,18 @@ public class ChatFragment extends Fragment {
                     mChatListAdapter.updateList(students,null);
                 }
             });
+
+
         }
+
+        mViewModel.allChats.observe(requireActivity(), new Observer<ArrayList<ChatsModel>>() {
+            @Override
+            public void onChanged(ArrayList<ChatsModel> chatsModels) {
+                mChatListAdapter.mChatsModels = chatsModels;
+            }
+        });
+
+
 
     }
 }

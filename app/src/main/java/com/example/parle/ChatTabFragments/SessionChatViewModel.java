@@ -29,6 +29,7 @@ public class SessionChatViewModel extends ViewModel {
     public Context mContext;//context of the calling activity
     public String user;//student or counsellor gotten from LoginSP
     public ArrayList<ChatsModel> chats;
+    public MutableLiveData<ArrayList<ChatsModel>> allChats;
     public MutableLiveData<ArrayList<Counsellor>> mCounsellorsList;
     public MutableLiveData<ArrayList<Student>> mStudentList;
 
@@ -45,6 +46,7 @@ public class SessionChatViewModel extends ViewModel {
         mCounsellorsList = new MutableLiveData<>();
         mStudentList = new MutableLiveData<>();
         chats = new ArrayList<>();
+        allChats = new MutableLiveData<>();
         if(isStudent)
         {
             //gets all chats for a student.
@@ -59,6 +61,7 @@ public class SessionChatViewModel extends ViewModel {
                             chats.add(snapshot.toObject(ChatsModel.class));
 
                         }
+                        allChats.postValue(chats);
                         getUsersFromChats();
                     }
                 }
@@ -80,6 +83,7 @@ public class SessionChatViewModel extends ViewModel {
                             Log.i("student","4 Yo Im in the loop");
                         }
                         Log.i("student","5 I came out of the loop adn decided to go to another functon");
+                        allChats.postValue(chats);
                         getUsersFromChats();
                     }
                 }

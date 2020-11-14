@@ -55,7 +55,7 @@ public class SplashScreen extends AppCompatActivity {
 
 
             }
-        },1200);
+        },500);
     }
 
     public void checkIfStudent()
