@@ -1,6 +1,8 @@
 package com.example.parle.models;
 
 public class Student {
+    //nmodel for student
+
     private String username;
     private String email;
     private String fullName;

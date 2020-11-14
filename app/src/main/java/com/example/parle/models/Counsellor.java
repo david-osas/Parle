@@ -2,6 +2,7 @@ package com.example.parle.models;
 
 public class Counsellor {
 
+    //model for a a counsellor
     private String email;
     private String fullName;
     private String userId;

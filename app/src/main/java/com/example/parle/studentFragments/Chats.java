@@ -18,6 +18,7 @@ import com.example.parle.R;
 import com.example.parle.adapters.ChatFragmentAdapter;
 import com.example.parle.databinding.FragmentChatBinding;
 import com.example.parle.databinding.FragmentChatsBinding;
+import com.example.parle.sharedPreferences.LoginSP;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -53,13 +54,25 @@ public class Chats extends Fragment {
         mFragments.add(new ChatFragment());
         mFragments.add(new SuggestedCounsellors());
         final int[] names = {R.string.edit_challenge,R.string.chats,R.string.suggestedCounselorsCaps};
+
+        if(LoginSP.getUser(requireContext()).equals("counsellor"))
+        {
+            names[0] = R.string.edit_aoe;
+            names[2] = R.string.requested_sessions;
+        }
+
+
         mViewPager2.setAdapter(new ChatFragmentAdapter(requireActivity().getSupportFragmentManager(),requireActivity().getLifecycle(),mFragments));
+
+
         mTabLayoutMediator = new TabLayoutMediator(mTabLayout, mViewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 tab.setText(getResources().getString(names[position]));
             }
         });
+
+
         mTabLayoutMediator.attach();
         mViewPager2.setCurrentItem(1,false);
     }

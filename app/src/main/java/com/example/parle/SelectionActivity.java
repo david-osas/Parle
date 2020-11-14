@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SelectionActivity extends AppCompatActivity {
 
+    //Looking in hindsight now, this didnt need to be an activity.
+    //Anyways its the activity that shows 2 chatboxes for user to login as counsellor or student
     private boolean student_selected;
     private ImageView studentBackground;
     private ImageView counsellorBackground;
@@ -83,12 +85,10 @@ public class SelectionActivity extends AppCompatActivity {
             intent = new Intent(this,StudentHomePage.class);
         }
         if(student_selected) {
-            //LoginSP.setUser(this, "student");
             intent.putExtra("user","student");
 
         }
         else{
-            //LoginSP.setUser(this, "counsellor");
             intent.putExtra("user","counsellor");
         }
         startActivity(intent);
@@ -97,6 +97,7 @@ public class SelectionActivity extends AppCompatActivity {
 
     private  void adjustSelection(boolean student_is_selected)
     {
+        //changes some variables depending on what is selected
         student_selected = student_is_selected;
         if(student_is_selected)
         {

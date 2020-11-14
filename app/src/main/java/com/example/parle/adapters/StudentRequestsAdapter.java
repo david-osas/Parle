@@ -70,6 +70,7 @@ public class StudentRequestsAdapter  extends RecyclerView.Adapter<StudentRequest
 
     public void updateList(ArrayList<Student> list)
     {
+        mList.clear();
         mList.addAll(list);
         this.notifyDataSetChanged();
     }

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 public class LoginSP
 {
+    //singleton sharedprefernces class
     private static  SharedPreferences mSharedPreferences;
     public static final String NAME= "LoginPreferences";
     private final static String FIRST_TIME_OPENED = "FIRST_TIME_OPENED";

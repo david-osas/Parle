@@ -68,7 +68,7 @@ public class DetailsActivity extends AppCompatActivity {
 
 
 
-
+        //update the details weve gotten
         binding.next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,6 +124,8 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
+
+        //for the datepivker for date of birth
         datePicker = binding.datePickerActions;
 
 

@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 
 public class Request
 {
+    //model for a smapole request sent from a student to a counsellor
     private String studentId;
     private String counsellorId;
     private String requestId;

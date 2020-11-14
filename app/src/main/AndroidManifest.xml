@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme2">
+        <activity android:name=".MainChatActivity"></activity>
         <activity android:name=".BaseActivity" />
         <activity android:name=".PinActivity" />
         <activity android:name=".concentrateActivity.ConcentrateActivity" />
@@ -26,7 +27,7 @@
         <activity
             android:name=".StudentHomePage"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".splashScreenSide.SplashScreen">
+        <activity android:name=".splashScreenSide.SplashScreen" android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

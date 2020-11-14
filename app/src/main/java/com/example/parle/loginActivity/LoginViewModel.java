@@ -61,6 +61,7 @@ public class LoginViewModel extends ViewModel {
 
     public void setIsStudent()
     {
+        //checks if the user loigging in is a student or not.
         final DocumentReference documentReference = mFirestore.collection("students").document(mFirebaseUser.getUid());
         documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

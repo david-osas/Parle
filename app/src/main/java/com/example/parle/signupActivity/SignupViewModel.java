@@ -30,6 +30,8 @@ public class SignupViewModel extends ViewModel {
         return state;
     }
 
+
+    //signup the counsellor usong email and password
     public void signupForStudent( final String email, final String password, final Context context, final Student student){
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
@@ -49,6 +51,7 @@ public class SignupViewModel extends ViewModel {
                 });
     }
 
+    //signup counsellor using email and password
     public void signUpForCounsellor(final String email, final String password, final Context context, final Counsellor counsellor)
     {
         auth.createUserWithEmailAndPassword(email, password)

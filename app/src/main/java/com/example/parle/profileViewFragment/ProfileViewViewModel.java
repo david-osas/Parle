@@ -44,14 +44,14 @@ public class ProfileViewViewModel extends ViewModel
     }
 
     public void postCounsellorValue(Counsellor counsellor )
-    {
+    {//posts the value so the live data can be used
         mCounsellor = new MutableLiveData<>();
         mCounsellor.postValue(counsellor);
     }
 
 
     public void sendRequest(final String studentId, final String counsellorId) {
-
+        //sends request to a particular counsellor
 
         mDb.collection("requests").whereEqualTo("counsellorId",counsellorId)
                 .whereEqualTo("studentId",studentId)
@@ -74,6 +74,7 @@ public class ProfileViewViewModel extends ViewModel
     }
 
     private void confirmSend(final String studentId, final String counsellorId) {
+        //confirmation of send request in above function
         Request request = new Request();
         request.setCounsellorId(counsellorId);
         request.setStudentId(studentId);
@@ -96,14 +97,17 @@ public class ProfileViewViewModel extends ViewModel
         });
     }
 
+
     public void postStudentValue(Student student )
     {
+        //helps to vconnect the recyclerview to this fragment
         mStudent = new MutableLiveData<>();
         mStudent.postValue(student);
     }
 
     public void acceptRequest(final String studentId, final String counsellorId)
     {
+        //accept this request from a student
         mDb.collection("requests")
                 .whereEqualTo("counsellorId",counsellorId)
                 .whereEqualTo("studentId",studentId)
@@ -131,12 +135,13 @@ public class ProfileViewViewModel extends ViewModel
     }
 
     private void confirmAccept(final Request request) {
+        //Confirm and accept the request
         ChatsModel chatsModel = new ChatsModel();
         chatsModel.setChatId(request.getRequestId());
         chatsModel.setStudentId(request.getStudentId());
         chatsModel.setCounsellorId(request.getCounsellorId());
 
-
+        //add the request to chats colection and remove from requests collection
         mDb.collection("chats").document(request.getRequestId()).set(chatsModel)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -150,6 +155,7 @@ public class ProfileViewViewModel extends ViewModel
     }
 
     private void deleteRequest(Request request) {
+        //removes the request so that the request wont be accepted twice
         mDb.collection("requests").document(request.getRequestId())
                 .delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

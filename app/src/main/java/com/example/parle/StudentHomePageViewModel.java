@@ -190,7 +190,7 @@ public class StudentHomePageViewModel extends ViewModel {
 
     public void loadAllRequestedSessions()
     {
-        //loads all sessions requested by students for a particular counsellor
+        //loads all sessions requested by students for the particular counsellor that is logged in
         mAllRequestedSessions = new MutableLiveData<>();
 
         mRequests = new ArrayList<>();
@@ -222,7 +222,7 @@ public class StudentHomePageViewModel extends ViewModel {
 
     public void getAllStudents(ArrayList<Request> requests)
     {
-        //loads all students that sent the requests to this particular counsellor
+        //loads all students that sent the requests in the list argument
         Log.i("students","i got into this function after");
         Toast.makeText(mContext,"Start getting students from requests",Toast.LENGTH_LONG).show();
         final ArrayList<Student> studentsThatRequestedSessions = new ArrayList<>();

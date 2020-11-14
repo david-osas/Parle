@@ -87,6 +87,7 @@ public class Home extends Fragment {
 
     public void setUpForStudent()
     {
+        //show the userame of the student
         mViewModel.getStudent();
         suggestedStuff.setText(getActivity().getString(R.string.suggestedCounsellors));
         mViewModel.mStudent.observe(requireActivity(), new Observer<Student>() {
@@ -102,6 +103,7 @@ public class Home extends Fragment {
 
     public void setUpForCounsellor()
     {
+        //show the fullname of the counsellor
         mViewModel.getCounsellor();
         suggestedStuff.setText(getActivity().getString(R.string.requested_sessions));
         mViewModel.mCounsellor.observe(requireActivity(), new Observer<Counsellor>() {
