@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
@@ -19,8 +20,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -194,31 +198,61 @@ public class StudentHomePageViewModel extends ViewModel {
         mAllRequestedSessions = new MutableLiveData<>();
 
         mRequests = new ArrayList<>();
-        mDb.collection("requests").whereEqualTo("counsellorId",mFirebaseUser.getUid())
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//        mDb.collection("requests").whereEqualTo("counsellorId",mFirebaseUser.getUid())
+//                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if(task.isSuccessful())
+//                {
+//                    for(QueryDocumentSnapshot documentSnapshot : task.getResult())
+//                    {
+//                        Request request = documentSnapshot.toObject(Request.class);
+//                        mRequests.add(request);
+//                    }
+//                    Toast.makeText(mContext,"All requests gotten",Toast.LENGTH_LONG).show();
+//                    Log.i("students","finished getting all reuqets");
+//                    getAllStudents(mRequests);
+//                }
+//
+//                else
+//                {
+//                    Toast.makeText(mContext,mContext.getString(R.string.unableToGetCounsellors),Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+
+        mDb.collection("requests").whereEqualTo("counsellorId",mFirebaseUser.getUid()).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful())
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null)
+                    Log.i("error", error.toString());
+                else
                 {
-                    for(QueryDocumentSnapshot documentSnapshot : task.getResult())
+                    for(DocumentChange dc: value.getDocumentChanges())
                     {
-                        Request request = documentSnapshot.toObject(Request.class);
-                        mRequests.add(request);
+                        Request request;
+                        switch (dc.getType())
+                        {
+                            case ADDED:
+                                request = dc.getDocument().toObject(Request.class);
+                                mRequests.add(request);
+                                break;
+                            case REMOVED:
+                                request = dc.getDocument().toObject(Request.class);
+                                mRequests.remove(request);
+                                break;
+                        }
                     }
                     Toast.makeText(mContext,"All requests gotten",Toast.LENGTH_LONG).show();
                     Log.i("students","finished getting all reuqets");
                     getAllStudents(mRequests);
-                }
-
-                else
-                {
-                    Toast.makeText(mContext,mContext.getString(R.string.unableToGetCounsellors),Toast.LENGTH_LONG).show();
                 }
             }
         });
 
 
     }
+
 
     public void getAllStudents(ArrayList<Request> requests)
     {
