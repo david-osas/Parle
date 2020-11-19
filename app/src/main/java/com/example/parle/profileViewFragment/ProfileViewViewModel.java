@@ -62,7 +62,7 @@ public class ProfileViewViewModel extends ViewModel
                 {
                     QuerySnapshot snapshot = task.getResult();
                     if(snapshot.isEmpty())//the request hasnt been made before
-                        confirmSend(studentId,counsellorId);
+                        checkIfChatExists(studentId,counsellorId);
                     else
                         Toast.makeText(mContext,"Duplicate request. You have already sent a request to this counsellor. Wait for apporval", Toast.LENGTH_LONG).show();
 
@@ -134,6 +134,29 @@ public class ProfileViewViewModel extends ViewModel
         });
     }
 
+
+    private void checkIfChatExists(final String studentId, final String counsellorId)
+    {
+        mDb.collection("chats")
+                .whereEqualTo("counsellorId",counsellorId)
+                .whereEqualTo("studentId",studentId)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful())
+                {
+                    if(!(task.getResult().isEmpty()))//the request has already been accpeted
+                    {
+                        Toast.makeText(mContext,"You still have a sesison with this counsellor, check your chats section", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                       confirmSend(studentId,counsellorId);
+                    }
+                }
+            }
+        });
+    }
     private void confirmAccept(final Request request) {
         //Confirm and accept the request
         ChatsModel chatsModel = new ChatsModel();
