@@ -73,7 +73,6 @@ public class LoginViewModel extends ViewModel {
                     if(documentSnapshot.exists())
                     {
                         Student student = task.getResult().toObject(Student.class);
-                        Toast.makeText(mContext, student.getUserId()+student.getUsername(),Toast.LENGTH_LONG).show();
                         isStudent.postValue(1);
                     }
 
@@ -106,7 +105,6 @@ public class LoginViewModel extends ViewModel {
                         if(task.isSuccessful())
                         {
                             String p = task.getResult().toObject(Student.class).getPin();
-                            //Toast.makeText(mContext,"pin = "+p,Toast.LENGTH_LONG).show();
                             pin.postValue(p);
                         }
                     }

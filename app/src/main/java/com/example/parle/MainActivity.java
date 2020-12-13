@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.skip).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LoginSP.hasBeenOpened(MainActivity.this);
                 startActivity(new Intent(MainActivity.this, SelectionActivity.class));
                 finish();
             }

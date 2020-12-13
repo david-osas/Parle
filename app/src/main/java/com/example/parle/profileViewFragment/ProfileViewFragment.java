@@ -86,8 +86,7 @@ public class ProfileViewFragment extends Fragment {
             public void onClick(View view) {
                 if(isStudent)
                 {
-                    //add new request to request tabs
-                    //Toast.makeText(requireContext(),"I actually got to the button",Toast.LENGTH_SHORT).show();
+
                     mViewModel.sendRequest(mViewModel.mFirebaseUser.getUid(),mCounsellor.getUserId());
                     //add the request id to the counsellor and student
                 }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
@@ -22,6 +23,8 @@ import com.example.parle.StudentHomePageViewModel;
 import com.example.parle.adapters.ExpandableListAdapter;
 import com.example.parle.R;
 import com.example.parle.SelectionActivity;
+import com.example.parle.models.Counsellor;
+import com.example.parle.models.Student;
 import com.example.parle.sharedPreferences.LoginSP;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -60,6 +63,9 @@ public class Profile extends Fragment {
                 logout();
             }
         });
+        mViewModel =  new ViewModelProvider(requireActivity()).get(StudentHomePageViewModel.class);
+
+
 
         return mView;
     }
@@ -67,7 +73,7 @@ public class Profile extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mViewModel =  new ViewModelProvider(requireActivity()).get(StudentHomePageViewModel.class);
+
 
         if(mViewModel.user.equals("counsellor"))
             setUpForCounsellor();
@@ -83,11 +89,29 @@ public class Profile extends Fragment {
     }
 
     private void setUpForStudent() {
-        mExpandableListView.setAdapter(new ExpandableListAdapter(mView.getContext(),mExpandableListView,"student"));
+        mExpandableListView.setAdapter(new ExpandableListAdapter(mView.getContext(),mExpandableListView,"student",mViewModel.mStudent.getValue()));
+        mViewModel.getStudent();
+        mViewModel.mStudent.observe(requireActivity(), new Observer<Student>() {
+            @Override
+            public void onChanged(Student student) {
+                ((TextView) mView.findViewById(R.id.profile_name)).setText(student.getFullName());
+                ((TextView) mView.findViewById(R.id.anonName)).setText("Anon name: "+ student.getUsername());
+            }
+        });
     }
 
     private void setUpForCounsellor() {
-        mExpandableListView.setAdapter(new ExpandableListAdapter(mView.getContext(),mExpandableListView,"counsellor"));
+        mExpandableListView.setAdapter(new ExpandableListAdapter(mView.getContext(),mExpandableListView,"counsellor",mViewModel.mCounsellor.getValue()));
+        mView.findViewById(R.id.isAnonymous).setVisibility(View.GONE);
+
+        mViewModel.getCounsellor();
+        mViewModel.mCounsellor.observe(requireActivity(), new Observer<Counsellor>() {
+            @Override
+            public void onChanged(Counsellor counsellor) {
+                ((TextView) mView.findViewById(R.id.profile_name)).setText(counsellor.getFullName());
+                ((TextView) mView.findViewById(R.id.anonName)).setText("Counsellor");
+            }
+        });
     }
 
     public void logout(){
@@ -96,6 +120,7 @@ public class Profile extends Fragment {
         LoginSP.setUser(getContext(),"none");
         LoginSP.setPin(getContext(),"0000");
         Intent intent = new Intent(getActivity(), SelectionActivity.class);
+
         startActivity(intent);
         getActivity().finish();
     }

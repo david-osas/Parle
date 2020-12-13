@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.parle.StudentHomePageViewModel;
@@ -78,7 +79,7 @@ public class Counsellors extends Fragment {
                 @Override
                 public void onChanged(List<Counsellor> counsellors) {
                     //mAllCounsellors = (ArrayList<Counsellor>) counsellors;
-                    Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();
                     mCounselorsAdapter.updateList((ArrayList) counsellors);
                 }
             });
@@ -86,6 +87,7 @@ public class Counsellors extends Fragment {
         else
             //else then get all students that requested for sessions
         {
+            ((TextView) mView.findViewById(R.id.titleCounsellors)).setText(requireContext().getString(R.string.requested_sessions));
             mAllStudentRequestedSessions = new ArrayList<>();
             mStudentRequestsAdapter = new StudentRequestsAdapter(mView.getContext(),mAllStudentRequestedSessions,1,
                     new ViewModelProvider(requireActivity()).get(ProfileViewViewModel.class));
@@ -98,7 +100,7 @@ public class Counsellors extends Fragment {
             mViewModel.getRequestedSessions().observe(requireActivity(), new Observer<List<Student>>() {
                 @Override
                 public void onChanged(List<Student> students) {
-                    Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();
+                   // Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();
                     mStudentRequestsAdapter.updateList((ArrayList) students);
                 }
             });

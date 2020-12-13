@@ -21,9 +21,14 @@ import com.example.parle.StudentHomePageViewModel;
 import com.example.parle.adapters.ArticleAdapter;
 import com.example.parle.adapters.ChatHeadAdapter;
 import com.example.parle.R;
+import com.example.parle.adapters.CounselorsAdapter;
 import com.example.parle.databinding.FragmentHomeBinding;
 import com.example.parle.models.Counsellor;
 import com.example.parle.models.Student;
+import com.example.parle.profileViewFragment.ProfileViewViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Home extends Fragment {
 
@@ -33,6 +38,9 @@ public class Home extends Fragment {
     FragmentHomeBinding mBinding;
     StudentHomePageViewModel mViewModel;
     TextView suggestedStuff;
+    private ArrayList<Counsellor> mAllCounsellors;
+    ChatHeadAdapter mChatHeadAdapter;
+    ArrayList<Student> mAllStudentRequestedSessions;
 
 
     public Home() {
@@ -61,8 +69,7 @@ public class Home extends Fragment {
 
         //for chats recycler view
         mRecyclerViewChats =mBinding.chatHeads;// mView.findViewById(R.id.chat_heads);
-        mRecyclerViewChats.setAdapter(new ChatHeadAdapter(mView.getContext()));
-        mRecyclerViewChats.setLayoutManager(new LinearLayoutManager(mView.getContext(),RecyclerView.HORIZONTAL,false));
+
 
         //for articles recycler view
         mRecyclerViewArticles = mBinding.articlesListGrid;//mView.findViewById(R.id.articles_list_grid);
@@ -99,6 +106,20 @@ public class Home extends Fragment {
                     Toast.makeText(requireContext(),requireActivity().getString(R.string.unable_to_update_details),Toast.LENGTH_LONG).show();
             }
         });
+
+        mAllCounsellors = new ArrayList<>();
+        mChatHeadAdapter = new ChatHeadAdapter(requireContext(),0,new ArrayList<Counsellor>(),null);
+        mRecyclerViewChats.setAdapter(mChatHeadAdapter);
+        mRecyclerViewChats.setLayoutManager(new LinearLayoutManager(mView.getContext(),RecyclerView.HORIZONTAL,false));
+
+        mViewModel.getAllCounsellor().observe(requireActivity(), new Observer<List<Counsellor>>() {
+            @Override
+            public void onChanged(List<Counsellor> counsellors) {
+                //mAllCounsellors = (ArrayList<Counsellor>) counsellors;
+                //Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();
+                mChatHeadAdapter.upddateCounsellors((ArrayList) counsellors);
+            }
+        });
     }
 
     public void setUpForCounsellor()
@@ -113,6 +134,21 @@ public class Home extends Fragment {
                     mBinding.hiTextView.setText(getActivity().getString(R.string.hi)+" "+counsellor.getFullName());
                 else
                     Toast.makeText(requireContext(),requireActivity().getString(R.string.unable_to_update_details),Toast.LENGTH_LONG).show();
+            }
+        });
+
+        mAllStudentRequestedSessions = new ArrayList<>();
+        mChatHeadAdapter = new ChatHeadAdapter(requireContext(),1,null,new ArrayList<Student>());
+        mRecyclerViewChats.setAdapter(mChatHeadAdapter);
+        mRecyclerViewChats.setLayoutManager(new LinearLayoutManager(mView.getContext(),RecyclerView.HORIZONTAL,false));
+
+
+
+        mViewModel.getRequestedSessions().observe(requireActivity(), new Observer<List<Student>>() {
+            @Override
+            public void onChanged(List<Student> students) {
+               // Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();
+                mChatHeadAdapter.updateStudents((ArrayList) students);
             }
         });
     }
