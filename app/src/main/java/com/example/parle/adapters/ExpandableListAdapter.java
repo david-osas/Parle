@@ -19,18 +19,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.core.app.NotificationCompatSideChannelService;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.example.parle.Constants;
 import com.example.parle.R;
 import com.example.parle.databinding.ChildItemBinding;
 import com.example.parle.detailsActivity.DetailsActivity;
+import com.example.parle.models.Counsellor;
+import com.example.parle.models.Student;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class ExpandableListAdapter extends BaseExpandableListAdapter {
+public class ExpandableListAdapter extends BaseExpandableListAdapter implements Constants {
     /*
     * For the profile page in the app*/
 
@@ -54,21 +60,47 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     String mUser;
     private TimePickerDialog mTimePickerDialog;
 
-    public ExpandableListAdapter(Context context, ExpandableListView expandableListView ,String user){
+    Student mStudent;
+    Counsellor mCounsellor;
+
+    HashMap<String,String> allValues;
+
+    public ExpandableListAdapter(Context context, ExpandableListView expandableListView ,String user,Object object){
         mContext = context;//context of calling activity
         LayoutInflater layoutInflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mExpandableListView = expandableListView;
         mView = layoutInflater.inflate(R.layout.child_item, null);//the view that contains all necessary views for the list
         mUser = user;//student or counsellor
-
+        allValues = new HashMap<>();
         if(user.equals("student"))//set the group titles based on whether the user is a student or counsellor
         {
             headers = mContext.getResources().getStringArray(R.array.expandableListStudents);
+            mStudent = (Student) object;
+            allValues.put(FULL_NAME,mStudent.getFullName());
+            allValues.put(EMAIL,mStudent.getEmail());
+            allValues.put(USERNAME,mStudent.getUsername());
+            allValues.put(COUNTRY,mStudent.getCountry());
+            allValues.put(STATE,mStudent.getState());
+            allValues.put(PHONE_NUMBER,mStudent.getPhoneNumber());
+            allValues.put(DATE_OF_BIRTH,mStudent.getDateOfBirth());
+            allValues.put(RELIGION,mStudent.getReligion());
+
         }
         else
         {
             headers = mContext.getResources().getStringArray(R.array.expandableListCounsellors);
+            mCounsellor = (Counsellor) object;
+            allValues.put(FULL_NAME,mCounsellor.getFullName());
+            allValues.put(PROFESSION,mCounsellor.getProfession());
+            allValues.put(EMAIL,mCounsellor.getEmail());
+            allValues.put(COUNTRY,mCounsellor.getCountry());
+            allValues.put(STATE,mCounsellor.getState());
+            allValues.put(PHONE_NUMBER,mCounsellor.getPhoneNumber());
+            allValues.put(RELIGION,mCounsellor.getReligion());
+            allValues.put(YEARS_OF_EXPERIENCE,mCounsellor.getYearOfExperience());
+            allValues.put(AVAILABLE_HOURS,mCounsellor.getAvailableHours());
+            allValues.put(START_TIME,mCounsellor.getStartTime());
         }
 
 
@@ -258,6 +290,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
 
         prepareChild(view,groupIndex);
+        if(mUser.equals("student"))
+        {
+            setUpStudent(view);
+        }
+        else
+        {
+            setUpCounsellor(view);
+        }
         view.setPadding(0,0,0,32);
         return view;
     }
@@ -293,6 +333,33 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     public void prepareChild(View view, int position)
     {
+        if(mUser.equals("student"))
+        {
+            view.findViewById(R.id.profession).setVisibility(View.GONE);
+            view.findViewById(R.id.professionQuestion).setVisibility(View.GONE);
+
+            view.findViewById(R.id.dob).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.date_picker_actions).setVisibility(View.VISIBLE);
+
+            ((TextView)view.findViewById(R.id.religionTitle2)).setText(mContext.getString(R.string.similarCounsellor));
+            view.findViewById(R.id.religionTitle3).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.religious_counsellor_prefer).setVisibility(View.VISIBLE);
+
+        }
+
+        else
+        {
+            view.findViewById(R.id.username).setVisibility(View.GONE);
+            view.findViewById(R.id.usernameQuestion).setVisibility(View.GONE);
+
+            view.findViewById(R.id.dob).setVisibility(View.GONE);
+            view.findViewById(R.id.date_picker_actions).setVisibility(View.GONE);
+
+            ((TextView)view.findViewById(R.id.religionTitle2)).setText(mContext.getString(R.string.counsellorFaith));
+            view.findViewById(R.id.religionTitle3).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.religious_counsellor_prefer).setVisibility(View.VISIBLE);
+
+        }
         for(int i=0;i<children.length;i++)
         {
             setVisibility(view,children[i],position==i);
@@ -305,5 +372,60 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             view.findViewById(id).setVisibility(View.VISIBLE);
         else
             view.findViewById(id).setVisibility(View.GONE);
+    }
+
+    public void setUpStudent(View view)
+    {
+        EditText fullname = view.findViewById(R.id.fullname);
+        EditText email = view.findViewById(R.id.email);
+        EditText username = view.findViewById(R.id.username);
+
+        EditText country = view.findViewById(R.id.country);
+        EditText state = view.findViewById(R.id.State);
+        EditText phone = view.findViewById(R.id.phone);
+        EditText dob = view.findViewById(R.id.date_picker_actions);
+
+        AutoCompleteTextView religion = view.findViewById(R.id.religion);
+
+        fullname.setText(allValues.get(FULL_NAME));
+        email.setText(allValues.get(EMAIL));
+        username.setText(allValues.get(USERNAME));
+
+        country.setText(allValues.get(COUNTRY));
+        state.setText(allValues.get(STATE));
+        phone.setText(allValues.get(PHONE_NUMBER));
+        dob.setText(allValues.get(DATE_OF_BIRTH));
+        religion.setText(allValues.get(RELIGION));
+    }
+
+    public void setUpCounsellor(View view)
+    {
+        EditText fullname = view.findViewById(R.id.fullname);
+        EditText email = view.findViewById(R.id.email);
+        EditText profession = view.findViewById(R.id.profession);
+
+        EditText country = view.findViewById(R.id.country);
+        EditText state = view.findViewById(R.id.State);
+        EditText phone = view.findViewById(R.id.phone);
+
+        AutoCompleteTextView experience = view.findViewById(R.id.experience);
+        EditText timePicker = view.findViewById(R.id.time_picker);
+        AutoCompleteTextView available = view.findViewById(R.id.availableHours);
+
+
+        AutoCompleteTextView religion = view.findViewById(R.id.religion);
+
+        fullname.setText(allValues.get(FULL_NAME));
+        email.setText(allValues.get(EMAIL));
+        profession.setText(allValues.get(PROFESSION));
+
+        country.setText(allValues.get(COUNTRY));
+        state.setText(allValues.get(STATE));
+        phone.setText(allValues.get(PHONE_NUMBER));
+        religion.setText(allValues.get(RELIGION));
+
+        timePicker.setText(allValues.get(START_TIME));
+        experience.setText(allValues.get(YEARS_OF_EXPERIENCE));
+        available.setText(allValues.get(AVAILABLE_HOURS));
     }
 }

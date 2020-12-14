@@ -15,7 +15,7 @@
         app:layout_constraintGuide_percent="0.1" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/titleCounsellors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -37,8 +37,8 @@
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintStart_toStartOf="@+id/titleCounsellors"
+        app:layout_constraintTop_toBottomOf="@+id/titleCounsellors">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -77,10 +77,11 @@
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="@+id/cardView">
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/profile_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
@@ -89,7 +90,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/anonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
@@ -98,7 +99,7 @@
             android:textSize="12sp" />
 
         <CheckBox
-            android:id="@+id/checkBox4"
+            android:id="@+id/isAnonymous"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:button="@drawable/checkbox_selector"

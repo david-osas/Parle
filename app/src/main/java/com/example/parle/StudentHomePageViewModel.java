@@ -126,7 +126,7 @@ public class StudentHomePageViewModel extends ViewModel {
                             {
                                 Counsellor counsellor = documentSnapshot.toObject(Counsellor.class);
                                 list.add(counsellor);
-                                Toast.makeText(mContext,counsellor.getFullName(),Toast.LENGTH_LONG).show();
+                                //Toast.makeText(mContext,counsellor.getFullName(),Toast.LENGTH_LONG).show();
                             }
                             mAllCounsellors.postValue(list);
                         }
@@ -198,28 +198,7 @@ public class StudentHomePageViewModel extends ViewModel {
         mAllRequestedSessions = new MutableLiveData<>();
 
         mRequests = new ArrayList<>();
-//        mDb.collection("requests").whereEqualTo("counsellorId",mFirebaseUser.getUid())
-//                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                if(task.isSuccessful())
-//                {
-//                    for(QueryDocumentSnapshot documentSnapshot : task.getResult())
-//                    {
-//                        Request request = documentSnapshot.toObject(Request.class);
-//                        mRequests.add(request);
-//                    }
-//                    Toast.makeText(mContext,"All requests gotten",Toast.LENGTH_LONG).show();
-//                    Log.i("students","finished getting all reuqets");
-//                    getAllStudents(mRequests);
-//                }
-//
-//                else
-//                {
-//                    Toast.makeText(mContext,mContext.getString(R.string.unableToGetCounsellors),Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
+
 
         mDb.collection("requests").whereEqualTo("counsellorId",mFirebaseUser.getUid()).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -243,7 +222,7 @@ public class StudentHomePageViewModel extends ViewModel {
                                 break;
                         }
                     }
-                    Toast.makeText(mContext,"All requests gotten",Toast.LENGTH_LONG).show();
+                //    Toast.makeText(mContext,"All requests gotten",Toast.LENGTH_LONG).show();
                     Log.i("students","finished getting all reuqets");
                     getAllStudents(mRequests);
                 }
@@ -258,7 +237,7 @@ public class StudentHomePageViewModel extends ViewModel {
     {
         //loads all students that sent the requests in the list argument
         Log.i("students","i got into this function after");
-        Toast.makeText(mContext,"Start getting students from requests",Toast.LENGTH_LONG).show();
+       // Toast.makeText(mContext,"Start getting students from requests",Toast.LENGTH_LONG).show();
         final ArrayList<Student> studentsThatRequestedSessions = new ArrayList<>();
         for(Request request: requests)
         {
@@ -287,5 +266,7 @@ public class StudentHomePageViewModel extends ViewModel {
             loadAllRequestedSessions();
         return mAllRequestedSessions;
     }
+
+
 
 }

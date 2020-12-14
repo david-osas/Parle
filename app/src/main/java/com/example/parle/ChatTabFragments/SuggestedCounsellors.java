@@ -98,7 +98,7 @@ public class SuggestedCounsellors extends Fragment {
             mViewModel.getRequestedSessions().observe(requireActivity(), new Observer<List<Student>>() {
                 @Override
                 public void onChanged(List<Student> students) {
-                    Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();
+                   // Toast.makeText(requireContext(),"data has changed",Toast.LENGTH_LONG).show();
                     mStudentRequestsAdapter.updateList((ArrayList) students);
 
                 }

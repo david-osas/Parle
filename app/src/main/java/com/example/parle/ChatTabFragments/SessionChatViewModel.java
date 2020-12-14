@@ -53,23 +53,7 @@ public class SessionChatViewModel extends ViewModel {
         allChats = new MutableLiveData<>();
         if(isStudent)
         {
-            //gets all chats for a student.
-//            mDb.collection("chats").whereEqualTo("studentId",mFirebaseUser.getUid())
-//                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                @Override
-//                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                    if(task.isSuccessful())
-//                    {
-//                        for(QueryDocumentSnapshot snapshot:task.getResult())
-//                        {
-//                            chats.add(snapshot.toObject(ChatsModel.class));
-//
-//                        }
-//                        allChats.postValue(chats);
-//                        getUsersFromChats();
-//                    }
-//                }
-//            });
+
             mDb.collection("chats").whereEqualTo("studentId",mFirebaseUser.getUid()).addSnapshotListener(new EventListener<QuerySnapshot>() {
                 @Override
                 public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -89,25 +73,7 @@ public class SessionChatViewModel extends ViewModel {
         }
         else
         {
-            //gets all chats for a counsellor
-            Log.i("student","3 Im a counsellor so I go here");
-//            mDb.collection("chats").whereEqualTo("counsellorId",mFirebaseUser.getUid())
-//                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                @Override
-//                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                    if(task.isSuccessful())
-//                    {
-//                        for(QueryDocumentSnapshot snapshot:task.getResult())
-//                        {
-//                            chats.add(snapshot.toObject(ChatsModel.class));
-//                            Log.i("student","4 Yo Im in the loop");
-//                        }
-//                        Log.i("student","5 I came out of the loop adn decided to go to another functon");
-//                        allChats.postValue(chats);
-//                        getUsersFromChats();
-//                    }
-//                }
-//            });
+
 
             mDb.collection("chats").whereEqualTo("counsellorId",mFirebaseUser.getUid())
                     .addSnapshotListener(new EventListener<QuerySnapshot>() {

@@ -60,21 +60,19 @@ public class SplashScreen extends AppCompatActivity {
 
     public void checkIfStudent()
     {
+        //close the splashscreen activity.
         if(mViewModel.userIsNull())//if there is no logged in user go to the log in selection screen
         {
             LoginSP.setUser(this,"none");
             startActivity(new Intent(SplashScreen.this, SelectionActivity.class));
-            Toast.makeText(this, "no user is logged in", Toast.LENGTH_LONG).show();
-            finish();//close the splashscreen activity.
         }
 
 
         else//if there is a logged in user
         {
             startActivity(new Intent(SplashScreen.this, StudentHomePage.class));
-            Toast.makeText(this, "user is logged in", Toast.LENGTH_LONG).show();
-            finish();//close the splashscreen activity.
 
         }
+        finish();//close the splashscreen activity.
     }
 }

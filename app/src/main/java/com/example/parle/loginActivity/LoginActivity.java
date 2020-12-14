@@ -48,11 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     viewModel.setIsStudent();
                     checkIsValidLogin();
-                    //checks so that is you select log in as student you cant login as counsellor
-//                    Intent intent = new Intent(LoginActivity.this, StudentHomePage.class);
-//                    startActivity(intent);
-//                    Toast.makeText(LoginActivity.this,"Wow youre logged in welcome",Toast.LENGTH_LONG).show();
-//                    finish();
+
                 }
                 else if(integer == 2){
                     Toast.makeText(LoginActivity.this, getString(R.string.loginError), Toast.LENGTH_SHORT).show();
@@ -112,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else if(integer==0)
                     {
-                        Toast.makeText(LoginActivity.this,"So sad, cnat log in",Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this,"So sad, can't log in",Toast.LENGTH_LONG).show();
                         viewModel.logout();
                         finish();
                         binding.loginBtn.setVisibility(View.VISIBLE);
@@ -139,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else if(integer==0)
                     {
-                        Toast.makeText(LoginActivity.this,"So sad, cant log in",Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this,"So sad, can't log in",Toast.LENGTH_LONG).show();
                         viewModel.logout();
                         finish();
                         binding.loginBtn.setVisibility(View.VISIBLE);

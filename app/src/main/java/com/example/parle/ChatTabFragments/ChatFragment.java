@@ -109,7 +109,8 @@ public class ChatFragment extends Fragment {
         mViewModel.allChats.observe(requireActivity(), new Observer<ArrayList<ChatsModel>>() {
             @Override
             public void onChanged(ArrayList<ChatsModel> chatsModels) {
-                mChatListAdapter.mChatsModels=chatsModels;
+
+                mChatListAdapter.mChatsModels = chatsModels;
             }
         });
 
