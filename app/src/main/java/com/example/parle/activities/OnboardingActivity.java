@@ -31,7 +31,7 @@ public class OnboardingActivity extends AppCompatActivity {
     private ArrayList<Fragment> mFragments;
     private TextView mTextView;
     private ViewPager2 mViewPager2;
-    private Animation fade_out;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +45,7 @@ public class OnboardingActivity extends AppCompatActivity {
         mFragments.add(new PageTwoFragment());
         mFragments.add(new PageThreeFragment());
 
-        fade_out = AnimationUtils.loadAnimation(this,R.anim.fade_out_transition);
+
         mViewPager2 = findViewById(R.id.slider);
         mViewPager2.setAdapter(new StartScreenAdapter(getSupportFragmentManager(),getLifecycle(),mFragments));
 
@@ -68,7 +68,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
         mViewPager2.setPageTransformer(pageTransformer);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, mViewPager2, true, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
