@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.parle.MainChatActivity;
+import com.example.parle.activities.mainChatActivity.MainChatActivity;
 import com.example.parle.R;
 import com.example.parle.SessionHelper;
 import com.example.parle.models.ChatsModel;

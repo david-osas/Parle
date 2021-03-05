@@ -11,23 +11,23 @@
         android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme2">
-        <activity android:name=".MainChatActivity"></activity>
-        <activity android:name=".BaseActivity" />
-        <activity android:name=".PinActivity" />
-        <activity android:name=".concentrateActivity.ConcentrateActivity" />
-        <activity android:name=".detailsActivity.DetailsActivity" />
+        <activity android:name=".activities.mainChatActivity.MainChatActivity"></activity>
+        <activity android:name=".activities.BaseActivity" />
+        <activity android:name=".activities.PinActivity" />
+        <activity android:name=".activities.concentrateActivity.ConcentrateActivity" />
+        <activity android:name=".activities.detailsActivity.DetailsActivity" />
         <activity
-            android:name=".signupActivity.SignupActivity"
+            android:name=".activities.signupActivity.SignupActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".loginActivity.LoginActivity"
+            android:name=".activities.loginActivity.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SelectionActivity" />
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.SelectionActivity" />
         <activity
-            android:name=".StudentHomePage"
+            android:name=".activities.StudentHomePage"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".splashScreenSide.SplashScreen" android:theme="@style/SplashTheme">
+        <activity android:name=".activities.splashScreenSideActivity.SplashScreen" android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

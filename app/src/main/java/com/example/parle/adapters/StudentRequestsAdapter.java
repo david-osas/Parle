@@ -12,9 +12,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.parle.R;
-import com.example.parle.models.Counsellor;
 import com.example.parle.models.Student;
-import com.example.parle.profileViewFragment.ProfileViewViewModel;
+import com.example.parle.fragments.profileViewFragment.ProfileViewViewModel;
 
 import java.util.ArrayList;
 

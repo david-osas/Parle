@@ -14,9 +14,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.parle.R;
-import com.example.parle.concentrateActivity.ConcentrateActivity;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public

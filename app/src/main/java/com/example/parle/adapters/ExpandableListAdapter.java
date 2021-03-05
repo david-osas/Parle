@@ -25,16 +25,14 @@ import androidx.core.content.res.ResourcesCompat;
 import com.example.parle.Constants;
 import com.example.parle.R;
 import com.example.parle.databinding.ChildItemBinding;
-import com.example.parle.detailsActivity.DetailsActivity;
+import com.example.parle.activities.detailsActivity.DetailsActivity;
 import com.example.parle.models.Counsellor;
 import com.example.parle.models.Student;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter implements Constants {
     /*

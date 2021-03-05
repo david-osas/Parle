@@ -11,7 +11,7 @@
     android:orientation="vertical"
     android:paddingStart="32dp"
     android:paddingEnd="32dp"
-    tools:context=".startScreenFragments.PageOneFragment">
+    tools:context=".fragments.startScreenFragments.PageOneFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

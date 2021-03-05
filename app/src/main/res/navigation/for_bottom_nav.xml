@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/action_student_home"
-        android:name="com.example.parle.studentFragments.Home"
+        android:name="com.example.parle.fragments.studentFragments.Home"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/action_messages"
-        android:name="com.example.parle.studentFragments.Chats"
+        android:name="com.example.parle.fragments.studentFragments.Chats"
         android:label="@string/chats"
         tools:layout="@layout/fragment_chats" >
         <action
@@ -23,12 +23,12 @@
 
     <fragment
         android:id="@+id/action_profile"
-        android:name="com.example.parle.studentFragments.Profile"
+        android:name="com.example.parle.fragments.studentFragments.Profile"
         android:label="@string/profile_header"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/action_counselors"
-        android:name="com.example.parle.studentFragments.Counsellors"
+        android:name="com.example.parle.fragments.studentFragments.Counsellors"
         android:label="@string/counselors"
         tools:layout="@layout/fragment_counsellors" >
         <action
@@ -38,12 +38,12 @@
 
     <fragment
         android:id="@+id/action_articles"
-        android:name="com.example.parle.studentFragments.Articles"
+        android:name="com.example.parle.fragments.studentFragments.Articles"
         android:label="@string/articles_heading"
         tools:layout="@layout/fragment_articles" />
     <fragment
         android:id="@+id/profileViewFragment"
-        android:name="com.example.parle.profileViewFragment.ProfileViewFragment"
+        android:name="com.example.parle.fragments.profileViewFragment.ProfileViewFragment"
         android:label="fragment_profile_view"
         tools:layout="@layout/fragment_profile_view" />
 
