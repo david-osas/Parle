@@ -22,12 +22,12 @@
         <activity
             android:name=".activities.loginActivity.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.OnboardingActivity" />
         <activity android:name=".activities.SelectionActivity" />
         <activity
             android:name=".activities.StudentHomePage"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".activities.splashScreenSideActivity.SplashScreen" android:theme="@style/SplashTheme">
+        <activity android:name=".activities.splashScreenActivity.SplashScreen" android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

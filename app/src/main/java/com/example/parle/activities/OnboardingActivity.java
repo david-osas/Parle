@@ -25,7 +25,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class OnboardingActivity extends AppCompatActivity {
 
     //Activity after the SplashScreen which shows only the first time you open the app.
     private ArrayList<Fragment> mFragments;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_onboarding);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    LoginSP.hasBeenOpened(MainActivity.this);
-                    startActivity(new Intent(MainActivity.this, SelectionActivity.class));
+                    LoginSP.hasBeenOpened(OnboardingActivity.this);
+                    startActivity(new Intent(OnboardingActivity.this, SelectionActivity.class));
                     finish();
                 }
             }
@@ -98,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.skip).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoginSP.hasBeenOpened(MainActivity.this);
-                startActivity(new Intent(MainActivity.this, SelectionActivity.class));
+                LoginSP.hasBeenOpened(OnboardingActivity.this);
+                startActivity(new Intent(OnboardingActivity.this, SelectionActivity.class));
                 finish();
             }
         });

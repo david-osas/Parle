@@ -13,4 +13,8 @@ public interface   Constants {
     String YEARS_OF_EXPERIENCE = "experience";
     String START_TIME = "start_time";
     String AVAILABLE_HOURS = "available_hours";
+    String NONE = "none";
+    String STUDENT = "student";
+    String COUNSELLOR = "counsellor";
+    String STUDENTS = "students";
 }
