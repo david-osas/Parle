@@ -334,16 +334,6 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="24dp"
-            android:clickable="true"
-            app:backgroundTint="#000000"
-            app:elevation="0dp"
-            app:srcCompat="@drawable/ic_apple" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -352,6 +342,16 @@
             app:backgroundTint="#DE5246"
             app:elevation="0dp"
             app:srcCompat="@drawable/ic_google" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="24dp"
+            android:clickable="true"
+            app:backgroundTint="#000000"
+            app:elevation="0dp"
+            app:srcCompat="@drawable/ic_apple" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton7"

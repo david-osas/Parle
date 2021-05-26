@@ -9,13 +9,15 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.example.parle.Constants;
 import com.example.parle.R;
 import com.example.parle.activities.loginActivity.LoginActivity;
+import com.example.parle.databinding.ActivitySelectionBinding;
 import com.example.parle.sharedPreferences.LoginSP;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SelectionActivity extends AppCompatActivity {
+public class SelectionActivity extends AppCompatActivity implements Constants {
 
     //Looking in hindsight now, this didnt need to be an activity.
     //Anyways its the activity that shows 2 chatboxes for user to login as counsellor or student
@@ -24,50 +26,40 @@ public class SelectionActivity extends AppCompatActivity {
     private ImageView counsellorBackground;
     private ImageView Student;
     private ImageView Counsellor;
+    ActivitySelectionBinding mBinding;
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("user","Selectoin activity "+LoginSP.getUser(this));
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_selection);
 
+        mBinding = ActivitySelectionBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
+
+        //setView to full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
 
 
-        studentBackground = findViewById(R.id.as_student_background);
-        counsellorBackground = findViewById(R.id.as_counselor_background);
+        studentBackground = mBinding.asStudentBackground;
+        counsellorBackground = mBinding.asCounselorBackground;
 
-        Student = findViewById(R.id.as_student);
-        Counsellor = findViewById(R.id.as_counsellor);
+        Student = mBinding.asStudent;
+        Counsellor = mBinding.asCounsellor;
 
         adjustSelection(true);
 
-        Student.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                adjustSelection(true);
-            }
-        });
+        Student.setOnClickListener(view -> adjustSelection(true));
 
-        Counsellor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                adjustSelection(false);
-            }
-        });
+        Counsellor.setOnClickListener(view -> adjustSelection(false));
 
-        findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //startActivity(new Intent(SelectionActivity.this, StudentHomePage.class));
-                toLogin();
-            }
+        findViewById(R.id.next).setOnClickListener(view -> {
+            //startActivity(new Intent(SelectionActivity.this, StudentHomePage.class));
+            toLogin();
         });
 
     }
@@ -81,14 +73,14 @@ public class SelectionActivity extends AppCompatActivity {
             intent = new Intent(this, LoginActivity.class);
         }
         else{
-            intent = new Intent(this, StudentHomePage.class);
+            intent = new Intent(this, LoginActivity.class);
         }
         if(student_selected) {
-            intent.putExtra("user","student");
+            intent.putExtra(USER,STUDENT);
 
         }
         else{
-            intent.putExtra("user","counsellor");
+            intent.putExtra(USER,COUNSELLOR);
         }
         startActivity(intent);
     }

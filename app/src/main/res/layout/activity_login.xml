@@ -20,6 +20,7 @@
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:orientation="vertical">
@@ -64,7 +65,7 @@
                 android:textColor="@color/almost_black" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/adviceText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -146,32 +147,38 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="24dp"
-            android:clickable="true"
-            app:backgroundTint="#000000"
-            app:elevation="0dp"
-            app:srcCompat="@drawable/ic_apple" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginRight="24dp"
             android:clickable="true"
+            android:foregroundGravity="center"
             app:backgroundTint="#DE5246"
             app:elevation="0dp"
+            app:fabCustomSize="45dp"
             app:srcCompat="@drawable/ic_google" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton8"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="24dp"
+            android:clickable="true"
+            android:foregroundGravity="center"
+            app:backgroundTint="#000000"
+            app:elevation="0dp"
+            app:fabCustomSize="45dp"
+            app:srcCompat="@drawable/ic_apple" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton7"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:foregroundGravity="center"
             app:backgroundTint="#4267B2"
             app:elevation="0dp"
+            app:fabCustomSize="45dp"
             app:srcCompat="@drawable/ic_facebook" />
     </LinearLayout>
 
@@ -208,7 +215,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <View
         android:id="@+id/view4"

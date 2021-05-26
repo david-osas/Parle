@@ -17,4 +17,5 @@ public interface   Constants {
     String STUDENT = "student";
     String COUNSELLOR = "counsellor";
     String STUDENTS = "students";
+    String USER = "user";
 }

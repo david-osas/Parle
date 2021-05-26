@@ -46,9 +46,9 @@ public class SplashScreen extends AppCompatActivity implements Constants {
 
                 //if it has been opened before
                 else {
-                    checkIfStudent();
+                    //checkIfStudent();
+                    startActivity(new Intent(SplashScreen.this, SelectionActivity.class));
                 }
-
 
             }
         }, 500);

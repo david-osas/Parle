@@ -102,9 +102,13 @@
     <!-- Start Screen Fragments -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="selected">selected</string>
-    <string name="advicePage2">Don\'t keep holding it in!</string>
-    <string name="advicePage3">Our Counsellors are here to help you.</string>
-    <string name="advicePage1">"We know you have a lot  running through your mind"</string>
+
+    <string-array name="advice">
+        <item>Don\'t keep holding it in!</item>
+        <item>Our Counsellors are here to help you.</item>
+        <item>"We know you have a lot  running through your mind"</item>
+    </string-array>
+
     <string name="hi">Hi</string>
     <string name="welcomeHome">Welcome to your safe place</string>
     <string name="suggestedCounsellors">Suggested Counselors</string>

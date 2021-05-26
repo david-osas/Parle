@@ -3,7 +3,9 @@ package com.example.parle.sharedPreferences;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class LoginSP
+import com.example.parle.Constants;
+
+public class LoginSP implements Constants
 {
     //singleton sharedprefernces class
     private static  SharedPreferences mSharedPreferences;
@@ -44,7 +46,7 @@ public class LoginSP
     }
 
     public static String getUser(Context context){
-        return getInstance(context).getString(USER,"none");
+        return getInstance(context).getString(USER,NONE);
     }
     public static String getPin(Context context){
         return getInstance(context).getString(PIN,"0000");
